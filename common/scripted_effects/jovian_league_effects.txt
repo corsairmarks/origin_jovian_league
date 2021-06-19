@@ -1,0 +1,2003 @@
+# triggered by empire_init_capital_planet
+# THIS = planet (capital)
+setup_secondary_species = {
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_machine_assimilator
+					has_valid_civic = civic_machine_servitor
+					has_origin = origin_jovian_league_syncretic
+					has_origin = origin_jovian_league_necrophage
+					has_origin = origin_jovian_league_mechanists
+				}
+			}
+		}
+		if = {
+			limit = { last_created_species = { is_lithoid = yes } }
+			owner = {
+				set_country_flag = lithoid_subspecies
+			}
+		}
+		else = {
+			owner = {
+				set_country_flag = non_lithoid_subspecies
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_syncretic
+					has_origin = origin_jovian_league_necrophage
+				}
+			}
+		}
+		last_created_species = {
+			set_species_flag = syncretic_species@ROOT.owner
+			# syncretic/necrophage secondary species rights reset in origin_jovian_league.5
+			save_event_target_as = jovian_league_secondary_species
+		}
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		last_created_species = {
+			set_species_flag = organic_trophy_species@ROOT.owner
+			set_citizenship_type = {
+				country = ROOT.owner
+				type = citizenship_limited
+			}
+			set_living_standard = {
+				country = ROOT.owner
+				type = living_standard_organic_trophy
+			}
+			save_event_target_as = jovian_league_secondary_species
+		}
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		last_created_species = {
+			set_species_flag = cyborg_species@ROOT.owner
+			set_citizenship_type = {
+				country = ROOT.owner
+				type = citizenship_full_machine
+			}
+			set_living_standard = {
+				country = ROOT.owner
+				type = living_standard_hive_mind
+			}
+			save_event_target_as = jovian_league_secondary_species
+		}
+	}
+	else_if = {
+		limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+		owner = { create_built_robot_species = yes }
+		last_created_species = {
+			set_species_flag = mechanist_robot_species@ROOT.owner
+			save_event_target_as = jovian_league_secondary_species
+		}
+	}
+}
+
+# duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
+# from appearing on specific planets, generates gatherer targets before "open" deposits that need one constructed, and avoids overwriting
+# deposits that it already added
+# THIS = galactic_object (i.e. solar system)
+generate_jovian_league_system_resources = {
+	every_system_planet = {
+		limit = {
+			colonizeable_planet = no
+			NOT = { has_planet_flag = ignore_startup_effect }
+		}
+		prevent_anomaly = yes
+		clear_deposits = yes
+	}
+
+	system_star = {
+		set_planet_flag = starting_mining_target
+		set_planet_flag = starting_deposit
+		set_deposit = d_energy_5
+	}
+
+	random_system_planet = {
+		limit = {
+			NOR = {
+				has_planet_flag = starting_deposit
+				has_planet_flag = ignore_startup_effect
+				has_planet_flag = starting_gatherer_prohibited
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+			can_have_energy_deposits = yes
+		}
+
+		set_planet_flag = starting_mining_target
+		set_planet_flag = starting_deposit
+		set_deposit = d_energy_5
+	}
+
+	random_system_planet = {
+		limit = {
+			NOR = {
+				has_planet_flag = starting_deposit
+				has_planet_flag = ignore_startup_effect
+				has_planet_flag = starting_gatherer_prohibited
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+			OR = {
+				can_have_physics_deposits = yes
+				can_have_society_deposits = yes
+				can_have_engineering_deposits = yes
+				is_planet_class = pc_barren
+				is_planet_class = pc_barren_cold
+			}
+		}
+
+		set_planet_flag = starting_research_target
+		set_planet_flag = starting_deposit
+
+		if = {
+			limit = { can_have_society_deposits = yes }
+			set_deposit = d_society_3
+		}
+		else_if = {
+			limit = {
+				OR = {
+					can_have_physics_deposits = yes
+					is_planet_class = pc_barren # can't normally support physiscs deposits
+				}
+			}
+			set_deposit = d_physics_3
+		}
+		else = {
+			set_deposit = d_engineering_3
+			# pc_barren_cold ends up in this condition, although it normally can't support engineering deposits
+		}
+	}
+
+	while = {
+		count = 2
+		random_system_planet = {
+			limit = {
+				NOR = {
+					has_planet_flag = starting_deposit
+					has_planet_flag = ignore_startup_effect
+					has_planet_flag = starting_gatherer_prohibited
+					has_deposit_for = shipclass_mining_station
+					has_deposit_for = shipclass_research_station
+				}
+				can_have_mineral_deposits = yes
+			}
+
+			set_planet_flag = starting_mining_target
+			set_planet_flag = starting_deposit
+			set_deposit = d_minerals_5
+		}
+	}
+
+	random_system_planet = {
+		limit = {
+			NOR = {
+				has_planet_flag = starting_deposit
+				has_planet_flag = ignore_startup_effect
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+			OR = {
+				can_have_minor_physics_deposits = yes
+				can_have_society_deposits = yes
+				can_have_minor_engineering_deposits = yes
+				is_planet_class = pc_barren
+				is_planet_class = pc_barren_cold
+			}
+		}
+
+		set_planet_flag = starting_deposit
+
+		if = {
+			limit = { can_have_society_deposits = yes }
+			set_deposit = d_society_2
+		}
+		else_if = {
+			limit = {
+				OR = {
+					can_have_minor_physics_deposits = yes
+					is_planet_class = pc_barren # can't normally support physiscs deposits
+				}
+			}
+			set_deposit = d_physics_2
+		}
+		else = {
+			set_deposit = d_engineering_2
+			# pc_barren_cold ends up in this condition, although it normally can't support engineering deposits
+		}
+	}
+
+	random_system_planet = {
+		limit = {
+			NOR = {
+				has_planet_flag = starting_deposit
+				has_planet_flag = ignore_startup_effect
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+			can_have_energy_deposits = yes
+		}
+
+		set_planet_flag = starting_deposit
+		random_list = {
+			50 = { set_deposit = d_energy_2 }
+			50 = { set_deposit = d_energy_3 }
+		}
+	}
+
+	random_system_planet = {
+		limit = {
+			NOR = {
+				has_planet_flag = starting_deposit
+				has_planet_flag = ignore_startup_effect
+				has_deposit_for = shipclass_mining_station
+				has_deposit_for = shipclass_research_station
+			}
+			can_have_mineral_deposits = yes
+		}
+
+		set_planet_flag = starting_deposit
+		random_list = {
+			50 = { set_deposit = d_minerals_2 }
+			50 = { set_deposit = d_minerals_3 }
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (capital)
+generate_starting_resources = {
+	# additional resources based on empire type and possible subspecies
+	# logically the same as the last section of common/scripted_effects/01_start_of_game_effects.txt - generate_start_buildings_and_districts
+	owner = {
+		if = {
+			limit = { has_authority = auth_machine_intelligence }
+			add_resource = { energy = 100 }
+			if = {
+				limit = {
+					OR = {
+						has_valid_civic = civic_machine_servitor
+						has_valid_civic = civic_machine_assimilator
+					}
+				}
+				if = {
+					limit = { has_country_flag = lithoid_subspecies }
+					add_resource = { minerals = 100	}
+				}
+				else = {
+					add_resource = { food = 100	}
+				}
+			}
+			else = {
+				add_resource = { energy = 100 }
+			}
+		}
+		else = {
+			if = {
+				limit = { is_lithoid_empire = no }
+				add_resource = { food = 100	}
+				if = {
+					limit = { has_country_flag = lithoid_subspecies }
+					add_resource = { minerals = 100 }
+				}
+				else = {
+					add_resource = { food = 100 }
+				}
+			}
+			else = {
+				add_resource = { minerals = 100 }
+				if = {
+					limit = { has_country_flag = non_lithoid_subspecies }
+					add_resource = { food = 100	}
+				}
+				else = {
+					add_resource = { minerals = 100 }
+				}
+			}
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (capital)
+generate_jovian_league_capital_start_deposits_and_blockers = {
+	clear_deposits = yes
+
+	# based on starting blockers from common/scripted_effects/01_start_of_game_effects.txt - generate_start_deposits_and_blockers
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_terminator } }
+		add_deposit = d_exterminators_ruins
+		add_deposit = d_former_battlefield
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		add_deposit = d_strip_mine
+		add_deposit = d_unsupervised_settlement
+		add_deposit = d_mothballed_factories
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		add_deposit = d_strip_mine
+		add_deposit = d_assimilators_ruins
+	}
+	else_if = {
+		limit = { owner = { has_authority = auth_machine_intelligence } }
+		add_deposit = d_strip_mine
+		add_deposit = d_machine_empire_ruins
+	}
+	else_if = {
+		limit = { owner = { has_authority = auth_hive_mind } }
+		add_deposit = d_collapsed_burrows
+		add_deposit = d_failing_infrastructure
+	}
+	else = {
+		add_deposit = d_decrepit_dwellings
+		add_deposit = d_failing_infrastructure
+	}
+
+	if = {
+		limit = { owner = { is_lithoid_empire = yes } }
+		if = {
+			limit = { owner = { NOT = { has_valid_civic = civic_hive_devouring_swarm } } }
+			while = {
+				count = 4
+				add_deposit = d_hibernating_lithoids
+			}
+		}
+		else = {
+			while = {
+				count = 2
+				add_deposit = d_hibernating_lithoids
+			}
+		}
+	}
+
+	switch = {
+		trigger = is_planet_class
+		pc_arid = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_bountiful_plains
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_tropical_island
+			}
+		}
+		pc_desert = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_nutritious_mudland
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_marvelous_oasis
+			}
+		}
+		pc_savannah = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_bountiful_plains
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_black_soil
+			}
+		}
+		pc_continental = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_rugged_woods
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_black_soil
+			}
+		}
+		pc_ocean = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_green_hills
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_submerged_ore_veins
+			}
+			else = {
+				add_deposit = d_teeming_reef
+			}
+		}
+		pc_tropical = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_green_hills
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_submerged_ore_veins
+			}
+			else = {
+				add_deposit = d_tropical_island
+			}
+		}
+		pc_alpine = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_forgiving_tundra
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_fungal_forest
+			}
+		}
+		pc_arctic = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_lichen_fields
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_fungal_forest
+			}
+		}
+		pc_tundra = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_forgiving_tundra
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_rich_mountain
+			}
+			else = {
+				add_deposit = d_fungal_forest
+			}
+		}
+		pc_nuked = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 3 (4) farming (lithoids swap 3 minerals)
+			add_deposit = d_lichen_fields
+			if = {
+				limit = { owner = { is_lithoid_empire = yes } }
+				add_deposit = d_submerged_ore_veins
+			}
+			else = {
+				add_deposit = d_fungal_forest
+			}
+		}
+		default = {
+			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (capital)
+generate_jovian_league_capital_start_buildings_and_districts = {
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		add_building = building_capital
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_origin = origin_jovian_league_necrophage
+					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
+				}
+			}
+			add_building = building_necrophage_elevation_chamber
+		}
+		if = {
+			limit = { owner = { is_spiritualist = yes } }
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_valid_civic = civic_death_cult
+							has_valid_civic = civic_death_cult_corporate
+						}
+					}
+				}
+				add_building = building_sacrificial_temple_1
+			}
+			else = {
+				add_building = building_temple
+			}
+		}
+		add_district = district_city
+		add_district = district_generator
+		if = {
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+					has_country_flag = non_lithoid_subspecies
+				}
+			}
+			add_district = district_farming
+		}
+		else = {
+			add_species_appropriate_food_district = yes
+		}
+		add_district = district_industrial
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_building = building_hive_capital
+		add_building = building_spawning_pool
+		add_district = district_hive
+		add_species_appropriate_food_district = yes
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_building = building_machine_capital
+		add_building = building_machine_assembly_plant
+		add_district = district_nexus
+		add_district = district_generator
+		if = {
+			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			add_building = building_organic_sanctuary
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_valid_civic = civic_machine_assimilator
+						has_valid_civic = civic_machine_servitor
+					}
+				}
+			}
+			if = {
+				limit = { has_country_flag = lithoid_subspecies }
+				add_district = district_mining
+			}
+			else_if = {
+				limit = { has_country_flag = non_lithoid_subspecies }
+				add_district = district_farming
+			}
+			else = {
+				log_error = "empire is an assimilator or servitor but has a subspecies that isn't flagged for lithoid/non_lithoid: fallback generator district added to capital"
+				add_district = district_generator
+			}
+		}
+		else = {
+			add_district = district_generator
+		}
+	}
+	else = {
+		log_error = "unable to initialize empire-type-specific buildings/districts: not a regular/megacorp, hive, or machine"
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_memorialist
+					has_valid_civic = civic_hive_memorialist
+					has_valid_civic = civic_machine_memorialist
+				}
+			}
+		}
+		add_building = building_galactic_memorial_1
+	}
+	add_building = building_research_lab_1
+	add_district = district_industrial
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		add_district = district_industrial
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (capital)
+generate_jovian_league_capital_start_pops = {
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_syncretic
+					has_origin = origin_jovian_league_necrophage
+				}
+			}
+		}
+		set_variable = {
+			which = secondary_pop_count
+			value = 5
+		}
+	}
+	else_if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_mechanists
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+		set_variable = {
+			which = secondary_pop_count
+			value = 4
+		}
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		set_variable = {
+			which = secondary_pop_count
+			value = 3
+		}
+	}
+
+	if = {
+		limit = { is_variable_set = secondary_pop_count }
+		while = {
+			count = secondary_pop_count
+			create_pop = {
+				species = event_target:jovian_league_secondary_species
+				ethos = random
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				last_created_pop = { clear_ethos = yes }
+			}
+		}
+		clear_variable = secondary_pop_count
+	}
+
+	while = {
+		limit = { num_pops < 12 }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		while = {
+			count = 2
+			create_pop = {
+				species = owner_species
+				ethos = random
+			}
+		}
+	}
+
+	if = {
+		limit = { owner = { is_regular_empire = yes } } # biological empires need a bonus pop to not start in deficit
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets another bonus pop 
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (second orbit)
+generate_jovian_league_sibling1_start_deposits_and_blockers = {
+	clear_deposits = yes
+
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_deposit = d_collapsed_sentinel_posts
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		add_deposit = d_mothballed_factories
+	}
+
+	switch = {
+		trigger = is_planet_class
+		pc_arid = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_great_river
+		}
+		pc_desert = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_nutritious_mudland
+			add_deposit = d_great_river
+		}
+		pc_savannah = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 2 + 3 (5) mining
+			add_deposit = d_prosperous_mesa
+			add_deposit = d_submerged_ore_veins
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_fertile_lands
+		}
+		pc_continental = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 2 + 3 (5) mining
+			add_deposit = d_prosperous_mesa
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_rugged_woods
+			add_deposit = d_fertile_lands
+		}
+		pc_ocean = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_submerged_ore_veins
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_tropical = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 2 + 3 (5) mining
+			add_deposit = d_prosperous_mesa
+			add_deposit = d_submerged_ore_veins
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_alpine = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_arctic = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		pc_tundra = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_rich_mountain
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_nuked = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_searing_desert
+
+			# 2 + 3 (5) mining
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_submerged_ore_veins
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		default = {
+			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (second orbit)
+generate_jovian_league_sibling1_start_buildings_and_districts = {
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		add_building = building_capital
+		add_building = building_bureaucratic_1
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_origin = origin_jovian_league_necrophage
+					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
+				}
+			}
+			add_building = building_necrophage_elevation_chamber
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
+			add_species_appropriate_food_district = yes
+		}
+		else = {
+			add_district = district_city
+		}
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_district = district_generator
+		}
+		else = {
+			add_species_appropriate_food_district = yes
+		}
+		add_district = district_mining
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_building = building_hive_capital
+		add_building = building_spawning_pool
+		add_district = district_hive
+		add_species_appropriate_food_district = yes
+		add_species_appropriate_food_district = yes
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_building = building_machine_capital
+		add_building = building_machine_assembly_plant
+		add_building = building_uplink_node
+		if = {
+			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			add_building = building_organic_sanctuary
+		}
+		else = {
+			add_district = district_generator
+		}
+		add_district = district_generator
+	}
+	else = {
+		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+	}
+
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		add_district = district_nexus
+	}
+	else = {
+		add_district = district_mining
+	}
+	if = {
+		limit = { owner = { is_machine_empire = yes } }
+		set_colony_type = col_generator
+	}
+	else_if = {
+		limit = {
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+			}
+		}
+		set_colony_type = col_farming
+	}
+	else = {
+		set_colony_type = col_mining
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (second orbit)
+generate_jovian_league_sibling1_start_pops = {
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_syncretic
+					has_origin = origin_jovian_league_necrophage
+				}
+			}
+		}
+		set_variable = {
+			which = secondary_pop_count
+			value = 5
+		}
+		if = {
+			limit = {
+				owner = {
+					has_origin = origin_jovian_league_necrophage
+					has_valid_civic = civic_fanatic_purifiers
+				}
+			}
+			change_variable = {
+				which = secondary_pop_count
+				value = -2
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_mechanists
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		set_variable = {
+			which = secondary_pop_count
+			value = 2
+		}
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		set_variable = {
+			which = secondary_pop_count
+			value = 3
+		}
+	}
+
+	if = {
+		limit = { is_variable_set = secondary_pop_count }
+		while = {
+			count = secondary_pop_count
+			create_pop = {
+				species = event_target:jovian_league_secondary_species
+				ethos = random
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				last_created_pop = { clear_ethos = yes }
+			}
+		}
+		clear_variable = secondary_pop_count
+	}
+
+	while = {
+		limit = { num_pops < 10 }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		while = {
+			count = 2
+			create_pop = {
+				species = owner_species
+				ethos = random
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+	
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (third orbit)
+generate_jovian_league_sibling2_start_deposits_and_blockers = {
+	clear_deposits = yes
+
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_deposit = d_malformed_synapse_nodes
+		add_deposit = d_collapsed_sentinel_posts
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_deposit = d_obsolete_sentinel_posts
+	}
+
+	switch = {
+		trigger = is_planet_class
+		pc_arid = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_great_river
+		}
+		pc_desert = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_nutritious_mudland
+			add_deposit = d_great_river
+		}
+		pc_savannah = {
+			# 1 + 2 (3) energy
+			add_deposit = d_arid_highlands
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_fertile_lands
+		}
+		pc_continental = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_rugged_woods
+			add_deposit = d_fertile_lands
+		}
+		pc_ocean = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_tropical = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_rushing_waterfalls
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_alpine = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_arctic = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		pc_tundra = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_frozen_gas_lake
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_nuked = {
+			# 1 + 2 (3) energy
+			add_deposit = d_hot_springs
+			add_deposit = d_searing_desert
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		default = {
+			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (third orbit)
+generate_jovian_league_sibling2_start_buildings_and_districts = {
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		add_building = building_colony_shelter
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_building = building_hive_capital
+		add_building = building_spawning_pool
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_building = building_deployment_post
+		add_building = building_machine_assembly_plant
+	}
+	else = {
+		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						is_regular_empire = yes
+						is_hive_empire = yes
+					}
+				}
+			}
+			add_species_appropriate_food_district = yes
+		}
+		else = {
+			add_district = district_generator
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (third orbit)
+generate_jovian_league_sibling2_start_pops = {
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		set_variable = {
+			which = secondary_pop_count
+			value = 1
+		}
+	}
+
+	if = {
+		limit = { is_variable_set = secondary_pop_count }
+		while = {
+			count = secondary_pop_count
+			create_pop = {
+				species = event_target:jovian_league_secondary_species
+				ethos = random
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				last_created_pop = { clear_ethos = yes }
+			}
+		}
+		clear_variable = secondary_pop_count
+	}
+
+	while = {
+		limit = { num_pops < 2 }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_hive_empire = yes
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (fourth orbit)
+generate_jovian_league_sibling3_start_deposits_and_blockers = {
+	clear_deposits = yes
+
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_deposit = d_malformed_synapse_nodes
+		add_deposit = d_collapsed_sentinel_posts
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_deposit = d_obsolete_sentinel_posts
+	}
+
+	switch = {
+		trigger = is_planet_class
+		pc_arid = {
+			# 2 + 3 (5) energy
+			add_deposit = d_searing_desert
+			add_deposit = d_geothermal_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_great_river
+		}
+		pc_desert = {
+			# 2 + 3 (5) energy
+			add_deposit = d_searing_desert
+			add_deposit = d_geothermal_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_nutritious_mudland
+			add_deposit = d_great_river
+		}
+		pc_savannah = {
+			# 2 + 3 (5) energy
+			add_deposit = d_searing_desert
+			add_deposit = d_geothermal_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_bountiful_plains
+			add_deposit = d_fertile_lands
+		}
+		pc_continental = {
+			# 2 + 3 (5) energy
+			add_deposit = d_rushing_waterfalls
+			add_deposit = d_tempestous_mountain
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_rugged_woods
+			add_deposit = d_fertile_lands
+		}
+		pc_ocean = {
+			# 2 + 3 (5) energy
+			add_deposit = d_rushing_waterfalls
+			add_deposit = d_underwater_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_tropical = {
+			# 2 + 3 (5) energy
+			add_deposit = d_rushing_waterfalls
+			add_deposit = d_tempestous_mountain
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_prosperous_mesa
+
+			# 1 + 2 (3) farming
+			add_deposit = d_green_hills
+			add_deposit = d_lush_jungle
+		}
+		pc_alpine = {
+			# 2 + 3 (5) energy
+			add_deposit = d_frozen_gas_lake
+			add_deposit = d_tempestous_mountain
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_arctic = {
+			# 2 + 3 (5) energy
+			add_deposit = d_frozen_gas_lake
+			add_deposit = d_geothermal_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		pc_tundra = {
+			# 2 + 3 (5) energy
+			add_deposit = d_frozen_gas_lake
+			add_deposit = d_geothermal_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_mineral_fields
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_forgiving_tundra
+			add_deposit = d_fungal_caves
+		}
+		pc_nuked = {
+			# 2 + 3 (5) energy
+			add_deposit = d_searing_desert
+			add_deposit = d_underwater_vent
+
+			# 1 + 2 (3) mining
+			add_deposit = d_veiny_cliffs
+			add_deposit = d_ore_rich_caverns
+
+			# 1 + 2 (3) farming
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+		}
+		default = {
+			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (fourth orbit)
+generate_jovian_league_sibling3_start_buildings_and_districts = {
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		add_building = building_colony_shelter
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_origin = origin_jovian_league_necrophage
+					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
+				}
+			}
+			add_building = building_necrophage_elevation_chamber
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_building = building_hive_capital
+		add_building = building_spawning_pool
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_building = building_deployment_post
+		add_building = building_machine_assembly_plant
+	}
+	else = {
+		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+	}
+
+	add_district = district_generator
+	add_district = district_generator
+	set_colony_type = col_generator
+}
+
+# triggered by empire_init_capital_planet
+# THIS = planet (fourth orbit)
+generate_jovian_league_sibling3_start_pops = {
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_syncretic
+					has_origin = origin_jovian_league_mechanists
+					has_origin = origin_jovian_league_necrophage
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+		set_variable = {
+			which = secondary_pop_count
+			value = 2
+		}
+		if = {
+			limit = {
+				owner = {
+					has_origin = origin_jovian_league_necrophage
+					has_valid_civic = civic_fanatic_purifiers
+				}
+			}
+			change_variable = {
+				which = secondary_pop_count
+				value = -1
+			}
+		}
+	}
+
+	if = {
+		limit = { is_variable_set = secondary_pop_count }
+		while = {
+			count = secondary_pop_count
+			create_pop = {
+				species = event_target:jovian_league_secondary_species
+				ethos = random
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				last_created_pop = { clear_ethos = yes }
+			}
+		}
+		clear_variable = secondary_pop_count
+	}
+
+	while = {
+		limit = { num_pops < 4 }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		while = {
+			count = 2
+			create_pop = {
+				species = owner_species
+				ethos = random
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+		# servitor needs a bonus Pop to be energy-positive
+		if = {
+			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			create_pop = {
+				species = owner_species
+				ethos = random
+			}
+		}
+	}
+	
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+}
+
+# THIS = system (galactic_object)
+generate_jovian_league_system_final_pass = {
+	every_system_planet = {
+		limit = { is_colony = yes }
+		if = {
+			# evict any secondary species pops that got non-worker jobs before necrophage rules kicked in
+			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
+			every_owned_pop = {
+				limit = {
+					NOR = {
+						has_trait = trait_necrophage
+						is_pop_category = worker
+					}
+				}
+				unemploy_pop = yes
+				clear_pop_category = yes
+			}
+		}
+	}
+}
+
+# THIS = system (galactic_object)
+save_jovian_ideal_design_pc = {
+	random_system_planet = {
+		limit = { has_planet_flag = jovian_league_ideal_planet_class }
+		set_variable = {
+			which = jovian_league_ideal_planet_class_code
+			value = -1
+		}
+		switch = {
+			trigger = is_planet_class
+			pc_arid = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 0
+				}
+			}
+			pc_desert = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 1
+				}
+			}
+			pc_savannah = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 2
+				}
+			}
+			pc_continental = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 3
+				}
+			}
+			pc_ocean = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 4
+				}
+			}
+			pc_tropical = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 5
+				}
+			}
+			pc_alpine = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 6
+				}
+			}
+			pc_arctic = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 7
+				}
+			}
+			pc_tundra = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 8
+				}
+			}
+			pc_nuked = {
+				set_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = -1
+				}
+			}
+			default = {
+				log = "the planet ideal design class representative is not one of the 9 basic classes or pc_nuked - using the default code"
+			}
+		}
+		PREV = {
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = PREV
+			}
+		}
+	}
+}
+
+# THIS = planet
+change_to_ideal_pc = {
+	if = {
+		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
+		set_variable = {
+			which = jovian_league_ideal_planet_class_code
+			value = PREV
+		}
+		if = {
+			limit = { has_modifier = terraforming_candidate }
+			remove_modifier = terraforming_candidate
+		}
+		set_planet_flag = prescripted_ideal
+		if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 0
+				}
+			}
+			change_pc = pc_arid
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 1
+				}
+			}
+			change_pc = pc_desert
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 2
+				}
+			}
+			change_pc = pc_savannah
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 3
+				}
+			}
+			change_pc = pc_continental
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 4
+				}
+			}
+			change_pc = pc_ocean
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 5
+				}
+			}
+			change_pc = pc_tropical
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 6
+				}
+			}
+			change_pc = pc_alpine
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 7
+				}
+			}
+			change_pc = pc_arctic
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 8
+				}
+			}
+			change_pc = pc_tundra
+		}
+		else_if = {
+			limit = {
+				OR = {
+					check_variable = {
+						which = jovian_league_ideal_planet_class_code
+						value < 0
+					}
+					check_variable = {
+						which = jovian_league_ideal_planet_class_code
+						value > 8
+					}
+				}
+			}
+			change_pc = pc_nuked
+		}
+		reroll_deposits = yes
+	}
+	else = {
+		log_error = "cannot set planet class to design ideal if jovian_league_ideal_planet_class_code is not set"
+	}
+}
+
+# THIS = planet
+change_to_random_secondary_pc = {
+	if = {
+		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
+		set_variable = {
+			which = jovian_league_ideal_planet_class_code
+			value = PREV
+		}
+		if = {
+			limit = { has_modifier = terraforming_candidate }
+			remove_modifier = terraforming_candidate
+		}
+		set_planet_flag = prescripted_secondary
+		if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 0
+				}
+			}
+			change_pc = "ojl_rl_habitable_warm_not_arid"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 1
+				}
+			}
+			change_pc = "ojl_rl_habitable_warm_not_desert"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 2
+				}
+			}
+			change_pc = "ojl_rl_habitable_warm_not_savannah"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 3
+				}
+			}
+			change_pc = "ojl_rl_habitable_temperate_not_continental"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 4
+				}
+			}
+			change_pc = "ojl_rl_habitable_temperate_not_ocean"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 5
+				}
+			}
+			change_pc = "ojl_rl_habitable_temperate_not_tropical"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 6
+				}
+			}
+			change_pc = "ojl_rl_habitable_cool_not_alpine"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 7
+				}
+			}
+			change_pc = "ojl_rl_habitable_cool_not_arctic"
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = jovian_league_ideal_planet_class_code
+					value = 8
+				}
+			}
+			change_pc = "ojl_rl_habitable_cool_not_tundra"
+		}
+		else_if = {
+			limit = {
+				OR = {
+					check_variable = {
+						which = jovian_league_ideal_planet_class_code
+						value < 0
+					}
+					check_variable = {
+						which = jovian_league_ideal_planet_class_code
+						value > 8
+					}
+				}
+			}
+			change_pc = pc_nuked
+		}
+		reroll_deposits = yes
+	}
+	else = {
+		log_error = "cannot set planet class to a random secondary if jovian_league_ideal_planet_class_code is not set"
+	}
+}
+
+# THIS = planet
+change_to_random_normal_pc = {
+	change_pc = "rl_habitable_normal"
+	reroll_deposits = yes
+}
+
+# THIS = planet
+add_species_appropriate_food_district = {
+	if = {
+		limit = {
+			owner = {
+				is_lithoid_empire = no
+				is_machine_empire = no
+			}
+		}
+		add_district = district_farming
+	}
+	else = {
+		add_district = district_mining
+	}
+}

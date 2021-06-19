@@ -1,0 +1,109 @@
+origin_jovian_league = {
+	is_origin = yes
+	playable = { always = yes }
+	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
+	picture = GFX_origin_third_time_charm
+	possible = { always = yes }
+	random_weight = { base = 10 }
+	description = "origin_tooltip_jovian_league_effects"
+	advanced_start = no
+	non_colonizable_planet_class_neighbor = yes
+	initializers = {
+		unary_jovian_league_01
+		unary_jovian_league_02
+		trinary_jovian_league_01
+		trinary_jovian_league_02
+	}
+	flags = { is_jovian_league custom_start_screen }
+}
+
+origin_jovian_league_mechanists = {
+	is_origin = yes
+	playable = { host_has_dlc = "Utopia" }
+	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
+	picture = GFX_origin_mechanist
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+	description = "origin_tooltip_jovian_league_mechanists_effects"
+	advanced_start = no
+	non_colonizable_planet_class_neighbor = yes
+	initializers = {
+		unary_jovian_league_01
+		unary_jovian_league_02
+		trinary_jovian_league_01
+		trinary_jovian_league_02
+	}
+	flags = { is_jovian_league custom_start_screen }
+}
+
+origin_jovian_league_syncretic = {
+	is_origin = yes
+	playable = { host_has_dlc = "Utopia" }
+	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
+	picture = GFX_origin_syncretic_evolution
+	possible = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		civics = { NOT = { value = civic_fanatic_purifiers } }
+	}
+	random_weight = { base = 5 }
+	description = "origin_tooltip_jovian_league_syncretic_effects"
+	has_secondary_species = {
+		title = civic_syncretic_evolution_secondary_species
+		traits = { trait = trait_syncretic_proles }
+	}
+	advanced_start = no
+	non_colonizable_planet_class_neighbor = yes
+	initializers = {
+		unary_jovian_league_01
+		unary_jovian_league_02
+		trinary_jovian_league_01
+		trinary_jovian_league_02
+	}
+	flags = { is_jovian_league custom_start_screen }
+}
+
+origin_jovian_league_necrophage = {
+	is_origin = yes
+	playable = { host_has_dlc = "Necroids Species Pack" }
+	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
+	picture = GFX_origin_necrophage
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_death_cult
+				value = civic_death_cult_corporate
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	description = "origin_tooltip_jovian_league_necrophage_effects"
+	traits = { trait = trait_necrophage }
+	has_secondary_species = { title = civic_necrophage_secondary_species }
+	advanced_start = no
+	non_colonizable_planet_class_neighbor = yes
+	initializers = {
+		unary_jovian_league_01
+		unary_jovian_league_02
+		trinary_jovian_league_01
+		trinary_jovian_league_02
+	}
+	flags = { is_jovian_league custom_start_screen }
+}

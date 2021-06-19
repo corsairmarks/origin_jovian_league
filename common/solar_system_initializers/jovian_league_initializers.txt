@@ -1,0 +1,1212 @@
+# these values duplicated from common/solar_system_initializers/custom_starting_initializers.txt
+@base_moon_distance = 10
+@ringed_jovian_first_moon_distance = 8
+@jovian_moon_distance = 5
+@moon_min_size = 6
+@moon_max_size = 10
+
+unary_jovian_league_01 = {
+	class = "rl_starting_stars"
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 190
+	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 230
+	}
+	usage = origin
+	flags = { empire_home_system empire_cluster jovian_league_unary }
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				limit = { NOT = { has_star_flag = empire_cluster } }
+				set_star_flag = empire_cluster
+			}
+		}
+		generate_jovian_league_system_resources = yes
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = { min = 20 max = 30 }
+		modifiers = none
+		has_ring = no
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 55
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = @jovian_moon_distance
+		}
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 25
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = @jovian_moon_distance
+		}
+	}
+	# starting gas giant moon system
+	planet = {
+		count = 1
+		class = pc_gas_giant
+		orbit_distance = 50
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 25 max = 30 }
+		has_ring = yes
+		flags = { jovian_league_parent }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			home_planet = yes
+			class = ideal_planet_class
+			orbit_distance = @ringed_jovian_first_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 8
+			deposit_blockers = none
+			modifiers = none
+			flags = { special_start_planet jovian_league_capital }
+			init_effect = {
+				prevent_anomaly = yes
+				generate_empire_home_planet = yes
+			}
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 6
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling1 }
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 6
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 4
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling3 }
+		}
+		moon = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = @moon_min_size max = @moon_max_size }
+			deposit_blockers = none
+			modifiers = none
+			flags = { ignore_startup_effect }
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				add_modifier = {
+					modifier = terraforming_candidate
+					days = -1
+				}
+			}
+		}
+	}
+	change_orbit = 60
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+	}
+	planet = {
+		count = 1
+		class = pc_frozen
+		orbit_distance = 20
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+	change_orbit = 20
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+	# T1 colonies
+	planet = {
+		count = 1
+		class = pc_gas_giant
+		orbit_distance = 40
+		orbit_angle = { min = 90 max = 270 }
+		has_ring = no
+		flags = { jovian_league_parent starting_gatherer_prohibited }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 45 max = 270 }
+			size = { min = @moon_min_size max = @moon_max_size }
+			flags = { starting_gatherer_prohibited }
+		}
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 7 max = 10 }
+			flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 6 max = 8 }
+			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+	}
+	# T2 colonies
+	planet = {
+		count = 1
+		orbit_distance = 40
+		class = pc_gas_giant
+		orbit_angle = { min = 90 max = 270 }
+		flags = { jovian_league_parent starting_gatherer_prohibited }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @ringed_jovian_first_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 6 max = 9 }
+			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 5 max = 8 }
+			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 4 max = 7 }
+			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+	}
+	change_orbit = 50
+	planet = {
+		count = { min = 0 max = 1 }
+		class = random_non_colonizable
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+}
+
+unary_jovian_league_02 = {
+	class = "rl_starting_stars"
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 190
+	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 230
+	}
+	usage = origin
+	flags = { empire_home_system empire_cluster jovian_league_unary }
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				limit = { NOT = { has_star_flag = empire_cluster } }
+				set_star_flag = empire_cluster
+			}
+		}
+		generate_jovian_league_system_resources = yes
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 55
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = @jovian_moon_distance
+		}
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 25
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = @jovian_moon_distance
+		}
+	}
+	# starting gas giant moon system
+	planet = {
+		count = 1
+		class = pc_gas_giant
+		orbit_distance = 50
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 25 max = 30 }
+		has_ring = yes
+		flags = { jovian_league_parent }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			home_planet = yes
+			class = ideal_planet_class
+			orbit_distance = @ringed_jovian_first_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 8
+			deposit_blockers = none
+			modifiers = none
+			flags = { special_start_planet jovian_league_capital }
+			init_effect = {
+				prevent_anomaly = yes
+				generate_empire_home_planet = yes
+			}
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 6
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling1 }
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 6
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
+		}
+		moon = {
+			count = 1
+			class = ideal_planet_class
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = 4
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling3 }
+		}
+		moon = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = @moon_min_size max = @moon_max_size }
+			deposit_blockers = none
+			modifiers = none
+			flags = { ignore_startup_effect }
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				add_modifier = {
+					modifier = terraforming_candidate
+					days = -1
+				}
+			}
+		}
+	}
+	change_orbit = 60
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+	}
+	planet = {
+		count = 1
+		orbit_distance = 20
+		class = pc_frozen
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+	change_orbit = 20
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+	# T1 colonies
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 30
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 6 max = 9 }
+		has_ring = no
+		flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
+		init_effect = {
+			random_list = {
+				50 = {
+					set_planet_flag = ignore_startup_effect
+					prevent_anomaly = yes
+					clear_deposits = yes
+					add_modifier = {
+						modifier = terraforming_candidate
+						days = -1
+					}
+				}
+				50 = { }
+			}
+		}
+		change_orbit = @base_moon_distance
+		moon = {
+			count = { min = 0 max = 1 }
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = @moon_min_size max = @moon_max_size }
+			flags = { starting_gatherer_prohibited }
+		}
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 20
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 6 max = 9 }
+		has_ring = no
+		flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
+		init_effect = {
+			random_list = {
+				50 = {
+					set_planet_flag = ignore_startup_effect
+					prevent_anomaly = yes
+					clear_deposits = yes
+					add_modifier = {
+						modifier = terraforming_candidate
+						days = -1
+					}
+				}
+				50 = { }
+			}
+		}
+		change_orbit = @base_moon_distance
+		moon = {
+			count = { min = 0 max = 1 }
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			flags = { starting_gatherer_prohibited }
+		}
+	}
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 20
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+	# T2 colonies
+	planet = {
+		count = 1
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 25
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 10 max = 14 }
+		flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+		init_effect = {
+			random_list = {
+				50 = {
+					set_planet_flag = ignore_startup_effect
+					prevent_anomaly = yes
+					clear_deposits = yes
+					add_modifier = {
+						modifier = terraforming_candidate
+						days = -1
+					}
+				}
+				50 = { }
+			}
+		}
+		change_orbit = @base_moon_distance
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 4 max = 10 }
+			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+		}
+		moon = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = @jovian_moon_distance
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = @moon_min_size max = @moon_max_size }
+			flags = { starting_gatherer_prohibited }
+		}
+	}
+	change_orbit = 25
+	planet = {
+		count = { min = 0 max = 1 }
+		class = "ojl_rl_rocky_unhabitable_planets"
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+		flags = { starting_gatherer_prohibited }
+	}
+}
+
+trinary_jovian_league_01 = {
+	class = "ojl_rl_trinary_starting_stars"
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 165
+	}
+	usage = origin
+	flags = { empire_home_system empire_cluster jovian_league_trinary }
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				limit = { NOT = { has_star_flag = empire_cluster } }
+				set_star_flag = empire_cluster
+			}
+		}
+		generate_jovian_league_system_resources = yes
+	}
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 0
+        orbit_angle = 0
+        size = { min = 30 max = 35 }
+        has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 45
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = @jovian_moon_distance
+			}
+		}
+		# starting gas giant moon system
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 40
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 25 max = 30 }
+			has_ring = yes
+			flags = { jovian_league_parent }
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				home_planet = yes
+				class = ideal_planet_class
+				orbit_distance = @ringed_jovian_first_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 8
+				deposit_blockers = none
+				modifiers = none
+				flags = { special_start_planet jovian_league_capital }
+				init_effect = {
+					prevent_anomaly = yes
+					generate_empire_home_planet = yes
+				}
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 6
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling1 }
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 6
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 4
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling3 }
+			}
+			moon = {
+				count = 1
+				class = "ojl_rl_rocky_unhabitable_planets"
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = @moon_min_size max = @moon_max_size }
+				deposit_blockers = none
+				modifiers = none
+				flags = { ignore_startup_effect }
+				init_effect = {
+					prevent_anomaly = yes
+					clear_deposits = yes
+					add_modifier = {
+						modifier = terraforming_candidate
+						days = -1
+					}
+				}
+			}
+		}
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 45
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 2
+				class = random_non_colonizable
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = @jovian_moon_distance
+			}
+		}
+    }
+	change_orbit = 165
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 100 max = 280 }
+		flags = { starting_gatherer_prohibited }
+	}
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 105
+      	orbit_angle = { min = 1 max = 360 }
+        size = { min = 20 max = 30 }
+        has_ring = no
+        satellite_naming_policy = upper_case_roman_numerals
+		flags = { starting_gatherer_prohibited }
+		# T1 colonies
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 50
+			orbit_angle = { min = 90 max = 270 }
+			has_ring = no
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { jovian_league_parent starting_gatherer_prohibited }
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 7 max = 10 }
+				flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 6 max = 8 }
+				flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+		}
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 30
+			flags = { starting_gatherer_prohibited }
+		}
+    }
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 0
+        orbit_angle = { min = 75 max = 90 }
+        size = { min = 15 max = 30 }
+        has_ring = no
+        satellite_naming_policy = upper_case_roman_numerals
+		flags = { starting_gatherer_prohibited }
+		planet = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = 35
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { starting_gatherer_prohibited }
+		}
+		# T2 colonies
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 30
+			orbit_angle = { min = 90 max = 270 }
+			has_ring = no
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { jovian_league_parent starting_gatherer_prohibited }
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 6 max = 9 }
+				flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 5 max = 8 }
+				flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 4 max = 7 }
+				flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+		}
+    }
+}
+
+trinary_jovian_league_02 = {
+	class = "ojl_rl_trinary_starting_stars"
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 165
+	}
+	usage = origin
+	flags = { empire_home_system empire_cluster jovian_league_trinary }
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				limit = { NOT = { has_star_flag = empire_cluster } }
+				set_star_flag = empire_cluster
+			}
+		}
+		generate_jovian_league_system_resources = yes
+	}
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 0
+        orbit_angle = 0
+        size = { min = 30 max = 35 }
+        has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		planet = {
+			count = 1
+			orbit_distance = 45
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			change_orbit = @jovian_moon_distance
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = @jovian_moon_distance
+			}
+		}
+		# starting gas giant moon system
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 40
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 25 max = 30 }
+			has_ring = yes
+			flags = { jovian_league_parent }
+			satellite_naming_policy = lower_case_latin_letters
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				home_planet = yes
+				class = ideal_planet_class
+				orbit_distance = @ringed_jovian_first_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 8
+				deposit_blockers = none
+				modifiers = none
+				flags = { special_start_planet jovian_league_capital }
+				init_effect = {
+					prevent_anomaly = yes
+					generate_empire_home_planet = yes
+				}
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 6
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling1 }
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 6
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
+			}
+			moon = {
+				count = 1
+				class = ideal_planet_class
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = 4
+				deposit_blockers = none
+				modifiers = none
+				flags = { jovian_league_sibling3 }
+			}
+			moon = {
+				count = 1
+				class = "ojl_rl_rocky_unhabitable_planets"
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = @moon_min_size max = @moon_max_size }
+				deposit_blockers = none
+				modifiers = none
+				flags = { ignore_startup_effect }
+				init_effect = {
+					prevent_anomaly = yes
+					clear_deposits = yes
+					add_modifier = {
+						modifier = terraforming_candidate
+						days = -1
+					}
+				}
+			}
+		}
+		planet = {
+			count = 1
+			class = pc_gas_giant
+			orbit_distance = 45
+			orbit_angle = { min = 90 max = 270 }
+			has_ring = no
+			satellite_naming_policy = lower_case_latin_letters
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 2
+				class = random_non_colonizable
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = @jovian_moon_distance
+			}
+		}
+    }
+	change_orbit = 165
+	planet = {
+		count = { min = 2 max = 5 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 100 max = 280 }
+		flags = { starting_gatherer_prohibited }
+	}
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 105
+		orbit_angle = { min = 1 max = 360 }
+        size = { min = 20 max = 30 }
+        has_ring = no
+        satellite_naming_policy = upper_case_roman_numerals
+		flags = { starting_gatherer_prohibited }
+		planet = {
+			count = 1
+			orbit_angle = { min = 90 max = 270 }
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 40
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { starting_gatherer_prohibited }
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = random_non_colonizable
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = @jovian_moon_distance
+				flags = { starting_gatherer_prohibited }
+			}
+		}
+		# T1 colonies
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 20
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 6 max = 9 }
+			has_ring = no
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = @moon_min_size max = @moon_max_size }
+				flags = { starting_gatherer_prohibited }
+			}
+		}
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 20
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 6 max = 9 }
+			has_ring = no
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				flags = { starting_gatherer_prohibited }
+			}
+		}
+    }
+    planet = {
+        count = 1
+        class = star
+        orbit_distance = 0
+        orbit_angle = { min = 75 max = 90 }
+        size = { min = 15 max = 30 }
+        has_ring = no
+        satellite_naming_policy = upper_case_roman_numerals
+		flags = { starting_gatherer_prohibited }
+		planet = {
+			count = 1
+			class = random_non_colonizable
+			orbit_distance = 30
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { starting_gatherer_prohibited }
+		}
+		# T2 colonies
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 25
+			orbit_angle = { min = 90 max = 270 }
+			size = { min = 10 max = 14 }
+			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
+			init_effect = {
+				random_list = {
+					50 = {
+						set_planet_flag = ignore_startup_effect
+						prevent_anomaly = yes
+						clear_deposits = yes
+						add_modifier = {
+							modifier = terraforming_candidate
+							days = -1
+						}
+					}
+					50 = { }
+				}
+			}
+			change_orbit = @base_moon_distance
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = 4 max = 10 }
+				flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
+				init_effect = {
+					random_list = {
+						50 = {
+							set_planet_flag = ignore_startup_effect
+							prevent_anomaly = yes
+							clear_deposits = yes
+							add_modifier = {
+								modifier = terraforming_candidate
+								days = -1
+							}
+						}
+						50 = { }
+					}
+				}
+			}
+			moon = {
+				count = 1
+				class = random_non_colonizable
+				orbit_distance = @jovian_moon_distance
+				orbit_angle = { min = 90 max = 270 }
+				size = { min = @moon_min_size max = @moon_max_size }
+				flags = { starting_gatherer_prohibited }
+			}
+		}
+		planet = {
+			count = 1
+			class = "ojl_rl_rocky_unhabitable_planets"
+			orbit_distance = 25
+			orbit_angle = { min = 90 max = 270 }
+			satellite_naming_policy = lower_case_latin_letters
+			flags = { starting_gatherer_prohibited }
+		}
+    }
+}

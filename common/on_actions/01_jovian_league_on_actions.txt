@@ -1,0 +1,66 @@
+# THIS = country
+on_game_start_country = {
+	events = {
+		origin_jovian_league.3 # adds home system planetary modifiers (base game removed them all)
+		origin_jovian_league.4 # set up jovian league wormhole and disconnect hyperlanes
+		# stop purging your syncretic species/prepatents unless you're a fanatic purifier (normally origin_syncretic_evolution and origin_necrophage
+		# don't do this based on rules in 00_citizenship_types.txt, but since we start as a different origin we get the default behavior)
+		origin_jovian_league.5
+		# recheck jobs after all the reconfiguration
+		origin_jovian_league.6
+		# switches origin from origin_jovian_league_mechanists to origin_mechanists to tie in to mechanist events/effects/weights (AI players)
+		origin_jovian_league_mechanists.1
+		# switches origin from origin_jovian_league_syncretic to origin_syncretic_evolution to tie in to syncretic evolution events/effects/weights (AI players)
+		origin_jovian_league_syncretic.1
+		# switches origin from origin_jovian_league_necrophage to origin_necrophage to tie in to necrophage events/effects/weights (AI players)
+		origin_jovian_league_necrophage.33
+	}
+}
+
+# triggers when pressing begin in the intro window
+# THIS = country to press begin
+on_press_begin = {
+	events = {
+		# switches origin from origin_jovian_league_mechanists to origin_mechanists to tie in to mechanist events/effects/weights (non-AI players)
+		origin_jovian_league_mechanists.2
+		# switches origin from origin_jovian_league_syncretic to origin_syncretic_evolution to tie in to syncretic evolution events/effects/weights (non-AI players)
+		origin_jovian_league_syncretic.2
+		# switches origin from origin_jovian_league_necrophage to origin_necrophage to tie in to necrophage events/effects/weights (non-AI players)
+		origin_jovian_league_necrophage.34
+	}
+}
+
+# called during empire initialization when starting a new game
+# THIS = country
+empire_init_add_technologies = {
+	events = {
+		origin_jovian_league.1
+	}
+}
+
+# called during empire initialization when starting a new game
+# THIS = planet
+# FROM = founder species
+# FROMFROM = secondary species (if exists)
+empire_init_capital_planet = {
+	events = {
+		origin_jovian_league.2 # replaces game_start.12 for origin_jovian_league: starting buildings, districts & pops
+		# at this point the species might have changed (because we added traits), so FROMFROM might not be the secondary species anymore
+	}
+}
+
+# a building has finished construction, replacing another building
+# THIS = planet
+on_building_replaced = {
+	events = {
+		origin_jovian_league.7
+	}
+}
+
+# a building was demolished
+# THIS = planet
+on_building_demolished = {
+	events = {
+		origin_jovian_league.7
+	}
+}

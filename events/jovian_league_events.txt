@@ -1,0 +1,364 @@
+namespace = origin_jovian_league
+
+# triggered by empire_init_add_technologies
+country_event = {
+	id = origin_jovian_league.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_jovian_league = yes
+	}
+	immediate = {
+		# set flags that wormholes have been encountered
+		set_country_flag = encountered_first_wormhole
+		add_seen_bypass_type = wormhole
+		# wormhole techs
+		if = {
+			limit = {
+				NOR = {
+					has_technology = tech_wormhole_stabilization
+					has_tech_option = tech_wormhole_stabilization
+				}
+			}
+			add_research_option = tech_wormhole_stabilization
+			add_tech_progress = {
+				tech = tech_wormhole_stabilization
+				progress = 0.3
+			}
+		}
+		# mechanists starting techs
+		if = {
+			limit = { has_origin = origin_jovian_league_mechanists }
+			give_technology = { message = no tech = tech_powered_exoskeletons }
+			give_technology = { message = no tech = tech_robotic_workers }
+		}
+	}
+}
+
+# triggered by empire_init_capital_planet
+# FROM = founder species
+# FROMFROM = secondary species (if exists) // Corsair's Note: this appears to be broken; the default gave uses last_created_species to get the secondary
+planet_event = {
+	id = origin_jovian_league.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = owner
+		owner = {
+			is_jovian_league = yes
+		}
+	}
+	immediate = {
+		FROM = { save_event_target_as = jovian_league_species }
+		setup_secondary_species = yes
+		generate_starting_resources = yes
+		generate_jovian_league_capital_start_deposits_and_blockers = yes
+		generate_jovian_league_capital_start_buildings_and_districts = yes
+		generate_jovian_league_capital_start_pops = yes
+		solar_system = {
+			# from here we can find the primary moons, T1 moons/planets, and T2 moons/planets
+			save_jovian_ideal_design_pc = yes
+			random_system_planet = {
+				limit = { has_planet_flag = jovian_league_sibling1 }
+				set_owner = ROOT.owner
+				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
+				generate_jovian_league_sibling1_start_buildings_and_districts = yes
+				generate_jovian_league_sibling1_start_pops = yes
+			}
+			random_system_planet = {
+				limit = { has_planet_flag = jovian_league_sibling2 }
+				if = {
+					limit = { ROOT.owner = { is_biological_species_empire = yes } }
+					change_to_random_secondary_pc = yes
+				}
+				else = {
+					change_to_random_normal_pc = yes
+				}
+				set_owner = ROOT.owner
+				generate_jovian_league_sibling2_start_deposits_and_blockers = yes
+				generate_jovian_league_sibling2_start_buildings_and_districts = yes
+				generate_jovian_league_sibling2_start_pops = yes
+			}
+			random_system_planet = {
+				limit = { has_planet_flag = jovian_league_sibling3 }
+				set_owner = ROOT.owner
+				generate_jovian_league_sibling3_start_deposits_and_blockers = yes
+				generate_jovian_league_sibling3_start_buildings_and_districts = yes
+				generate_jovian_league_sibling3_start_pops = yes
+			}
+			# set up T1
+			if = {
+				limit = { num_guaranteed_colonies >= 1 }
+				every_system_planet = {
+					limit = { has_planet_flag = jovian_league_t1_colony_ideal }
+					if = {
+						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						change_to_ideal_pc = yes
+					}
+					else = {
+						change_to_random_normal_pc = yes
+					}
+				}
+				every_system_planet = {
+					limit = { has_planet_flag = jovian_league_t1_colony_secondary }
+					if = {
+						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						change_to_random_secondary_pc = yes
+					}
+					else = {
+						change_to_random_normal_pc = yes
+					}
+				}
+			}
+			# set up T2
+			if = {
+				limit = { num_guaranteed_colonies >= 2 }
+				every_system_planet = {
+					limit = { has_planet_flag = jovian_league_t2_colony_ideal }
+					if = {
+						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						change_to_ideal_pc = yes
+					}
+					else = {
+						change_to_random_normal_pc = yes
+					}
+				}
+				every_system_planet = {
+					limit = { has_planet_flag = jovian_league_t2_colony_secondary }
+					if = {
+						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						change_to_random_secondary_pc = yes
+					}
+					else = {
+						change_to_random_normal_pc = yes
+					}
+				}
+			}
+			generate_jovian_league_system_final_pass = yes
+		}
+	}
+}
+
+# triggered by on_game_start_country
+country_event = {
+	id = origin_jovian_league.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_jovian_league = yes
+	}
+	immediate = {
+		# must be AFTER game_start.2, because that clears all modifiers in starting systems
+		capital_scope.solar_system = {
+			random_system_planet = {
+				limit = { has_planet_flag = jovian_league_sibling3 }
+				add_modifier = {
+					modifier = low_gravity
+					days = -1
+				}
+			}
+			every_system_planet = {
+				limit = {
+					is_planet_class = pc_gas_giant
+					has_planet_flag = jovian_league_parent
+				}
+				if = {
+					limit = {
+						NOR = {
+							has_planet_modifier = pm_extensive_moon_system
+							has_modifier = extensive_moon_system
+						}
+					}
+					add_modifier = {
+						modifier = extensive_moon_system
+						days = -1
+					}
+				}
+				apply_extensive_moon_system_child_modifier_planet = yes
+			}
+		}
+	}
+}
+
+# triggered by on_game_start_country
+country_event = {
+	id = origin_jovian_league.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_jovian_league = yes
+	}
+	immediate = {
+		# select a wormhole exit that is already connected via hyperlane
+		capital_scope.solar_system = {
+			save_event_target_as = jovian_league_system
+			random_system = {
+				limit = {
+					has_hyperlane_to = event_target:jovian_league_system
+					count_neighbor_system = {
+						count > 0
+						limit = { NOT = { is_same_value = event_target:jovian_league_system } }
+					}
+					has_natural_wormhole = no
+					starting_system = no
+				}
+				save_event_target_as = jovian_league_exit_system
+			}
+			if = {
+				limit = { NOT = { exists = event_target:jovian_league_exit_system } }
+				log = "jovian league wormhole exit for [jovian_league_system.GetName] expanding search to consider other empire start systems"
+				random_system = {
+					limit = {
+						has_hyperlane_to = event_target:jovian_league_system
+						count_neighbor_system = {
+							count > 0
+							limit = { NOT = { is_same_value = event_target:jovian_league_system } }
+						}
+						has_natural_wormhole = no
+					}
+					save_event_target_as = jovian_league_exit_system
+				}
+				if = {
+					limit = { NOT = { exists = event_target:jovian_league_exit_system } }
+					log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find a target with more than 1 hyperlane - you will probably be trapped in two isolated systems connected by a wormhole"
+					random_system = {
+						limit = {
+							has_hyperlane_to = event_target:jovian_league_system
+							has_natural_wormhole = no
+						}
+						save_event_target_as = jovian_league_exit_system
+					}
+					if = {
+						limit = { NOT = { exists = event_target:jovian_league_exit_system } }
+						log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
+						random_system = {
+							limit = { has_hyperlane_to = event_target:jovian_league_system }
+							save_event_target_as = jovian_league_exit_system
+						}
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = { exists = event_target:jovian_league_exit_system }
+			# spawn wormholes
+			event_target:jovian_league_exit_system = {
+				event_target:jovian_league_system = {
+					PREV = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+						spawn_natural_wormhole = {
+							bypass_type = wormhole
+							random_pos = yes
+						}
+					}
+					spawn_natural_wormhole = {
+						bypass_type = wormhole
+						random_pos = no
+						orbit_angle = 270
+						orbit_distance = 500
+					}
+					link_wormholes = PREV
+				}
+			}
+
+			# isolate system
+			event_target:jovian_league_system = {
+				isolate_system = yes
+			}
+		}
+		else = {
+			log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find any valid targets - some trickery must be afoot, so the system was NOT isolated"
+		}
+	}
+}
+
+# re-evaluate citizenship for the syncretic species/prepatents for non-fanatic purifiers
+# the game rules probably set them to purge if the country has xenophobic ethics
+country_event = {
+	id = origin_jovian_league.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_origin = origin_jovian_league_syncretic
+			has_origin = origin_jovian_league_necrophage
+		}
+	}
+	immediate = {
+		if = {
+			limit = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+			# reset syncretic species/prepatents to slavery if they were set to purge
+			every_owned_species = {
+				limit = {
+					has_species_flag = syncretic_species@ROOT
+					has_citizenship_type = {
+						country = ROOT
+						type = citizenship_purge
+					}
+				}
+				set_citizenship_type = {
+					country = ROOT
+					type = citizenship_slavery
+					cooldown = no
+				}
+				set_military_service_type = {
+					country = ROOT
+					type = military_service_limited
+					cooldown = no
+				}
+				set_colonization_controls = {
+					country = ROOT
+					type = colonization_control_no
+					cooldown = no
+				}
+				set_population_controls = {
+					country = ROOT
+					type = population_control_no
+					cooldown = no
+				}
+				set_migration_controls = {
+					country = ROOT
+					type = migration_control_no
+					cooldown = no
+				}
+			}
+			# doesn't seem possible to reset default species rights, but players and the AI can change them as they see fit
+		}
+	}
+}
+
+country_event = {
+	id = origin_jovian_league.6
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_jovian_league = yes
+	}
+	immediate = {
+		every_owned_planet = {
+			limit = { is_colony = yes }
+			log = "checking employment on [This.GetName] in [This.GetStarName] belonging to [Root.GetRealName]"
+			check_planet_employment = yes
+		}
+	}
+}
+
+planet_event = {
+	id = origin_jovian_league.7
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_deposit = d_mothballed_factories
+		NOR = {
+			owner = { has_valid_civic = civic_machine_servitor }
+			has_building = building_organic_sanctuary
+			has_building = building_organic_paradise
+		}
+	}
+	immediate = {
+		every_deposit = {
+			limit = { is_deposit_type = d_mothballed_factories }
+			remove_deposit = yes
+		}
+	}
+}

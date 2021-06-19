@@ -1,0 +1,61 @@
+### Jovian League Necrophages (duplicate of Necrophages from 00_empire_names.txt)
+
+# Necrophages 1
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 2
+			has_origin = origin_jovian_league_necrophage
+		}
+	}
+	format = "format.necrophage.1"
+	prefix_format = "[This.Capital.System.GetName] <necrophagers>"
+	noun = "[This.Capital.System.GetName]"
+	# Empire of Sol
+}
+
+# Necrophages 2
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 2
+			has_origin = origin_jovian_league_necrophage
+		}
+	}
+	format = "format.necrophage.2"
+	prefix_format = "[This.Capital.GetName] <necrophagers>"
+	noun = "[This.Capital.GetName]"
+	# Empire of Earth
+}
+
+# Necrophages 3
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 8
+			has_origin = origin_jovian_league_necrophage
+		}
+	}
+	format = "format.necrophage.3"
+	noun = "[This.GetSpeciesName]"
+	prefix_format = "[This.GetSpeciesName] <necrophagers>"
+	# Human Empire
+}
+
+# Necrophages 4
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 4
+			has_origin = origin_jovian_league_necrophage
+		}
+	}
+	format = "format.necrophage.4"
+	noun = "[This.GetSpeciesName]"
+	prefix_format = "[This.GetSpeciesName] <necrophagers>"
+	# Great Human Empire
+}

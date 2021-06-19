@@ -1,0 +1,18 @@
+# THIS = country
+is_jovian_league = {
+	OR = {
+		has_origin = origin_jovian_league
+		has_origin = origin_jovian_league_mechanists
+		has_origin = origin_jovian_league_syncretic
+		has_origin = origin_jovian_league_necrophage
+	}
+}
+
+# THIS = country
+is_biological_species_empire = {
+	OR = {
+		is_machine_empire = no
+		has_valid_civic = civic_machine_assimilator
+		has_valid_civic = civic_machine_servitor
+	}
+}

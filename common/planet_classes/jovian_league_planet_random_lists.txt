@@ -1,0 +1,109 @@
+random_list = {
+	name = "ojl_rl_rocky_unhabitable_planets"
+	planets = {
+		"pc_molten"
+		"pc_barren"
+		"pc_barren_cold"
+		"pc_toxic"
+		"pc_frozen"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_warm"
+	planets = {
+		"pc_arid"
+		"pc_desert"
+		"pc_savannah"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_warm_not_arid"
+	planets = {
+		"pc_desert"
+		"pc_savannah"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_warm_not_desert"
+	planets = {
+		"pc_arid"
+		"pc_savannah"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_warm_not_savannah"
+	planets = {
+		"pc_arid"
+		"pc_desert"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_temperate"
+	planets = {
+		"pc_continental"
+		"pc_ocean"
+		"pc_tropical"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_temperate_not_continental"
+	planets = {
+		"pc_ocean"
+		"pc_tropical"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_temperate_not_ocean"
+	planets = {
+		"pc_continental"
+		"pc_tropical"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_temperate_not_tropical"
+	planets = {
+		"pc_continental"
+		"pc_ocean"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_cool"
+	planets = {
+		"pc_alpine"
+		"pc_arctic"
+		"pc_tundra"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_cool_not_alpine"
+	planets = {
+		"pc_arctic"
+		"pc_tundra"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_cool_not_arctic"
+	planets = {
+		"pc_alpine"
+		"pc_tundra"
+	}
+}
+
+random_list = {
+	name = "ojl_rl_habitable_cool_not_tundra"
+	planets = {
+		"pc_arctic"
+		"pc_alpine"
+	}
+}

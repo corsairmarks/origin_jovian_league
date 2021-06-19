@@ -1,0 +1,45 @@
+namespace = origin_jovian_league_necrophage
+
+# triggered by on_game_start_country (AI only)
+# sets the custom origin to the built-in origin after setup
+# extra code necessary (based on a subsection on game_start.33) because these would have been missed due to the custom origin
+country_event = {
+	id = origin_jovian_league_necrophage.33
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_necrophage
+		is_ai = yes
+	}
+	immediate = {
+		country_event = { id = necroids.6 days = 1800 }
+		country_event = { id = necroids.6 days = 3600 }
+		country_event = { id = necroids.6 days = 5400 }
+		country_event = { id = necroids.6 days = 7200 }
+		set_origin = origin_necrophage
+	}
+}
+
+# triggered by on_press_begin (non-AI only)
+# sets the custom origin to the built-in origin after setup and the intro screen
+# extra code necessary (based on a subsection on game_start.33) because these would have been missed due to the custom origin
+country_event = {
+	id = origin_jovian_league_necrophage.34
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_necrophage
+		is_ai = no
+	}
+	immediate = {
+		if = {
+			limit = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+			# tell them about the necrophage mechanic
+			country_event = {
+				id = necroids.2
+				days = 3420
+			}
+		}
+		set_origin = origin_necrophage
+	}
+}

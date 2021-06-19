@@ -1,0 +1,9 @@
+random_list = {
+	name = "ojl_rl_trinary_starting_stars"
+	stars = {
+		"sc_trinary_1" # g, m, k
+		"sc_trinary_2" # b, a, f
+		"sc_trinary_3" # k, f, g
+		# "sc_trinary_4" has a brown dwarf (class t), which wouldn't support habitable planets
+	}
+}

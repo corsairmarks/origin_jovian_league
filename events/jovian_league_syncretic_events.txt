@@ -1,0 +1,31 @@
+namespace = origin_jovian_league_syncretic
+
+# triggered by on_game_start_country (AI only)
+# sets the custom origin to the built-in origin after setup
+country_event = {
+	id = origin_jovian_league_syncretic.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_syncretic
+		is_ai = yes
+	}
+	immediate = {
+		set_origin = origin_syncretic_evolution
+	}
+}
+
+# triggered by triggered by on_press_begin (non-AI only)
+# sets the custom origin to the built-in origin after setup and the intro screen
+country_event = {
+	id = origin_jovian_league_syncretic.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_syncretic
+		is_ai = no
+	}
+	immediate = {
+		set_origin = origin_syncretic_evolution
+	}
+}

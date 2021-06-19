@@ -1,0 +1,59 @@
+defined_text = {
+	name = GetJovianLeagueSystemLayoutDescription
+	text = {
+		trigger = {
+			capital_scope.solar_system = { has_star_flag = jovian_league_unary }
+		}
+		localization_key = jovian_league_unary_system_description
+	}
+	text = {
+		trigger = {
+			capital_scope.solar_system = { has_star_flag = jovian_league_trinary }
+		}
+		localization_key = jovian_league_trinary_system_description
+	}
+}
+
+defined_text = {
+	name = GetJovianLeagueUnaryOuterSystemDescription
+	text = {
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		localization_key = jovian_league_unary_system_two_habitable_worlds
+	}
+	text = {
+		trigger = {
+			num_guaranteed_colonies = 1
+		}
+		localization_key = jovian_league_unary_system_one_habitable_world
+	}
+	text = {
+		trigger = {
+			num_guaranteed_colonies = 0
+		}
+		localization_key = jovian_league_unary_system_no_habitable_worlds
+	}
+}
+
+defined_text = {
+	name = GetJovianLeagueTrinaryOuterSystemDescription
+	text = {
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		localization_key = jovian_league_trinary_system_two_habitable_worlds
+	}
+	text = {
+		trigger = {
+			num_guaranteed_colonies = 1
+		}
+		localization_key = jovian_league_trinary_system_one_habitable_world
+	}
+	text = {
+		trigger = {
+			num_guaranteed_colonies = 0
+		}
+		localization_key = jovian_league_trinary_system_no_habitable_worlds
+	}
+}
