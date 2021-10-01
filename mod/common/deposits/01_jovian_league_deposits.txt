@@ -2,7 +2,7 @@
 @jovian_league_job_blocker_cost = 100
 
 d_malformed_synapse_nodes = {
-	is_for_colonizeable = yes
+	is_for_colonizable = yes
 	icon = "old/d_infestation"
 	category = deposit_cat_blockers
 	time = @jovian_league_job_blocker_time
@@ -22,7 +22,7 @@ d_malformed_synapse_nodes = {
 }
 
 d_collapsed_sentinel_posts = {
-	is_for_colonizeable = yes
+	is_for_colonizable = yes
 	icon = d_infestation
 	category = deposit_cat_blockers
 	time = @jovian_league_job_blocker_time
@@ -42,7 +42,7 @@ d_collapsed_sentinel_posts = {
 }
 
 d_collapsed_warrens = {
-	is_for_colonizeable = yes
+	is_for_colonizable = yes
 	icon = d_massive_crevice
 	category = deposit_cat_blockers
 	time = @jovian_league_job_blocker_time
@@ -62,7 +62,7 @@ d_collapsed_warrens = {
 }
 
 d_obsolete_sentinel_posts = {
-	is_for_colonizeable = yes
+	is_for_colonizable = yes
 	icon = d_station_junk
 	category = deposit_cat_blockers
 	time = @jovian_league_job_blocker_time
@@ -82,7 +82,7 @@ d_obsolete_sentinel_posts = {
 }
 
 d_mothballed_factories = {
-	is_for_colonizeable = yes
+	is_for_colonizable = yes
 	icon = d_ruins_medium
 	category = deposit_cat_blockers
 	time = @jovian_league_job_blocker_time

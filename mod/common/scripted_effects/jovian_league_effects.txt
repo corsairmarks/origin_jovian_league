@@ -88,7 +88,7 @@ setup_secondary_species = {
 generate_jovian_league_system_resources = {
 	every_system_planet = {
 		limit = {
-			colonizeable_planet = no
+			colonizable_planet = no
 			NOT = { has_planet_flag = ignore_startup_effect }
 		}
 		prevent_anomaly = yes
@@ -1742,7 +1742,7 @@ save_jovian_ideal_design_pc = {
 		PREV = {
 			set_variable = {
 				which = jovian_league_ideal_planet_class_code
-				value = PREV
+				value = PREV.jovian_league_ideal_planet_class_code
 			}
 		}
 	}
@@ -1754,7 +1754,7 @@ change_to_ideal_pc = {
 		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
 		set_variable = {
 			which = jovian_league_ideal_planet_class_code
-			value = PREV
+			value = PREV.jovian_league_ideal_planet_class_code
 		}
 		if = {
 			limit = { has_modifier = terraforming_candidate }
@@ -1870,7 +1870,7 @@ change_to_random_secondary_pc = {
 		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
 		set_variable = {
 			which = jovian_league_ideal_planet_class_code
-			value = PREV
+			value = PREV.jovian_league_ideal_planet_class_code
 		}
 		if = {
 			limit = { has_modifier = terraforming_candidate }
