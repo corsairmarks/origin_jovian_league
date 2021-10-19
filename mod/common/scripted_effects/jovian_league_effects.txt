@@ -775,7 +775,7 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
-		add_deposit = d_collapsed_sentinel_posts
+		add_deposit = d_collapsed_capital_warrens
 	}
 	else_if = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
