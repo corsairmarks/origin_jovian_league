@@ -638,11 +638,11 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 				}
 			}
 			if = {
-				limit = { has_country_flag = lithoid_subspecies }
+				limit = { owner = { has_country_flag = lithoid_subspecies } }
 				add_district = district_mining
 			}
 			else_if = {
-				limit = { has_country_flag = non_lithoid_subspecies }
+				limit = { owner = { has_country_flag = non_lithoid_subspecies } }
 				add_district = district_farming
 			}
 			else = {
@@ -971,7 +971,8 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		add_building = building_uplink_node
 		if = {
 			limit = { owner = { has_valid_civic = civic_machine_servitor } }
-			add_building = building_organic_sanctuary
+		add_district = district_nexus
+		add_building = building_organic_sanctuary
 		}
 		else = {
 			add_district = district_generator
@@ -983,10 +984,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	}
 
 	if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		add_district = district_nexus
-	}
-	else = {
+		limit = { owner = { NOT = { has_valid_civic = civic_machine_servitor } } }
 		add_district = district_mining
 	}
 	if = {
