@@ -1,11 +1,11 @@
 name="Origin: Jovian League"
 dependencies={
-	"Planetary Modifiers Enhancements"
+	"Planetary Modifier Enhancements"
 }
 tags={
 	"Galaxy Generation"
 	"Gameplay"
 }
-version="1.0.0-alpha1"
+version="1.0.0-alpha2"
 picture="thumbnail.png"
-supported_version="3.0.*"
+supported_version="3.1.*"
