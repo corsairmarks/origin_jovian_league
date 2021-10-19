@@ -348,7 +348,7 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_deposit = d_mothballed_factories
+		has_deposit = d_mothballed_sanctuary_factories
 		NOR = {
 			owner = { has_valid_civic = civic_machine_servitor }
 			has_building = building_organic_sanctuary
@@ -357,7 +357,7 @@ planet_event = {
 	}
 	immediate = {
 		every_deposit = {
-			limit = { is_deposit_type = d_mothballed_factories }
+			limit = { is_deposit_type = d_mothballed_sanctuary_factories }
 			remove_deposit = yes
 		}
 	}

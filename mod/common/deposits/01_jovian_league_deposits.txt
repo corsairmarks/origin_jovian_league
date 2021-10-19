@@ -41,7 +41,7 @@ d_collapsed_sentinel_posts = {
 	}
 }
 
-d_collapsed_warrens = {
+d_collapsed_capital_warrens = {
 	is_for_colonizable = yes
 	icon = d_massive_crevice
 	category = deposit_cat_blockers
@@ -81,7 +81,7 @@ d_obsolete_sentinel_posts = {
 	}
 }
 
-d_mothballed_factories = {
+d_mothballed_sanctuary_factories = {
 	is_for_colonizable = yes
 	icon = d_ruins_medium
 	category = deposit_cat_blockers

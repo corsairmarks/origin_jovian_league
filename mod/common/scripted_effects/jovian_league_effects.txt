@@ -322,7 +322,7 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
 		add_deposit = d_strip_mine
 		add_deposit = d_unsupervised_settlement
-		add_deposit = d_mothballed_factories
+		add_deposit = d_mothballed_sanctuary_factories
 	}
 	else_if = {
 		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
@@ -779,7 +779,7 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 	}
 	else_if = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		add_deposit = d_mothballed_factories
+		add_deposit = d_mothballed_sanctuary_factories
 	}
 
 	switch = {
