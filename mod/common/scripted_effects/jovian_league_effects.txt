@@ -243,6 +243,24 @@ generate_jovian_league_system_resources = {
 			50 = { set_deposit = d_minerals_3 }
 		}
 	}
+
+	if = {
+		limit = { space_owner = { has_valid_civic = civic_reanimated_armies } }
+		while = {
+			count = 2
+			random_system_planet = {
+				limit = {
+					has_deposit_for = shipclass_research_station
+					NOR = {
+						has_planet_flag = ignore_startup_effect
+						has_deposit = d_engineering_6
+					}
+				}
+				clear_deposits = yes
+				add_deposit = d_engineering_6
+			}
+		}
+	}
 }
 
 # triggered by empire_init_capital_planet
@@ -507,15 +525,6 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
 		}
-		else_if = {
-			limit = {
-				owner = {
-					has_origin = origin_jovian_league_necrophage
-					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
-				}
-			}
-			add_building = building_necrophage_elevation_chamber
-		}
 		if = {
 			limit = { owner = { is_spiritualist = yes } }
 			if = {
@@ -532,6 +541,17 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			else = {
 				add_building = building_temple
 			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					OR = {
+						has_valid_civic = civic_pleasure_seekers
+						has_valid_civic = civic_corporate_hedonism
+					}
+				}
+			}
+			add_building = building_holo_theatres
 		}
 		add_district = district_city
 		add_district = district_generator
@@ -552,8 +572,18 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		add_building = building_spawning_pool
 		add_district = district_hive
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_necrophage
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			add_building = building_spawning_pool
+		}
 		add_species_appropriate_food_district = yes
 	}
 	else_if = {
@@ -598,6 +628,15 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 	if = {
 		limit = {
 			owner = {
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = no
+			}
+		}
+		add_building = building_necrophage_elevation_chamber
+	}
+	if = {
+		limit = {
+			owner = {
 				OR = {
 					has_valid_civic = civic_memorialist
 					has_valid_civic = civic_hive_memorialist
@@ -607,7 +646,13 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		}
 		add_building = building_galactic_memorial_1
 	}
-	add_building = building_research_lab_1
+	if = {
+		limit = { owner = { has_valid_civic = civic_reanimated_armies } }
+		add_building = building_dread_encampment
+	}
+	else = {
+		add_building = building_research_lab_1
+	}
 	add_district = district_industrial
 	if = {
 		limit = { owner = { has_origin = origin_jovian_league } }
@@ -714,6 +759,10 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_deposit = d_collapsed_capital_warrens
+		if = {
+			limit = { has_origin = origin_jovian_league_necrophage }
+			add_deposit = d_malformed_synapse_nodes
+		}
 	}
 	else_if = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
@@ -869,15 +918,6 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
 		}
-		else_if = {
-			limit = {
-				owner = {
-					has_origin = origin_jovian_league_necrophage
-					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
-				}
-			}
-			add_building = building_necrophage_elevation_chamber
-		}
 		if = {
 			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
 			add_species_appropriate_food_district = yes
@@ -897,7 +937,17 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		add_building = building_spawning_pool
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_necrophage
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			add_building = building_spawning_pool
+		}
 		add_district = district_hive
 		add_species_appropriate_food_district = yes
 		add_species_appropriate_food_district = yes
@@ -920,7 +970,15 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	else = {
 		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
 	}
-
+	if = {
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = no
+			}
+		}
+		add_building = building_necrophage_elevation_chamber
+	}
 	if = {
 		limit = { owner = { NOT = { has_valid_civic = civic_machine_servitor } } }
 		add_district = district_mining
@@ -932,14 +990,40 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	else_if = {
 		limit = {
 			owner = {
-				is_hive_empire = yes
-				is_lithoid_empire = no
+				OR = {
+					AND = {
+						is_hive_empire = yes
+						is_lithoid_empire = no
+					}
+					is_catalytic_empire = yes
+				}
 			}
 		}
 		set_colony_type = col_farming
 	}
 	else = {
 		set_colony_type = col_mining
+	}
+	if = {
+		limit = { owner = { is_catalytic_empire = yes } }
+		remove_district = district_mining
+		add_district = district_farming
+		if = {
+			limit = {
+				NAND = {
+					is_lithoid_empire = yes
+					has_country_flag = lithoid_subspecies
+				}
+			}
+			if = {
+				limit = { owner = { is_machine_empire = yes } }
+				remove_district = district_generator
+			}
+			else = {
+				remove_district = district_mining
+			}
+			add_district = district_farming
+		}
 	}
 }
 
@@ -1208,7 +1292,17 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		add_building = building_spawning_pool
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_necrophage
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			add_building = building_spawning_pool
+		}
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
@@ -1460,20 +1554,21 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
 		}
-		else_if = {
-			limit = {
-				owner = {
-					has_origin = origin_jovian_league_necrophage
-					NOT = { has_valid_civic = civic_fanatic_purifiers } # purges them instead
-				}
-			}
-			add_building = building_necrophage_elevation_chamber
-		}
 	}
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		add_building = building_spawning_pool
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_necrophage
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			add_building = building_spawning_pool
+		}
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
@@ -1483,7 +1578,15 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 	else = {
 		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
 	}
-
+	if = {
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = no
+			}
+		}
+		add_building = building_necrophage_elevation_chamber
+	}
 	add_district = district_generator
 	add_district = district_generator
 	set_colony_type = col_generator
