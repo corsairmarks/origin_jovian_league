@@ -80,11 +80,13 @@ origin_jovian_league_necrophage = {
 	possible = {
 		ethics = {
 			NOR = {
-				value = ethic_gestalt_consciousness
 				value = ethic_xenophile
 				value = ethic_fanatic_xenophile
 				value = ethic_fanatic_egalitarian
 			}
+		}
+		authority = {
+			NOT = { value = auth_machine_intelligence }
 		}
 		civics = {
 			NOR = {
