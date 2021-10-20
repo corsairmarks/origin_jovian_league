@@ -19,7 +19,7 @@ origin_jovian_league = {
 
 origin_jovian_league_mechanists = {
 	is_origin = yes
-	playable = { host_has_dlc = "Utopia" }
+	playable = { has_utopia = yes }
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_mechanist
 	possible = {
@@ -48,7 +48,7 @@ origin_jovian_league_mechanists = {
 
 origin_jovian_league_syncretic = {
 	is_origin = yes
-	playable = { host_has_dlc = "Utopia" }
+	playable = { has_utopia = yes }
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_syncretic_evolution
 	possible = {
@@ -74,7 +74,7 @@ origin_jovian_league_syncretic = {
 
 origin_jovian_league_necrophage = {
 	is_origin = yes
-	playable = { host_has_dlc = "Necroids Species Pack" }
+	playable = { has_necroids = yes }
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_necrophage
 	possible = {
