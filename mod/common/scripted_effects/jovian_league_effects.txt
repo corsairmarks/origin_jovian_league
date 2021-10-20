@@ -1,81 +1,73 @@
 # triggered by empire_init_capital_planet
-# THIS = planet (capital)
+# THIS = country (owner of the previous planet)
 setup_secondary_species = {
 	if = {
 		limit = {
-			owner = {
-				OR = {
-					has_valid_civic = civic_machine_assimilator
-					has_valid_civic = civic_machine_servitor
-					has_origin = origin_jovian_league_syncretic
-					has_origin = origin_jovian_league_necrophage
-					has_origin = origin_jovian_league_mechanists
-				}
+			OR = {
+				has_valid_civic = civic_machine_assimilator
+				has_valid_civic = civic_machine_servitor
+				has_origin = origin_jovian_league_syncretic
+				has_origin = origin_jovian_league_necrophage
+				has_origin = origin_jovian_league_mechanists
 			}
 		}
 		if = {
 			limit = { last_created_species = { is_lithoid = yes } }
-			owner = {
-				set_country_flag = lithoid_subspecies
-			}
+			set_country_flag = lithoid_subspecies
 		}
 		else = {
-			owner = {
-				set_country_flag = non_lithoid_subspecies
-			}
+			set_country_flag = non_lithoid_subspecies
 		}
 	}
 
 	if = {
 		limit = {
-			owner = {
-				OR = {
-					has_origin = origin_jovian_league_syncretic
-					has_origin = origin_jovian_league_necrophage
-				}
+			OR = {
+				has_origin = origin_jovian_league_syncretic
+				has_origin = origin_jovian_league_necrophage
 			}
 		}
 		last_created_species = {
-			set_species_flag = syncretic_species@ROOT.owner
+			set_species_flag = syncretic_species@PREV
 			# syncretic/necrophage secondary species rights reset in origin_jovian_league.5
 			save_event_target_as = jovian_league_secondary_species
 		}
 	}
 	else_if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		limit = { has_valid_civic = civic_machine_servitor }
 		last_created_species = {
-			set_species_flag = organic_trophy_species@ROOT.owner
+			set_species_flag = organic_trophy_species@PREV
 			set_citizenship_type = {
-				country = ROOT.owner
+				country = PREV
 				type = citizenship_limited
 			}
 			set_living_standard = {
-				country = ROOT.owner
+				country = PREV
 				type = living_standard_organic_trophy
 			}
 			save_event_target_as = jovian_league_secondary_species
 		}
 	}
 	else_if = {
-		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		limit = { has_valid_civic = civic_machine_assimilator }
 		last_created_species = {
-			set_species_flag = cyborg_species@ROOT.owner
+			set_species_flag = cyborg_species@PREV
 			set_citizenship_type = {
-				country = ROOT.owner
+				country = PREV
 				type = citizenship_full_machine
 			}
 			set_living_standard = {
-				country = ROOT.owner
+				country = PREV
 				type = living_standard_hive_mind
 			}
 			save_event_target_as = jovian_league_secondary_species
 		}
 	}
 	else_if = {
-		limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-		owner = { create_built_robot_species = yes }
+		limit = { has_origin = origin_jovian_league_mechanists }
+		create_built_robot_species = yes
 		last_created_species = {
-			set_species_flag = mechanist_robot_species@ROOT.owner
+			set_species_flag = mechanist_robot_species@PREV
 			save_event_target_as = jovian_league_secondary_species
 		}
 	}
@@ -249,60 +241,6 @@ generate_jovian_league_system_resources = {
 		random_list = {
 			50 = { set_deposit = d_minerals_2 }
 			50 = { set_deposit = d_minerals_3 }
-		}
-	}
-}
-
-# triggered by empire_init_capital_planet
-# THIS = planet (capital)
-generate_starting_resources = {
-	# additional resources based on empire type and possible subspecies
-	# logically the same as the last section of common/scripted_effects/01_start_of_game_effects.txt - generate_start_buildings_and_districts
-	owner = {
-		if = {
-			limit = { has_authority = auth_machine_intelligence }
-			add_resource = { energy = 100 }
-			if = {
-				limit = {
-					OR = {
-						has_valid_civic = civic_machine_servitor
-						has_valid_civic = civic_machine_assimilator
-					}
-				}
-				if = {
-					limit = { has_country_flag = lithoid_subspecies }
-					add_resource = { minerals = 100	}
-				}
-				else = {
-					add_resource = { food = 100	}
-				}
-			}
-			else = {
-				add_resource = { energy = 100 }
-			}
-		}
-		else = {
-			if = {
-				limit = { is_lithoid_empire = no }
-				add_resource = { food = 100	}
-				if = {
-					limit = { has_country_flag = lithoid_subspecies }
-					add_resource = { minerals = 100 }
-				}
-				else = {
-					add_resource = { food = 100 }
-				}
-			}
-			else = {
-				add_resource = { minerals = 100 }
-				if = {
-					limit = { has_country_flag = non_lithoid_subspecies }
-					add_resource = { food = 100	}
-				}
-				else = {
-					add_resource = { minerals = 100 }
-				}
-			}
 		}
 	}
 }

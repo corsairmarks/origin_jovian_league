@@ -50,8 +50,10 @@ planet_event = {
 	}
 	immediate = {
 		FROM = { save_event_target_as = jovian_league_species }
-		setup_secondary_species = yes
-		generate_starting_resources = yes
+		owner = {
+			setup_secondary_species = yes
+			give_starting_resources_effect = yes
+		}
 		generate_jovian_league_capital_start_deposits_and_blockers = yes
 		generate_jovian_league_capital_start_buildings_and_districts = yes
 		generate_jovian_league_capital_start_pops = yes
