@@ -1,3 +1,4 @@
+# fired on game start
 # THIS = country
 on_game_start_country = {
 	events = {
@@ -14,10 +15,11 @@ on_game_start_country = {
 		origin_jovian_league_syncretic.1
 		# switches origin from origin_jovian_league_necrophage to origin_necrophage to tie in to necrophage events/effects/weights (AI players)
 		origin_jovian_league_necrophage.33
+		origin_jovian_league.8
 	}
 }
 
-# triggers when pressing begin in the intro window
+# fired when pressing begin in the intro window
 # THIS = country to press begin
 on_press_begin = {
 	events = {
@@ -30,7 +32,7 @@ on_press_begin = {
 	}
 }
 
-# called during empire initialization when starting a new game
+# fired during empire initialization when starting a new game
 # THIS = country
 empire_init_add_technologies = {
 	events = {
@@ -38,10 +40,9 @@ empire_init_add_technologies = {
 	}
 }
 
-# called during empire initialization when starting a new game
+# fired during empire initialization when starting a new game
 # THIS = planet
-# FROM = founder species
-# FROMFROM = secondary species (if exists)
+# FROM = species, founder
 empire_init_capital_planet = {
 	events = {
 		origin_jovian_league.2 # replaces game_start.12 for origin_jovian_league: starting buildings, districts & pops
@@ -49,7 +50,7 @@ empire_init_capital_planet = {
 	}
 }
 
-# a building has finished construction, replacing another building
+# fired when a building has finished construction, replacing another building
 # THIS = planet
 on_building_replaced = {
 	events = {
@@ -57,7 +58,7 @@ on_building_replaced = {
 	}
 }
 
-# a building was demolished
+# fired when a building is demolished
 # THIS = planet
 on_building_demolished = {
 	events = {

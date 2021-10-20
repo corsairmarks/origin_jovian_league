@@ -327,6 +327,7 @@ country_event = {
 	}
 }
 
+# triggered by on_game_start_country
 country_event = {
 	id = origin_jovian_league.6
 	hide_window = yes
@@ -343,6 +344,7 @@ country_event = {
 	}
 }
 
+# triggered by on_building_replaced and on_building_demolished
 planet_event = {
 	id = origin_jovian_league.7
 	hide_window = yes
@@ -359,6 +361,36 @@ planet_event = {
 		every_deposit = {
 			limit = { is_deposit_type = d_mothballed_sanctuary_factories }
 			remove_deposit = yes
+		}
+	}
+}
+
+# triggered by on_game_start_country
+country_event = {
+	id = origin_jovian_league.8
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = agrarian_idyll_lithoid_installed
+		is_jovian_league = yes
+		has_valid_civic = civic_agrarian_idyll
+	}
+	immediate = {
+		capital_scope.solar_system = {
+			every_system_planet = {
+				limit = { is_colony = yes }
+				while = {
+					limit = { has_district = district_city }
+					remove_district = district_city
+					if = {
+						limit = { owner = { is_lithoid_empire = no } }
+						add_district = district_farming
+					}
+					else = {
+						add_district = district_mining
+					}
+				}
+			}
 		}
 	}
 }
