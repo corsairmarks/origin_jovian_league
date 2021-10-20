@@ -14,11 +14,17 @@ What to verify for positive economy at game start
     * Memorialist
     * Death Cult + Memorialist (Necrophage n/a)
     * Agrarian Idyll
+    * Catalytic
+    * Masterful Crafters
+    * Pleasure Seekers/Corp Hedonism
 
 ## Hive
 
 * Lithoid/non-lithoid
 * Memorialist
+* Catalytic
+* Necrophage
+* Devouring Swarm Necrophage
 
 ## Machine
 
@@ -27,3 +33,4 @@ What to verify for positive economy at game start
 * Determined Exterminator
 * Rogue Servitor (lithoid/non-lithoid bio-trophies)
 * Memorialist (combined with each of the above, excl. DE)
+* Catalytic

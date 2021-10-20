@@ -2,19 +2,20 @@
 
 Notes on the default game rules - this origin rebalances these starting conditions across 4 moons
 
-Based on starting conditions from 3.0.3
+Based on starting conditions from 3.1.2
 
 ## Pops
 
-* Regular 28 (varying numbers of 2ndary: 12 syncretic/necrophage (9 fanatic purifier), 8 mechanist)
+* Regular 28 (varying numbers of 2ndary: 12 syncretic/necrophage (6 fanatic purifier), 8 mechanist)
 * Default +4
 * Necrophage +2
 * Megacorp 28 (varying numbers of 2ndary: 12 syncretic/necrophage (can't be fanatic purifier), 8 mechanist)
 * Default +4
-* Necrophage +2 (for positive economy)
+* Necrophage +2 (fanatic purifier only)
 
 * Hive 33
 * Default +4
+* Necrophage - regular 9, devouring swarm 6, devouring swarm +2 primary Pops
 
 * Machine 29 (Assimilator 10 cyborg)
 * Servitor 33 (5 trophy)
@@ -37,7 +38,7 @@ Based on starting conditions from 3.0.3
 
 #### Agrarian Idyll
 
-* -2 city, +1 farming
+* -2 city, +2 farming
 
 #### Mechanist
 
@@ -49,7 +50,21 @@ Based on starting conditions from 3.0.3
 
 #### Spiritualist (non-Megacorp)
 
-* -1 commerical, +1 temple/death temple, +1 industrial
+* -1 commercial, +1 temple/death temple, +1 industrial
+
+#### Reanimators (civic_reanimated_armies)
+
+* -1 research lab, +1 dread encampment, +2 6-eng research
+
+#### Pleasure Seekers (civic_pleasure_seekers) but not corp hedonism
+
+* -1 commercial, +1 holo theater, +1 industrial
+
+#### Catalytic
+
+* lithoid + non-lith subspecies: +1 farming, -1 mining
+* non-machine, not non-lith sub: +2 farming, -2 mining
+* machine +2 farming, -1 mining, -1 generator
 
 #### Default bonus districts
 
@@ -66,6 +81,12 @@ Based on starting conditions from 3.0.3
 #### Default bonus districts
 
 * +1 mining/farming depending on lithoid, +1 generator
+
+#### Necrophage
+
+* -1 hive node
+* +1 necro-building (except DS)
+* -1 spawning (DS)
 
 ### Machine
 
