@@ -22,7 +22,7 @@ The randomization for ideal and "secondary" planet classes for the starting syst
 
 Because the Jovian League origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect Jovian Leagues for better or worse. The bulk of the code for the Jovian League origins runs when empires are initialized before the game starts.
 
-This mod is not compatible with achievements.  Built for Stellaris version 3.1.\* "Lem."
+Built for Stellaris version 3.1.\* "Lem."  This mod is not compatible with achievements.
 
 ## Known Issues
 
@@ -30,7 +30,7 @@ The variant Jovian League origins will convert themselves into their correspondi
 
 Some highly specific variants of a Jovian League may start with a small negative income of one or more resources. So far, that seems limited to Spiritualist empires when combined with a secondary species and a special-building-providing civic.
 
-## Changelong
+## Changelog
 
 * 1.0.0 Initial version
 
