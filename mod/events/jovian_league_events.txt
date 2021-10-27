@@ -171,12 +171,11 @@ country_event = {
 							has_modifier = extensive_moon_system
 						}
 					}
-					add_modifier = {
-						modifier = extensive_moon_system
-						days = -1
-					}
+					add_modifier = { modifier = extensive_moon_system }
 				}
-				apply_extensive_moon_system_child_modifier_planet = yes
+				planet_event = {
+					id = planetary_modifier_enhancements.2
+				}
 			}
 		}
 	}
