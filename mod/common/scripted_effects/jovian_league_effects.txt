@@ -760,7 +760,7 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_deposit = d_collapsed_capital_warrens
 		if = {
-			limit = { has_origin = origin_jovian_league_necrophage }
+			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
 			add_deposit = d_malformed_synapse_nodes
 		}
 	}
@@ -1010,9 +1010,11 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		add_district = district_farming
 		if = {
 			limit = {
-				NAND = {
-					is_lithoid_empire = yes
-					has_country_flag = lithoid_subspecies
+				owner = {
+					NAND = {
+						is_lithoid_empire = yes
+						has_country_flag = lithoid_subspecies
+					}
 				}
 			}
 			if = {
