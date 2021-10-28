@@ -7,11 +7,9 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
-		NOR = {
-			# has_authority = auth_corporate
-			has_authority = auth_hive_mind
-			has_authority = auth_machine_intelligence
-		}
+		# is_megacorp = no
+		is_hive_empire = no
+		is_machine_empire = no
 	}
 }
 
@@ -22,7 +20,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 		NOT = { has_valid_civic = civic_hive_devouring_swarm }
 	}
 }
@@ -34,7 +32,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 		has_valid_civic = civic_hive_devouring_swarm
 		is_lithoid_empire = no
 	}
@@ -47,7 +45,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_hive_mind
+		is_hive_empire = yes
 		has_valid_civic = civic_hive_devouring_swarm
 		is_lithoid_empire = yes
 	}
@@ -60,7 +58,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		NOR = {
 			has_valid_civic = civic_machine_assimilator
 			has_valid_civic = civic_machine_servitor
@@ -76,7 +74,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		has_valid_civic = civic_machine_assimilator
 	}
 }
@@ -89,7 +87,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		has_valid_civic = civic_machine_servitor
 	}
 }
@@ -101,7 +99,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
-		has_authority = auth_machine_intelligence
+		is_machine_empire = yes
 		has_valid_civic = civic_machine_terminator
 	}
 }
@@ -115,11 +113,9 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
-		NOR = {
-			has_authority = auth_corporate
-			has_authority = auth_hive_mind
-			has_authority = auth_machine_intelligence
-		}
+		is_megacorp = no
+		is_hive_empire = no
+		is_machine_empire = no
 	}
 }
 
@@ -130,7 +126,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
-		has_authority = auth_corporate
+		is_megacorp = yes
 	}
 }
 

@@ -286,12 +286,12 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 		add_deposit = d_assimilators_ruins
 	}
 	else_if = {
-		limit = { owner = { has_authority = auth_machine_intelligence } }
+		limit = { owner = { is_machine_empire = yes } }
 		add_deposit = d_strip_mine
 		add_deposit = d_machine_empire_ruins
 	}
 	else_if = {
-		limit = { owner = { has_authority = auth_hive_mind } }
+		limit = { owner = { is_hive_empire = yes } }
 		add_deposit = d_collapsed_burrows
 		add_deposit = d_failing_infrastructure
 	}
