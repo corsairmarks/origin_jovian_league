@@ -33,7 +33,7 @@ country_event = {
 	}
 	immediate = {
 		if = {
-			limit = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+			limit = { is_homicidal = no }
 			# tell them about the necrophage mechanic
 			country_event = {
 				id = necroids.2
