@@ -7,7 +7,6 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
-		# is_megacorp = no
 		is_hive_empire = no
 		is_machine_empire = no
 	}
@@ -83,7 +82,6 @@ part = {
 part = {
 	location = 0
 	localization = "START_SCREEN_PART_ONE_JOVIAN_LEAGUE_MACHINE_SERVITOR"
-
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league
@@ -127,6 +125,44 @@ part = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
 		is_megacorp = yes
+	}
+}
+
+# Hive
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE"
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		is_hive_empire = yes
+		NOT = { has_valid_civic = civic_hive_devouring_swarm }
+	}
+}
+
+# Devouring Swarm
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE_DEVOURING_SWARM"
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		is_hive_empire = yes
+		has_valid_civic = civic_hive_devouring_swarm
+		is_lithoid_empire = no
+	}
+}
+
+# Devouring Swarm - Lithoid
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE_DEVOURING_SWARM_LITHOID"
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		is_hive_empire = yes
+		has_valid_civic = civic_hive_devouring_swarm
+		is_lithoid_empire = yes
 	}
 }
 
