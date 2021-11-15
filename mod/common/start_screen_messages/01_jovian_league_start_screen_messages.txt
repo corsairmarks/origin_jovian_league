@@ -166,6 +166,23 @@ part = {
 	}
 }
 
+# Machine
+part = {
+	location = 0
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MACHINE"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league
+		is_machine_empire = yes
+		NOR = {
+			has_valid_civic = civic_machine_assimilator
+			has_valid_civic = civic_machine_servitor
+			has_valid_civic = civic_machine_terminator
+		}
+	}
+}
+
+
 ### Part III ###
 
 # Wormhole
