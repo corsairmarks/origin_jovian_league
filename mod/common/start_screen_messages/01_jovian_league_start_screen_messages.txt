@@ -168,7 +168,7 @@ part = {
 
 # Machine
 part = {
-	location = 0
+	location = 1
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MACHINE"
 	trigger = {
 		has_country_flag = custom_start_screen
@@ -182,6 +182,41 @@ part = {
 	}
 }
 
+# Machine - Assimilator
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MACHINE_ASSIMILATOR"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league
+		is_machine_empire = yes
+		has_valid_civic = civic_machine_assimilator
+	}
+}
+
+# Machine - Servitor
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MACHINE_SERVITOR"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league
+		is_machine_empire = yes
+		has_valid_civic = civic_machine_servitor
+	}
+}
+
+# Machine - Terminator
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MACHINE_TERMINATOR"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league
+		is_machine_empire = yes
+		has_valid_civic = civic_machine_terminator
+	}
+}
 
 ### Part III ###
 
