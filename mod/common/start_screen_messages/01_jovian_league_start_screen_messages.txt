@@ -6,7 +6,11 @@ part = {
 	localization = "START_SCREEN_PART_ONE_JOVIAN_LEAGUE_REGULAR"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		OR = {
+			has_origin = origin_jovian_league
+			has_origin = origin_jovian_league_mechanists
+			has_origin = origin_jovian_league_syncretic
+		}
 		is_hive_empire = no
 		is_machine_empire = no
 	}
@@ -102,6 +106,18 @@ part = {
 	}
 }
 
+# Necrophage (all)
+part = {
+	location = 0
+	localization = "START_SCREEN_PART_ONE_JOVIAN_LEAGUE_NECROPHAGE"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+	}
+}
+
+# TODO mech, sync (also remove from regular, above)
+
 ### Part II ###
 
 # Regular (non-MegaCorp)
@@ -110,7 +126,11 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_REGULAR"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		OR = {
+			has_origin = origin_jovian_league
+			has_origin = origin_jovian_league_mechanists
+			has_origin = origin_jovian_league_syncretic
+		}
 		is_megacorp = no
 		is_hive_empire = no
 		is_machine_empire = no
@@ -123,7 +143,11 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MEGACORP"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		OR = {
+			has_origin = origin_jovian_league
+			has_origin = origin_jovian_league_mechanists
+			has_origin = origin_jovian_league_syncretic
+		}
 		is_megacorp = yes
 	}
 }
@@ -217,6 +241,74 @@ part = {
 		has_valid_civic = civic_machine_terminator
 	}
 }
+
+# Necrophage
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_NECROPHAGE"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+		is_xenophile = no
+		is_pacifist = no
+		is_hive_empire = no
+		is_homicidal = no
+	}
+}
+
+# Necrophage - Peaceful
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_NECROPHAGE_PEACEFUL"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+		OR = {
+			is_xenophile = yes
+			is_pacifist = yes
+		}
+		is_hive_empire = no
+		is_homicidal = no
+	}
+}
+
+# Necrophage - Fanatic Purifier
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_NECROPHAGE_FANATIC_PURIFIER"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+		is_hive_empire = no
+		is_homicidal = yes
+	}
+}
+
+# Necrophage - Hive
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_NECROPHAGE_HIVE"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+		is_hive_empire = no
+		is_homicidal = no
+	}
+}
+
+# Necrophage - Devouring Swarm
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_NECROPHAGE_HIVE_DEVOURING_SWARM"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_necrophage
+		is_hive_empire = no
+		is_homicidal = yes
+	}
+}
+
+# TODO mech, sync (also remove from regular, above)
 
 ### Part III ###
 
