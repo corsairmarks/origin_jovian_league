@@ -8,7 +8,7 @@ setup_secondary_species = {
 				has_valid_civic = civic_machine_servitor
 				has_origin = origin_jovian_league_syncretic
 				has_origin = origin_jovian_league_necrophage
-				has_origin = origin_jovian_league_mechanists
+				# has_origin = origin_jovian_league_mechanists # not in the original file
 			}
 		}
 		if = {
@@ -676,6 +676,23 @@ generate_jovian_league_capital_start_pops = {
 			which = secondary_pop_count
 			value = 5
 		}
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
+			if = {
+				limit = { owner = { is_homicidal = yes } }
+				change_variable = {
+					which = secondary_pop_count
+					value = -2
+				}
+			}
+			else_if = {
+				limit = { owner = { is_hive_empire = yes } }
+				change_variable = {
+					which = secondary_pop_count
+					value = -1
+				}
+			}
+		}
 	}
 	else_if = {
 		limit = {
@@ -733,17 +750,30 @@ generate_jovian_league_capital_start_pops = {
 			}
 		}
 	}
-
-	if = {
-		limit = { owner = { is_regular_empire = yes } } # biological empires need a bonus pop to not start in deficit
+	else_if = {
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = yes
+			}
+		}
 		create_pop = {
 			species = owner_species
 			ethos = random
 		}
 	}
 
+	# TODO see if it works without
+	# if = {
+	# 	limit = { owner = { is_regular_empire = yes } } # biological empires need a bonus pop to not start in deficit
+	# 	create_pop = {
+	# 		species = owner_species
+	# 		ethos = random
+	# 	}
+	# }
+
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets another bonus pop 
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1046,15 +1076,20 @@ generate_jovian_league_sibling1_start_pops = {
 			value = 5
 		}
 		if = {
-			limit = {
-				owner = {
-					has_origin = origin_jovian_league_necrophage
-					has_valid_civic = civic_fanatic_purifiers
+			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
+			if = {
+				limit = { owner = { is_homicidal = yes } }
+				change_variable = {
+					which = secondary_pop_count
+					value = -3
 				}
 			}
-			change_variable = {
-				which = secondary_pop_count
-				value = -2
+			else_if = {
+				limit = { owner = { is_hive_empire = yes } }
+				change_variable = {
+					which = secondary_pop_count
+					value = -2
+				}
 			}
 		}
 	}
@@ -1123,7 +1158,20 @@ generate_jovian_league_sibling1_start_pops = {
 	}
 	
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = yes
+			}
+		}
+		create_pop = {
+			species = owner_species
+			ethos = random
+		}
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1385,7 +1433,7 @@ generate_jovian_league_sibling2_start_pops = {
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1616,7 +1664,7 @@ generate_jovian_league_sibling3_start_pops = {
 			limit = {
 				owner = {
 					has_origin = origin_jovian_league_necrophage
-					has_valid_civic = civic_fanatic_purifiers
+					is_homicidal = yes
 				}
 			}
 			change_variable = {
@@ -1666,18 +1714,18 @@ generate_jovian_league_sibling3_start_pops = {
 			species = owner_species
 			ethos = random
 		}
-		# servitor needs a bonus Pop to be energy-positive
-		if = {
-			limit = { owner = { has_valid_civic = civic_machine_servitor } }
-			create_pop = {
-				species = owner_species
-				ethos = random
-			}
-		}
+		# servitor needs a bonus Pop to be energy-positive TODO
+		# if = {
+		# 	limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		# 	create_pop = {
+		# 		species = owner_species
+		# 		ethos = random
+		# 	}
+		# }
 	}
 	
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
 		create_pop = {
 			species = owner_species
 			ethos = random
