@@ -763,15 +763,6 @@ generate_jovian_league_capital_start_pops = {
 		}
 	}
 
-	# TODO see if it works without
-	# if = {
-	# 	limit = { owner = { is_regular_empire = yes } } # biological empires need a bonus pop to not start in deficit
-	# 	create_pop = {
-	# 		species = owner_species
-	# 		ethos = random
-	# 	}
-	# }
-
 	if = {
 		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
 		create_pop = {
@@ -1714,14 +1705,6 @@ generate_jovian_league_sibling3_start_pops = {
 			species = owner_species
 			ethos = random
 		}
-		# servitor needs a bonus Pop to be energy-positive TODO
-		# if = {
-		# 	limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		# 	create_pop = {
-		# 		species = owner_species
-		# 		ethos = random
-		# 	}
-		# }
 	}
 	
 	if = {
