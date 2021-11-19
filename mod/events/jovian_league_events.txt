@@ -339,7 +339,6 @@ country_event = {
 	immediate = {
 		every_owned_planet = {
 			limit = { is_colony = yes }
-			log = "checking employment on [This.GetName] in [This.GetStarName] belonging to [Root.GetRealName]"
 			check_planet_employment = yes
 		}
 	}

@@ -8,7 +8,6 @@ setup_secondary_species = {
 				has_valid_civic = civic_machine_servitor
 				has_origin = origin_jovian_league_syncretic
 				has_origin = origin_jovian_league_necrophage
-				# has_origin = origin_jovian_league_mechanists # not in the original file
 			}
 		}
 		if = {

@@ -342,8 +342,6 @@ part = {
 	}
 }
 
-# TODO mech, sync (also remove from regular, above)
-
 ### Part III ###
 
 # Wormhole
