@@ -192,7 +192,7 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		has_origin = origin_jovian_league
 		is_hive_empire = yes
 		NOT = { has_valid_civic = civic_hive_devouring_swarm }
 	}
@@ -204,7 +204,7 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE_DEVOURING_SWARM"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		has_origin = origin_jovian_league
 		is_hive_empire = yes
 		has_valid_civic = civic_hive_devouring_swarm
 		is_lithoid_empire = no
@@ -217,7 +217,7 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_HIVE_DEVOURING_SWARM_LITHOID"
 	trigger = {
 		has_country_flag = custom_start_screen
-		is_jovian_league = yes
+		has_origin = origin_jovian_league
 		is_hive_empire = yes
 		has_valid_civic = civic_hive_devouring_swarm
 		is_lithoid_empire = yes
