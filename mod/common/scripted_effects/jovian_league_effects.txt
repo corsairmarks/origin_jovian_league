@@ -695,21 +695,21 @@ generate_jovian_league_capital_start_pops = {
 		}
 	}
 	else_if = {
-		limit = {
-			owner = {
-				OR = {
-					has_origin = origin_jovian_league_mechanists
-					has_valid_civic = civic_machine_assimilator
-				}
-			}
-		}
+		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
 		set_variable = {
 			which = secondary_pop_count
 			value = 4
 		}
 	}
 	else_if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		limit = {
+			owner = { 
+				OR = {
+					has_origin = origin_jovian_league_mechanists
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
 		set_variable = {
 			which = secondary_pop_count
 			value = 3
@@ -1094,21 +1094,21 @@ generate_jovian_league_sibling1_start_pops = {
 		}
 	}
 	else_if = {
-		limit = {
-			owner = {
-				OR = {
-					has_origin = origin_jovian_league_mechanists
-					has_valid_civic = civic_machine_servitor
-				}
-			}
-		}
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
 		set_variable = {
 			which = secondary_pop_count
 			value = 2
 		}
 	}
 	else_if = {
-		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+		limit = {
+			owner = {
+				OR = {
+					has_origin = origin_jovian_league_mechanists
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
 		set_variable = {
 			which = secondary_pop_count
 			value = 3
