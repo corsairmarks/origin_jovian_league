@@ -1,5 +1,5 @@
 # triggered by empire_init_capital_planet
-# THIS = country (owner of the previous planet)
+# this = country (owner of the previous planet)
 setup_secondary_species = {
 	if = {
 		limit = {
@@ -76,7 +76,7 @@ setup_secondary_species = {
 # duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
 # from appearing on specific planets, generates gatherer targets before "open" deposits that need one constructed, and avoids overwriting
 # deposits that it already added
-# THIS = galactic_object (i.e. solar system)
+# this = galactic_object (i.e. solar system)
 generate_jovian_league_system_resources = {
 	every_system_planet = {
 		limit = {
@@ -243,9 +243,16 @@ generate_jovian_league_system_resources = {
 			50 = { set_deposit = d_minerals_3 }
 		}
 	}
+}
 
+# duplicates special effects for Reanimators (civic_reanimated_armies)
+# this = galactic_object (i.e. solar system)
+adjust_jovian_league_system_resources_for_civics = {
 	if = {
-		limit = { space_owner = { has_valid_civic = civic_reanimated_armies } }
+		limit = {
+			has_owner = yes
+			space_owner = { has_valid_civic = civic_reanimated_armies }
+		}
 		while = {
 			count = 2
 			random_system_planet = {
@@ -264,7 +271,7 @@ generate_jovian_league_system_resources = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (capital)
+# this = planet (capital)
 generate_jovian_league_capital_start_deposits_and_blockers = {
 	clear_deposits = yes
 
@@ -516,7 +523,7 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (capital)
+# this = planet (capital)
 generate_jovian_league_capital_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
@@ -661,7 +668,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (capital)
+# this = planet (capital)
 generate_jovian_league_capital_start_pops = {
 	if = {
 		limit = {
@@ -773,7 +780,7 @@ generate_jovian_league_capital_start_pops = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (second orbit)
+# this = planet (second orbit)
 generate_jovian_league_sibling1_start_deposits_and_blockers = {
 	clear_deposits = yes
 
@@ -929,7 +936,7 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (second orbit)
+# this = planet (second orbit)
 generate_jovian_league_sibling1_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
@@ -1051,7 +1058,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (second orbit)
+# this = planet (second orbit)
 generate_jovian_league_sibling1_start_pops = {
 	if = {
 		limit = {
@@ -1171,7 +1178,7 @@ generate_jovian_league_sibling1_start_pops = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (third orbit)
+# this = planet (third orbit)
 generate_jovian_league_sibling2_start_deposits_and_blockers = {
 	clear_deposits = yes
 
@@ -1324,7 +1331,7 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (third orbit)
+# this = planet (third orbit)
 generate_jovian_league_sibling2_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
@@ -1374,7 +1381,7 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (third orbit)
+# this = planet (third orbit)
 generate_jovian_league_sibling2_start_pops = {
 	if = {
 		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
@@ -1433,7 +1440,7 @@ generate_jovian_league_sibling2_start_pops = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (fourth orbit)
+# this = planet (fourth orbit)
 generate_jovian_league_sibling3_start_deposits_and_blockers = {
 	clear_deposits = yes
 
@@ -1586,7 +1593,7 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (fourth orbit)
+# this = planet (fourth orbit)
 generate_jovian_league_sibling3_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
@@ -1634,7 +1641,7 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 }
 
 # triggered by empire_init_capital_planet
-# THIS = planet (fourth orbit)
+# this = planet (fourth orbit)
 generate_jovian_league_sibling3_start_pops = {
 	if = {
 		limit = {
@@ -1716,8 +1723,9 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 }
 
-# THIS = system (galactic_object)
+# this = system (galactic_object)
 generate_jovian_league_system_final_pass = {
+	adjust_jovian_league_system_resources_for_civics = yes
 	every_system_planet = {
 		limit = { is_colony = yes }
 		if = {
@@ -1737,7 +1745,7 @@ generate_jovian_league_system_final_pass = {
 	}
 }
 
-# THIS = system (galactic_object)
+# this = system (galactic_object)
 save_jovian_ideal_design_pc = {
 	random_system_planet = {
 		limit = { has_planet_flag = jovian_league_ideal_planet_class }
@@ -1820,7 +1828,7 @@ save_jovian_ideal_design_pc = {
 	}
 }
 
-# THIS = planet
+# this = planet
 change_to_ideal_pc = {
 	if = {
 		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
@@ -1936,7 +1944,7 @@ change_to_ideal_pc = {
 	}
 }
 
-# THIS = planet
+# this = planet
 change_to_random_secondary_pc = {
 	if = {
 		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
@@ -2052,13 +2060,13 @@ change_to_random_secondary_pc = {
 	}
 }
 
-# THIS = planet
+# this = planet
 change_to_random_normal_pc = {
 	change_pc = "rl_habitable_normal"
 	reroll_deposits = yes
 }
 
-# THIS = planet
+# this = planet
 add_species_appropriate_food_district = {
 	if = {
 		limit = {
