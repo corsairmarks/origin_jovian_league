@@ -116,8 +116,6 @@ part = {
 	}
 }
 
-# TODO mech, sync (also remove from regular, above)
-
 ### Part II ###
 
 # Regular (non-MegaCorp)
@@ -126,10 +124,7 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_REGULAR"
 	trigger = {
 		has_country_flag = custom_start_screen
-		OR = {
-			has_origin = origin_jovian_league
-			has_origin = origin_jovian_league_syncretic
-		}
+		has_origin = origin_jovian_league
 		is_megacorp = no
 		is_hive_empire = no
 		is_machine_empire = no
@@ -142,11 +137,7 @@ part = {
 	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_MEGACORP"
 	trigger = {
 		has_country_flag = custom_start_screen
-		OR = {
-			has_origin = origin_jovian_league
-			has_origin = origin_jovian_league_mechanists
-			has_origin = origin_jovian_league_syncretic
-		}
+		has_origin = origin_jovian_league
 		is_megacorp = yes
 	}
 }
@@ -169,6 +160,28 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league_mechanists
+		is_megacorp = yes
+	}
+}
+
+# Syncretic Evolution
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_SYNCRETIC"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_syncretic
+		is_megacorp = no
+	}
+}
+
+# Syncretic Evolution - MegaCorp
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_SYNCRETIC_MEGACORP"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_syncretic
 		is_megacorp = yes
 	}
 }
