@@ -285,7 +285,6 @@ part = {
 		has_origin = origin_jovian_league_necrophage
 		is_xenophile = no
 		is_pacifist = no
-		is_hive_empire = no
 		is_homicidal = no
 	}
 }
@@ -301,7 +300,6 @@ part = {
 			is_xenophile = yes
 			is_pacifist = yes
 		}
-		is_hive_empire = no
 		is_homicidal = no
 	}
 }
@@ -325,7 +323,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league_necrophage
-		is_hive_empire = no
+		is_hive_empire = yes
 		is_homicidal = no
 	}
 }
@@ -337,7 +335,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		has_origin = origin_jovian_league_necrophage
-		is_hive_empire = no
+		is_hive_empire = yes
 		is_homicidal = yes
 	}
 }
