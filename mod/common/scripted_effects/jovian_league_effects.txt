@@ -245,7 +245,7 @@ generate_jovian_league_system_resources = {
 	}
 }
 
-# duplicates special effects for Reanimators (civic_reanimated_armies)
+# duplicates special effects for Reanimators (civic_reanimated_armies) from generate_start_buildings_and_districts
 # this = galactic_object (i.e. solar system)
 adjust_jovian_league_system_resources_for_civics = {
 	if = {
