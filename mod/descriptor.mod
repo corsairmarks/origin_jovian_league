@@ -6,6 +6,6 @@ tags={
 	"Galaxy Generation"
 	"Gameplay"
 }
-version="1.0.0-alpha2"
+version="1.0.0"
 picture="thumbnail.png"
-supported_version="3.1.*"
+supported_version="3.2.*"
