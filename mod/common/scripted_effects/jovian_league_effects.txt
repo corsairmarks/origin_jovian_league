@@ -560,7 +560,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			add_building = building_holo_theatres
 		}
 		add_district = district_city
-		add_district = district_generator
+		add_planet_appropriate_generator_district_ojl = yes
 		if = {
 			limit = {
 				owner = {
@@ -568,7 +568,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 					has_country_flag = non_lithoid_subspecies
 				}
 			}
-			add_empire_appropriate_farm_district_ojl = yes
+			add_planet_appropriate_farming_district_ojl = yes
 		}
 		else = {
 			add_species_appropriate_food_district_ojl = yes
@@ -580,7 +580,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 					is_catalytic_empire = yes
 				}
 			}
-			add_empire_appropriate_farm_district_ojl = yes
+			add_planet_appropriate_farming_district_ojl = yes
 		}
 		else = {
 			add_district = district_industrial
@@ -602,7 +602,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			add_building = building_spawning_pool
 		}
 		else = {
-			add_district = district_mining
+			add_planet_appropriate_mining_district_ojl = yes
 		}
 		add_species_appropriate_food_district_ojl = yes
 	}
@@ -611,7 +611,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		add_building = building_machine_capital
 		add_building = building_machine_assembly_plant
 		add_district = district_nexus
-		add_district = district_generator
+		add_planet_appropriate_generator_district_ojl = yes
 		if = {
 			limit = { owner = { has_valid_civic = civic_machine_servitor } }
 			add_building = building_organic_sanctuary
@@ -627,15 +627,15 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			}
 			if = {
 				limit = { owner = { has_country_flag = lithoid_subspecies } }
-				add_district = district_mining
+				add_planet_appropriate_mining_district_ojl = yes
 			}
 			else_if = {
 				limit = { owner = { has_country_flag = non_lithoid_subspecies } }
-				add_empire_appropriate_farm_district_ojl = yes
+				add_planet_appropriate_farming_district_ojl = yes
 			}
 			else = {
 				log_error = "empire is an assimilator or servitor but has a subspecies that isn't flagged for lithoid/non_lithoid: fallback generator district added to capital"
-				add_district = district_generator
+				add_planet_appropriate_generator_district_ojl = yes
 			}
 		}
 		else_if = {
@@ -645,10 +645,10 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 					is_catalytic_empire = yes
 				}
 			}
-			add_empire_appropriate_farm_district_ojl = yes
+			add_planet_appropriate_farming_district_ojl = yes
 		}
 		else = {
-			add_district = district_generator
+			add_planet_appropriate_generator_district_ojl = yes
 		}
 	}
 	else = {
@@ -977,12 +977,12 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		}
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-			add_district = district_generator
+			add_planet_appropriate_generator_district_ojl = yes
 		}
 		else = {
 			add_species_appropriate_food_district_ojl = yes
 		}
-		add_district = district_mining
+		add_planet_appropriate_mining_district_ojl = yes
 	}
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
@@ -1015,9 +1015,9 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 			add_building = building_organic_sanctuary
 		}
 		else = {
-			add_district = district_generator
+			add_planet_appropriate_generator_district_ojl = yes
 		}
-		add_district = district_generator
+		add_planet_appropriate_generator_district_ojl = yes
 	}
 	else = {
 		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
@@ -1033,7 +1033,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	}
 	if = {
 		limit = { owner = { NOT = { has_valid_civic = civic_machine_servitor } } }
-		add_district = district_mining
+		add_planet_appropriate_mining_district_ojl = yes
 	}
 	if = {
 		limit = { owner = { is_machine_empire = yes } }
@@ -1059,7 +1059,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_catalytic_empire = yes } }
 		remove_district = district_mining
-		add_empire_appropriate_farm_district_ojl = yes
+		add_planet_appropriate_farming_district_ojl = yes
 		if = {
 			limit = {
 				owner = {
@@ -1076,7 +1076,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 			else = {
 				remove_district = district_mining
 			}
-			add_empire_appropriate_farm_district_ojl = yes
+			add_planet_appropriate_farming_district_ojl = yes
 		}
 	}
 }
@@ -1399,7 +1399,7 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 			add_species_appropriate_food_district_ojl = yes
 		}
 		else = {
-			add_district = district_generator
+			add_planet_appropriate_generator_district_ojl = yes
 		}
 	}
 }
@@ -1659,8 +1659,8 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 		}
 		add_building = building_necrophage_elevation_chamber
 	}
-	add_district = district_generator
-	add_district = district_generator
+	add_planet_appropriate_generator_district_ojl = yes
+	add_planet_appropriate_generator_district_ojl = yes
 	set_colony_type = col_generator
 }
 
@@ -2091,6 +2091,43 @@ change_to_random_normal_pc = {
 }
 
 # this = planet
+add_planet_appropriate_mining_district_ojl = {
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+				is_planet_class = pc_shattered_ring_habitable
+			}
+		}
+		add_district = district_mining_uncapped
+	}
+	else = {
+		add_district = district_mining
+	}
+}
+
+# this = planet
+add_planet_appropriate_generator_district_ojl = {
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+			}
+		}
+		add_district = district_generator_uncapped
+	}
+	else_if = {
+		limit = { is_planet_class = pc_shattered_ring_habitable }
+		add_district = district_srw_commercial
+	}
+	else = {
+		add_district = district_generator
+	}
+}
+
+# this = planet
 add_species_appropriate_food_district_ojl = {
 	if = {
 		limit = {
@@ -2099,19 +2136,25 @@ add_species_appropriate_food_district_ojl = {
 				is_machine_empire = no
 			}
 		}
-		add_empire_appropriate_farm_district_ojl = yes
+		add_planet_appropriate_farming_district_ojl = yes
 	}
 	else = {
-		add_district = district_mining
+		add_planet_appropriate_mining_district_ojl = yes
 	}
 }
 
 # this = planet
-add_empire_appropriate_farm_district_ojl = {
+add_planet_appropriate_farming_district_ojl = {
 	if = {
 		limit = {
-			owner = { is_anglers_empire = yes }
-			is_planet_class = pc_ocean
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_shattered_ring_habitable
+				AND = {
+					is_planet_class = pc_ocean
+					owner = { is_anglers_empire = yes }
+				}
+			}
 		}
 		add_district = district_farming_uncapped
 	}
