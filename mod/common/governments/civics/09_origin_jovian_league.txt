@@ -78,15 +78,15 @@ origin_jovian_league_necrophage = {
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_necrophage
 	possible = {
+		authority = {
+			NOT = { value = auth_machine_intelligence }
+		}
 		ethics = {
 			NOR = {
 				value = ethic_xenophile
 				value = ethic_fanatic_xenophile
 				value = ethic_fanatic_egalitarian
 			}
-		}
-		authority = {
-			NOT = { value = auth_machine_intelligence }
 		}
 		civics = {
 			NOR = {
