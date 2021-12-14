@@ -549,14 +549,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			}
 		}
 		else_if = {
-			limit = {
-				owner = {
-					OR = {
-						has_valid_civic = civic_pleasure_seekers
-						has_valid_civic = civic_corporate_hedonism
-					}
-				}
-			}
+			limit = { owner = { is_pleasure_seeker = yes } }
 			add_building = building_holo_theatres
 		}
 		add_district = district_city
@@ -577,10 +570,13 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			limit = {
 				owner = {
 					is_anglers_empire = yes
-					is_catalytic_empire = yes
+					OR = {
+						is_spiritualist = yes
+						is_pleasure_seeker = yes
+					}
 				}
 			}
-			add_planet_appropriate_farming_district_ojl = yes
+			add_species_appropriate_food_district_ojl = yes
 		}
 		else = {
 			add_district = district_industrial
@@ -682,7 +678,21 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 	else = {
 		add_building = building_research_lab_1
 	}
-	add_district = district_industrial
+	if = {
+		limit = {
+			owner = {
+				is_anglers_empire = yes
+				OR = {
+					is_catalytic_empire = yes
+					is_lithoid_empire = yes
+				}
+			}
+		}
+		add_planet_appropriate_farming_district_ojl = yes
+	}
+	else = {
+		add_district = district_industrial
+	}
 	if = {
 		limit = { owner = { has_origin = origin_jovian_league } }
 		add_district = district_industrial
@@ -982,7 +992,18 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		else = {
 			add_species_appropriate_food_district_ojl = yes
 		}
-		add_planet_appropriate_mining_district_ojl = yes
+		if = {
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+					is_anglers_empire = yes
+				}
+			}
+			add_planet_appropriate_farming_district_ojl = yes
+		}
+		else = {
+			add_planet_appropriate_mining_district_ojl = yes
+		}
 	}
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
@@ -1750,6 +1771,19 @@ generate_jovian_league_sibling3_start_pops = {
 # this = system (galactic_object)
 generate_jovian_league_system_final_pass = {
 	adjust_jovian_league_system_resources_for_civics = yes
+	space_owner = {
+		if = {
+			limit = { is_catalytic_empire = yes }
+			if = {
+				limit = { has_valid_civic = civic_machine_servitor }
+				add_modifier = { modifier = catalyic_processing_rogue_servitor_base_resources }
+			}
+			else_if = {
+				limit = { is_hive_empire = yes }
+				add_modifier = { modifier = catalyic_processing_hive_mind_base_resources }
+			}
+		}
+	}
 	every_system_planet = {
 		limit = { is_colony = yes }
 		if = {
