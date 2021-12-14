@@ -42,7 +42,7 @@ This mod should be added before starting a new game.  The main effect of new ori
 
 The variant Jovian League origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (ar at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
 
-Some highly specific variants of a Jovian League may start with a small negative income of one or more resources. So far, that seems limited to Spiritualist empires when combined with a secondary species and a special-building-providing civic.
+Some variants of a Jovian League may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.  Spiritualist Anglers with Catalytic Processing begins with a larger deficit in food because Pops prefer working Pearl Diver jobs, and Catalytic Processing Rogue Servitors have significant negative income for energy and food.
 
 ## Changelog
 
