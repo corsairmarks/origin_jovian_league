@@ -26,7 +26,7 @@ Because the Jovian League origin starts the owner with four colonized moons, it 
 
 Finally - because this mod does not overwrite [i]any[/i] base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.2.* "Herbert."  This mod is not compatible with achievements.
 
-[h3]Not Included in "Subtle Polish"[h3]
+[h3]Not Included in "Subtle Polish"[/h3]
 
 This mod is intentionally not included in my modpack [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089]Subtle Polish: A Collection of Fixes and Enhancements[/url] because it is a new origin.  It it otherwise fully compatible.
 
