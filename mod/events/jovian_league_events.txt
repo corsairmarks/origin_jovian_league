@@ -36,8 +36,8 @@ country_event = {
 }
 
 # triggered by empire_init_capital_planet
-# FROM = founder species
-# FROMFROM = secondary species (if exists) // Corsair's Note: this appears to be broken; the default gave uses last_created_species to get the secondary
+# from = founder species
+# fromfrom = secondary species (if exists) // Corsair's Note: this appears to be broken; the default gave uses last_created_species to get the secondary
 planet_event = {
 	id = origin_jovian_league.2
 	hide_window = yes
@@ -49,7 +49,7 @@ planet_event = {
 		}
 	}
 	immediate = {
-		FROM = { save_event_target_as = jovian_league_species }
+		from = { save_event_target_as = jovian_league_species }
 		owner = {
 			setup_secondary_species = yes
 			give_starting_resources_effect = yes
@@ -62,7 +62,8 @@ planet_event = {
 			save_jovian_ideal_design_pc = yes
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling1 }
-				set_owner = ROOT.owner
+				set_owner = root.owner
+				change_colony_foundation_date = -9900
 				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling1_start_buildings_and_districts = yes
 				generate_jovian_league_sibling1_start_pops = yes
@@ -70,20 +71,22 @@ planet_event = {
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling2 }
 				if = {
-					limit = { ROOT.owner = { is_biological_species_empire = yes } }
+					limit = { root.owner = { is_biological_species_empire = yes } }
 					change_to_random_secondary_pc = yes
 				}
 				else = {
 					change_to_random_normal_pc = yes
 				}
-				set_owner = ROOT.owner
+				set_owner = root.owner
+				change_colony_foundation_date = -8100
 				generate_jovian_league_sibling2_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling2_start_buildings_and_districts = yes
 				generate_jovian_league_sibling2_start_pops = yes
 			}
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling3 }
-				set_owner = ROOT.owner
+				set_owner = root.owner
+				change_colony_foundation_date = -9000
 				generate_jovian_league_sibling3_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling3_start_buildings_and_districts = yes
 				generate_jovian_league_sibling3_start_pops = yes
@@ -94,7 +97,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t1_colony_ideal }
 					if = {
-						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						limit = { root.owner = { is_biological_species_empire = yes } }
 						change_to_ideal_pc = yes
 					}
 					else = {
@@ -104,7 +107,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t1_colony_secondary }
 					if = {
-						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						limit = { root.owner = { is_biological_species_empire = yes } }
 						change_to_random_secondary_pc = yes
 					}
 					else = {
@@ -118,7 +121,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t2_colony_ideal }
 					if = {
-						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						limit = { root.owner = { is_biological_species_empire = yes } }
 						change_to_ideal_pc = yes
 					}
 					else = {
@@ -128,7 +131,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t2_colony_secondary }
 					if = {
-						limit = { ROOT.owner = { is_biological_species_empire = yes } }
+						limit = { root.owner = { is_biological_species_empire = yes } }
 						change_to_random_secondary_pc = yes
 					}
 					else = {
@@ -246,7 +249,7 @@ country_event = {
 			# spawn wormholes
 			event_target:jovian_league_exit_system = {
 				event_target:jovian_league_system = {
-					PREV = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+					prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 						spawn_natural_wormhole = {
 							bypass_type = wormhole
 							random_pos = yes
@@ -258,7 +261,7 @@ country_event = {
 						orbit_angle = 270
 						orbit_distance = 500
 					}
-					link_wormholes = PREV
+					link_wormholes = prev
 				}
 			}
 
@@ -291,34 +294,34 @@ country_event = {
 			# reset syncretic species/prepatents to slavery if they were set to purge
 			every_owned_species = {
 				limit = {
-					has_species_flag = syncretic_species@ROOT
+					has_species_flag = syncretic_species@root
 					has_citizenship_type = {
-						country = ROOT
+						country = root
 						type = citizenship_purge
 					}
 				}
 				set_citizenship_type = {
-					country = ROOT
+					country = root
 					type = citizenship_slavery
 					cooldown = no
 				}
 				set_military_service_type = {
-					country = ROOT
+					country = root
 					type = military_service_limited
 					cooldown = no
 				}
 				set_colonization_controls = {
-					country = ROOT
+					country = root
 					type = colonization_control_no
 					cooldown = no
 				}
 				set_population_controls = {
-					country = ROOT
+					country = root
 					type = population_control_no
 					cooldown = no
 				}
 				set_migration_controls = {
-					country = ROOT
+					country = root
 					type = migration_control_no
 					cooldown = no
 				}
