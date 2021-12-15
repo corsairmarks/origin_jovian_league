@@ -44,7 +44,7 @@ This mod should be added before starting a new game.  The main effect of new ori
 
 [h3]Known Issues[/h3]
 
-The variant Jovian League origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (ar at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
+The variant Jovian League origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
 
 Some variants of a Jovian League may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.
 
@@ -54,4 +54,6 @@ See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2682659676
 
 [h2]Source Code[/h2]
 
-[url=https://github.com/corsairmarks/origin_jovian_league]Hosted on  GitHub[/url]
+Hosted on [url=https://github.com/corsairmarks/origin_jovian_league]GitHub[/url]
+
+[url=https://discord.gg/bHVez2C][img]https://i.imgur.com/4Und3QN.png[/img][/url]
