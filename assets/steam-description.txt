@@ -46,7 +46,7 @@ Some variants of a Jovian League may start with a small negative income of one o
 
 [h2]Changelog[/h2]
 
-See [url=]Change Notes[/url]
+See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2682659676]Change Notes[/url]
 
 [h2]Source Code[/h2]
 
