@@ -1793,7 +1793,7 @@ generate_jovian_league_system_final_pass = {
 				limit = {
 					NOR = {
 						has_trait = trait_necrophage
-						is_pop_category = worker
+						has_job_category = worker
 					}
 				}
 				unemploy_pop = yes
