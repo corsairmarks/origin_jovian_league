@@ -28,13 +28,13 @@ Finally - because this mod does not overwrite _any_ base game files or code, it 
 
 ### Not Included in "Subtle Polish"
 
-This mod is intentionally not included in my modpack [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089) because it is a new origin.  It it otherwise fully compatible.
+This mod is intentionally not included in my modpack [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089) because it is a new origin.  It is otherwise fully compatible.
 
 ### When to Install
 
 This mod should be added before starting a new game.  The main effect of new origins and starting systems are only available during empire creation, and the custom code to set up the new systems only executed during empire initialization.  This mod does define some new deposits and related events, and thus is not recommended to be removed during a game.  If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
 
-### Required Mod Dependencies
+### Optional Mod Dependencies
 
 [Planetary Modifier Enhancements](https://steamcommunity.com/workshop/filedetails/?id=2496357128) is used to apply the "Part of an Extensive Moon System" to the initial jovian moon system that hosts your homeworld.
 
