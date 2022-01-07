@@ -2,6 +2,8 @@
 
 This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
+New in version 1.1.0 are two variants of the Sol system to start your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).  Also a special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+
 This origin was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit.
 
 ## Notes
@@ -10,19 +12,19 @@ Because there isn't a way to remove a technology from an empire, in lieu of star
 
 # Changes
 
-A brand-new origin "Jovian League" with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
+A brand-new origin "jovian league" with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
 
-Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a Jovian League for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Mind Necrophages).  These flavors are only available to pick if the **host** has the appropriate DLC to unlock the respective built-in origin (Utopia for Mechanists and Syncretic Evolution, Necroids for Necrophage).  After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits - most notably Mechanists get higher chances to draw robotics technologies, and Necrophages have their complex conversion process, purge type, buildings, and tradition swaps.
+Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a jovian league for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Mind Necrophages).  These flavors are only available to pick if the **host** has the appropriate DLC to unlock the respective built-in origin (Utopia for Mechanists and Syncretic Evolution, Necroids for Necrophage).  After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits - most notably Mechanists get higher chances to draw robotics technologies, and Necrophages have their complex conversion process, purge type, buildings, and tradition swaps.
 
-All flavors of the Jovian League origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game.  Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
+All flavors of the jovian league origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game.  Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
 
 ## Compatibility
 
-If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the Jovian League origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant Jovian League origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for Necrophages as it connects to all of the code for necrophage conversion.
+If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for Necrophages as it connects to all of the code for necrophage conversion.
 
 The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with `planet_class = pc_arid` or whatever class you want. Deposits and features can be rerolled for a planet with `effect reroll_deposits = yes` (these are both built-in console commands).
 
-Because the Jovian League origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect Jovian Leagues for better or worse. The bulk of the code for the Jovian League origins runs when empires are initialized before the game starts.
+Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
 Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.2.\* "Herbert."  This mod is not compatible with achievements.
 
@@ -44,13 +46,16 @@ This mod should be added before starting a new game.  The main effect of new ori
 
 ### Known Issues
 
-The variant Jovian League origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
+The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
 
-Some variants of a Jovian League may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.
+Some variants of a jovian league may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.
 
 ## Changelog
 
 * 1.0.0 Initial version
+* 1.1.0 Hyperlane connection bug fixes, add new jovian league starting systems
+    * Ensure the jovian league starting systems don't create isolated systems or mini-clusters disconnected from the hyperlane network - special thanks to [doctornull](https://steamcommunity.com/id/doctornull)
+    * Add two Jovial League starting system variants of the Sol system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
 
 ## Source Code
 
