@@ -13,8 +13,7 @@ origin_jovian_league = {
 		unary_jovian_league_02
 		trinary_jovian_league_01
 		trinary_jovian_league_02
-		sol_jovian_league_01
-		sol_jovian_league_02
+		sol_jovian_league
 	}
 	flags = { is_jovian_league custom_start_screen }
 }
@@ -44,8 +43,7 @@ origin_jovian_league_mechanists = {
 		unary_jovian_league_02
 		trinary_jovian_league_01
 		trinary_jovian_league_02
-		sol_jovian_league_01
-		sol_jovian_league_02
+		sol_jovian_league
 	}
 	flags = { is_jovian_league custom_start_screen }
 }
@@ -72,8 +70,7 @@ origin_jovian_league_syncretic = {
 		unary_jovian_league_02
 		trinary_jovian_league_01
 		trinary_jovian_league_02
-		sol_jovian_league_01
-		sol_jovian_league_02
+		sol_jovian_league
 	}
 	flags = { is_jovian_league custom_start_screen }
 }
@@ -113,8 +110,7 @@ origin_jovian_league_necrophage = {
 		unary_jovian_league_02
 		trinary_jovian_league_01
 		trinary_jovian_league_02
-		sol_jovian_league_01
-		sol_jovian_league_02
+		sol_jovian_league
 	}
 	flags = { is_jovian_league custom_start_screen }
 }

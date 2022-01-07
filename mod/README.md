@@ -2,7 +2,7 @@
 
 This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
-New in version 1.1.0 are two variants of the Sol system to start your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).  Also a special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+New in version 1.1.0 is a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).  Also a special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
 
 This origin was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit.
 
@@ -58,9 +58,9 @@ Some variants of a jovian league may start with a small negative income of one o
 ## Changelog
 
 * 1.0.0 Initial version
-* 1.1.0 Hyperlane connection bug fixes, add new jovian league starting systems
+* 1.1.0 Hyperlane connection bug fixes, add a new jovian league starting system
     * Ensure the jovian league starting systems don't create isolated systems or mini-clusters disconnected from the hyperlane network - special thanks to [doctornull](https://steamcommunity.com/id/doctornull)
-    * Add two Jovian League starting system variants of the Sol system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
+    * Add a jovian league variant of the Sol starting system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
     * Add German localisation by [Lucanoria](https://steamcommunity.com/id/Lucanoria)
 
 ## Source Code
