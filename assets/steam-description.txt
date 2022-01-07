@@ -19,7 +19,7 @@ All flavors of the jovian league origin will respect the special features of you
 [list]
 [*]English by corsairmarks (author)
 [*]German (Deutsch) by [url=https://steamcommunity.com/id/Lucanoria]Lucanoria[/url]
-[list]
+[/list]
 [h2]Compatibility[/h2]
 If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for necrophages as it connects to all of the code for Necrophage conversion.
 
