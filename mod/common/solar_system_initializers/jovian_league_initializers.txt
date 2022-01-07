@@ -1121,6 +1121,7 @@ sol_jovian_league_01 = {
 		size = 5
 		has_ring = no
 	}
+	# starting gas giant moon system
 	planet = {
 		name = NAME_Jupiter
 		class = pc_gas_giant
@@ -1155,12 +1156,23 @@ sol_jovian_league_01 = {
 			flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
 		}
 		moon = {
-			# name = NAME_Europa
-			home_planet = yes
+			name = NAME_Europa
 			class = ideal_planet_class
 			size = 6
 			orbit_distance = 2.5
 			orbit_angle = 10
+			has_ring = no
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling1 }
+		}
+		moon = {
+			# name = NAME_Ganymede
+			class = ideal_planet_class
+			home_planet = yes
+			size = 9
+			orbit_distance = 2.5
+			orbit_angle = 80
 			has_ring = no
 			deposit_blockers = none
 			modifiers = none
@@ -1169,17 +1181,6 @@ sol_jovian_league_01 = {
 				prevent_anomaly = yes
 				generate_empire_home_planet = yes
 			}
-		}
-		moon = {
-			name = NAME_Ganymede
-			class = ideal_planet_class
-			size = 9
-			orbit_distance = 2.5
-			orbit_angle = 80
-			has_ring = no
-			deposit_blockers = none
-			modifiers = none
-			flags = { jovian_league_sibling1 }
 		}
 		moon = {
 			name = NAME_Callisto
@@ -1425,6 +1426,7 @@ sol_jovian_league_02 = {
 		size = 5
 		has_ring = no
 	}
+	# starting gas giant moon system
 	planet = {
 		name = NAME_Jupiter
 		class = pc_gas_giant
@@ -1459,12 +1461,23 @@ sol_jovian_league_02 = {
 			flags = { jovian_league_sibling2 jovian_league_ideal_planet_class }
 		}
 		moon = {
-			# name = NAME_Europa
-			home_planet = yes
+			name = NAME_Europa
 			class = ideal_planet_class
 			size = 6
 			orbit_distance = 2.5
 			orbit_angle = 10
+			has_ring = no
+			deposit_blockers = none
+			modifiers = none
+			flags = { jovian_league_sibling1 }
+		}
+		moon = {
+			# name = NAME_Ganymede
+			class = ideal_planet_class
+			home_planet = yes
+			size = 9
+			orbit_distance = 2.5
+			orbit_angle = 80
 			has_ring = no
 			deposit_blockers = none
 			modifiers = none
@@ -1473,17 +1486,6 @@ sol_jovian_league_02 = {
 				prevent_anomaly = yes
 				generate_empire_home_planet = yes
 			}
-		}
-		moon = {
-			name = NAME_Ganymede
-			class = ideal_planet_class
-			size = 9
-			orbit_distance = 2.5
-			orbit_angle = 80
-			has_ring = no
-			deposit_blockers = none
-			modifiers = none
-			flags = { jovian_league_sibling1 }
 		}
 		moon = {
 			name = NAME_Callisto
