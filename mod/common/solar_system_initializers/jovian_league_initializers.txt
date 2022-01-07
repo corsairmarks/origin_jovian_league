@@ -128,14 +128,8 @@ unary_jovian_league_01 = {
 			size = { min = @moon_min_size max = @moon_max_size }
 			deposit_blockers = none
 			modifiers = none
-			flags = { ignore_startup_effect }
 			init_effect = {
-				prevent_anomaly = yes
-				clear_deposits = yes
-				add_modifier = {
-					modifier = terraforming_candidate
-					days = -1
-				}
+				generate_jovian_league_terraform_candidate = yes
 			}
 		}
 	}
@@ -186,18 +180,7 @@ unary_jovian_league_01 = {
 			size = { min = 7 max = 10 }
 			flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -208,18 +191,7 @@ unary_jovian_league_01 = {
 			size = { min = 6 max = 8 }
 			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -239,18 +211,7 @@ unary_jovian_league_01 = {
 			size = { min = 6 max = 9 }
 			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -261,18 +222,7 @@ unary_jovian_league_01 = {
 			size = { min = 5 max = 8 }
 			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -283,18 +233,7 @@ unary_jovian_league_01 = {
 			size = { min = 4 max = 7 }
 			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -429,14 +368,8 @@ unary_jovian_league_02 = {
 			size = { min = @moon_min_size max = @moon_max_size }
 			deposit_blockers = none
 			modifiers = none
-			flags = { ignore_startup_effect }
 			init_effect = {
-				prevent_anomaly = yes
-				clear_deposits = yes
-				add_modifier = {
-					modifier = terraforming_candidate
-					days = -1
-				}
+				generate_jovian_league_terraform_candidate = yes
 			}
 		}
 	}
@@ -449,8 +382,8 @@ unary_jovian_league_02 = {
 	}
 	planet = {
 		count = 1
-		orbit_distance = 20
 		class = pc_frozen
+		orbit_distance = 20
 		orbit_angle = { min = 90 max = 270 }
 		flags = { starting_gatherer_prohibited }
 	}
@@ -472,18 +405,7 @@ unary_jovian_league_02 = {
 		has_ring = no
 		flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
 		init_effect = {
-			random_list = {
-				50 = {
-					set_planet_flag = ignore_startup_effect
-					prevent_anomaly = yes
-					clear_deposits = yes
-					add_modifier = {
-						modifier = terraforming_candidate
-						days = -1
-					}
-				}
-				50 = { }
-			}
+			generate_jovian_league_potential_terraform_candidate = yes
 		}
 		change_orbit = @base_moon_distance
 		moon = {
@@ -504,18 +426,7 @@ unary_jovian_league_02 = {
 		has_ring = no
 		flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 		init_effect = {
-			random_list = {
-				50 = {
-					set_planet_flag = ignore_startup_effect
-					prevent_anomaly = yes
-					clear_deposits = yes
-					add_modifier = {
-						modifier = terraforming_candidate
-						days = -1
-					}
-				}
-				50 = { }
-			}
+			generate_jovian_league_potential_terraform_candidate = yes
 		}
 		change_orbit = @base_moon_distance
 		moon = {
@@ -542,18 +453,7 @@ unary_jovian_league_02 = {
 		size = { min = 10 max = 14 }
 		flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 		init_effect = {
-			random_list = {
-				50 = {
-					set_planet_flag = ignore_startup_effect
-					prevent_anomaly = yes
-					clear_deposits = yes
-					add_modifier = {
-						modifier = terraforming_candidate
-						days = -1
-					}
-				}
-				50 = { }
-			}
+			generate_jovian_league_potential_terraform_candidate = yes
 		}
 		change_orbit = @base_moon_distance
 		moon = {
@@ -564,18 +464,7 @@ unary_jovian_league_02 = {
 			size = { min = 4 max = 10 }
 			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -702,14 +591,8 @@ trinary_jovian_league_01 = {
 				size = { min = @moon_min_size max = @moon_max_size }
 				deposit_blockers = none
 				modifiers = none
-				flags = { ignore_startup_effect }
 				init_effect = {
-					prevent_anomaly = yes
-					clear_deposits = yes
-					add_modifier = {
-						modifier = terraforming_candidate
-						days = -1
-					}
+					generate_jovian_league_terraform_candidate = yes
 				}
 			}
 		}
@@ -763,18 +646,7 @@ trinary_jovian_league_01 = {
 				size = { min = 7 max = 10 }
 				flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 			moon = {
@@ -785,18 +657,7 @@ trinary_jovian_league_01 = {
 				size = { min = 6 max = 8 }
 				flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 		}
@@ -843,18 +704,7 @@ trinary_jovian_league_01 = {
 				size = { min = 6 max = 9 }
 				flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 			moon = {
@@ -865,18 +715,7 @@ trinary_jovian_league_01 = {
 				size = { min = 5 max = 8 }
 				flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 			moon = {
@@ -887,18 +726,7 @@ trinary_jovian_league_01 = {
 				size = { min = 4 max = 7 }
 				flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 		}
@@ -1011,14 +839,8 @@ trinary_jovian_league_02 = {
 				size = { min = @moon_min_size max = @moon_max_size }
 				deposit_blockers = none
 				modifiers = none
-				flags = { ignore_startup_effect }
 				init_effect = {
-					prevent_anomaly = yes
-					clear_deposits = yes
-					add_modifier = {
-						modifier = terraforming_candidate
-						days = -1
-					}
+					generate_jovian_league_terraform_candidate = yes
 				}
 			}
 		}
@@ -1082,18 +904,7 @@ trinary_jovian_league_02 = {
 			satellite_naming_policy = lower_case_latin_letters
 			flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 			change_orbit = @base_moon_distance
 			moon = {
@@ -1115,18 +926,7 @@ trinary_jovian_league_02 = {
 			satellite_naming_policy = lower_case_latin_letters
 			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 			change_orbit = @base_moon_distance
 			moon = {
@@ -1164,18 +964,7 @@ trinary_jovian_league_02 = {
 			size = { min = 10 max = 14 }
 			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 			change_orbit = @base_moon_distance
 			moon = {
@@ -1186,18 +975,7 @@ trinary_jovian_league_02 = {
 				size = { min = 4 max = 10 }
 				flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 				init_effect = {
-					random_list = {
-						50 = {
-							set_planet_flag = ignore_startup_effect
-							prevent_anomaly = yes
-							clear_deposits = yes
-							add_modifier = {
-								modifier = terraforming_candidate
-								days = -1
-							}
-						}
-						50 = { }
-					}
+					generate_jovian_league_potential_terraform_candidate = yes
 				}
 			}
 			moon = {
@@ -1275,7 +1053,6 @@ sol_jovial_league_01 = {
 		orbit_angle = 120
 		size = 18
 		has_ring = no
-		deposit_blockers = none
 		modifiers = none
 		flags = { planet_earth ignore_startup_effect }
 		init_effect = {
@@ -1294,18 +1071,7 @@ sol_jovial_league_01 = {
 			entity = cold_barren_planet_luna_entity
 			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -1317,11 +1083,10 @@ sol_jovial_league_01 = {
 		size = 13
 		has_ring = no
 		entity = barren_planet_mars_entity
+		deposit_blockers = none
+		modifiers = none
 		init_effect = {
-			add_modifier = {
-				modifier = terraforming_candidate
-				days = -1
-			}
+			generate_jovian_league_terraform_candidate = yes
 		}
 	}
 	planet = {
@@ -1370,25 +1135,19 @@ sol_jovial_league_01 = {
 			name = NAME_Amalthea
 			class = pc_barren
 			size = 4
-			orbit_distance = 4
+			orbit_distance = 7.5
 			orbit_angle = 0
 			deposit_blockers = none
 			modifiers = none
-			flags = { ignore_startup_effect }
 			init_effect = {
-				prevent_anomaly = yes
-				clear_deposits = yes
-				add_modifier = {
-					modifier = terraforming_candidate
-					days = -1
-				}
+				generate_jovian_league_terraform_candidate = yes
 			}
 		}
 		moon = {
 			name = NAME_Io
 			class = ideal_planet_class
 			size = 6
-			orbit_distance = 6
+			orbit_distance = 2.5
 			orbit_angle = 110
 			has_ring = no
 			deposit_blockers = none
@@ -1454,18 +1213,7 @@ sol_jovial_league_01 = {
 			has_ring = no
 			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -1477,18 +1225,7 @@ sol_jovial_league_01 = {
 			has_ring = no
 			flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -1520,18 +1257,7 @@ sol_jovial_league_01 = {
 			has_ring = no
 			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -1629,7 +1355,6 @@ sol_jovial_league_02 = {
 		orbit_angle = 120
 		size = 18
 		has_ring = no
-		deposit_blockers = none
 		modifiers = none
 		flags = { planet_earth ignore_startup_effect }
 
@@ -1638,6 +1363,7 @@ sol_jovial_league_02 = {
 			clear_deposits = yes
 			add_deposit = d_society_3
 		}
+		# T1 colony
 		moon = {
 			name = NAME_Luna
 			class = pc_barren_cold
@@ -1648,18 +1374,7 @@ sol_jovial_league_02 = {
 			entity = cold_barren_planet_luna_entity
 			flags = { jovian_league_t1_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -1671,14 +1386,11 @@ sol_jovial_league_02 = {
 		size = 13
 		has_ring = no
 		entity = barren_planet_mars_entity
-		flags = { jovian_league_t1_colony_ideal ignore_startup_effect starting_gatherer_prohibited }
+		flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited }
+		deposit_blockers = none
+		modifiers = none
 		init_effect = {
-			prevent_anomaly = yes
-			clear_deposits = yes
-			add_modifier = {
-				modifier = terraforming_candidate
-				days = -1
-			}
+			generate_jovian_league_terraform_candidate = yes
 		}
 	}
 	planet = {
@@ -1721,30 +1433,25 @@ sol_jovial_league_02 = {
 		size = 35
 		has_ring = no
 		entity = gas_giant_jupiter_entity
+		flags = { jovian_league_parent }
 		change_orbit = 6
 		moon = {
 			name = NAME_Amalthea
 			class = pc_barren
 			size = 4
-			orbit_distance = 4
+			orbit_distance = 7.5
 			orbit_angle = 0
 			deposit_blockers = none
 			modifiers = none
-			flags = { ignore_startup_effect }
 			init_effect = {
-				prevent_anomaly = yes
-				clear_deposits = yes
-				add_modifier = {
-					modifier = terraforming_candidate
-					days = -1
-				}
+				generate_jovian_league_terraform_candidate = yes
 			}
 		}
 		moon = {
 			name = NAME_Io
 			class = ideal_planet_class
 			size = 6
-			orbit_distance = 6
+			orbit_distance = 2.5
 			orbit_angle = 110
 			has_ring = no
 			deposit_blockers = none
@@ -1810,18 +1517,7 @@ sol_jovial_league_02 = {
 			has_ring = no
 			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 		moon = {
@@ -1833,18 +1529,7 @@ sol_jovial_league_02 = {
 			has_ring = no
 			flags = { jovian_league_t2_colony_ideal starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}
@@ -1876,18 +1561,7 @@ sol_jovial_league_02 = {
 			has_ring = no
 			flags = { jovian_league_t2_colony_secondary starting_gatherer_prohibited }
 			init_effect = {
-				random_list = {
-					50 = {
-						set_planet_flag = ignore_startup_effect
-						prevent_anomaly = yes
-						clear_deposits = yes
-						add_modifier = {
-							modifier = terraforming_candidate
-							days = -1
-						}
-					}
-					50 = { }
-				}
+				generate_jovian_league_potential_terraform_candidate = yes
 			}
 		}
 	}

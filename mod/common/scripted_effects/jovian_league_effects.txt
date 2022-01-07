@@ -72,6 +72,27 @@ setup_secondary_species = {
 	}
 }
 
+# used toset up a planet with the terraforming_candidate modifier
+# this = planet
+generate_jovian_league_terraform_candidate = {
+	set_planet_flag = ignore_startup_effect
+	prevent_anomaly = yes
+	clear_deposits = yes
+	add_modifier = {
+		modifier = terraforming_candidate
+		days = -1
+	}
+}
+
+# used for generating a 50/50 chance that a planet will have the terraforming_candidate modifier
+# this = planet
+generate_jovian_league_potential_terraform_candidate = {
+	random_list = {
+		50 = { generate_jovian_league_terraform_candidate = yes }
+		50 = { }
+	}
+}
+
 # duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
 # from appearing on specific planets, generates gatherer targets before "open" deposits that need one constructed, and avoids overwriting
 # deposits that it already added
