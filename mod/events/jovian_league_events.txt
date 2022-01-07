@@ -196,12 +196,15 @@ country_event = {
 		# select a wormhole exit that is already connected via hyperlane
 		capital_scope.solar_system = {
 			save_event_target_as = jovian_league_system
-			random_system = {
+			set_star_flag = jovian_league_system@root
+			every_neighbor_system = { set_star_flag = jovian_league_orphan_system@root }
+			random_neighbor_system = {
 				limit = {
-					has_hyperlane_to = event_target:jovian_league_system
-					count_neighbor_system = {
-						count > 0
-						limit = { NOT = { is_same_value = event_target:jovian_league_system } }
+					any_neighbor_system = {
+						NOR = {
+							is_same_value = event_target:jovian_league_system
+							has_star_flag = jovian_league_orphan_system@root
+						}
 					}
 					has_natural_wormhole = no
 					starting_system = no
@@ -210,13 +213,14 @@ country_event = {
 			}
 			if = {
 				limit = { NOT = { exists = event_target:jovian_league_exit_system } }
-				log = "jovian league wormhole exit for [jovian_league_system.GetName] expanding search to consider other empire start systems"
-				random_system = {
+				log = "jovian league wormhole exit from [jovian_league_system.GetName] expanding search to consider other empire start systems"
+				random_neighbor_system = {
 					limit = {
-						has_hyperlane_to = event_target:jovian_league_system
-						count_neighbor_system = {
-							count > 0
-							limit = { NOT = { is_same_value = event_target:jovian_league_system } }
+						any_neighbor_system = {
+							NOR = {
+								is_same_value = event_target:jovian_league_system
+								has_star_flag = jovian_league_orphan_system@root
+							}
 						}
 						has_natural_wormhole = no
 					}
@@ -224,19 +228,15 @@ country_event = {
 				}
 				if = {
 					limit = { NOT = { exists = event_target:jovian_league_exit_system } }
-					log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find a target with more than 1 hyperlane - you will probably be trapped in two isolated systems connected by a wormhole"
-					random_system = {
-						limit = {
-							has_hyperlane_to = event_target:jovian_league_system
-							has_natural_wormhole = no
-						}
+					log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target with more than 1 hyperlane - you will probably be trapped in two isolated systems connected by a wormhole"
+					random_neighbor_system = {
+						limit = { has_natural_wormhole = no }
 						save_event_target_as = jovian_league_exit_system
 					}
 					if = {
 						limit = { NOT = { exists = event_target:jovian_league_exit_system } }
-						log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
-						random_system = {
-							limit = { has_hyperlane_to = event_target:jovian_league_system }
+						log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
+						random_neighbor_system = {
 							save_event_target_as = jovian_league_exit_system
 						}
 					}
@@ -246,8 +246,11 @@ country_event = {
 
 		if = {
 			limit = { exists = event_target:jovian_league_exit_system }
+			log = "jovian league wormhole exit from [jovian_league_system.GetName] for the [Root.GetRealName] is [jovian_league_exit_system.GetName]"
+
 			# spawn wormholes
 			event_target:jovian_league_exit_system = {
+				set_star_flag = jovian_league_exit_system@root
 				event_target:jovian_league_system = {
 					prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 						spawn_natural_wormhole = {
@@ -267,7 +270,22 @@ country_event = {
 
 			# isolate system
 			event_target:jovian_league_system = {
-				isolate_system = yes
+				every_neighbor_system = {
+					remove_hyperlane = {
+						from = prev
+						to = this
+					}
+					log = "[This.GetName] neighbored [Prev.GetName]; removed hyperlane between them"
+				}
+			}
+
+			country_event = {
+				id = origin_jovian_league.9
+				days = 1
+				scopes = {
+					from = event_target:jovian_league_exit_system
+					fromfrom = event_target:jovian_league_system
+				}
 			}
 		}
 		else = {
@@ -393,6 +411,46 @@ country_event = {
 						add_district = district_mining
 					}
 				}
+			}
+		}
+	}
+}
+
+
+# triggered manually 1 day after game start in order to reconnect any sections
+# of the map isolated by jovian league starting system isolation
+# root = country
+# from = galactic_object, jovian league wormhole exit system
+# fromfrom = galactic_object, jovian league starting system
+country_event = {
+	id = origin_jovian_league.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = capital_scope
+		capital_scope.solar_system = { has_star_flag = jovian_league_system@prev }
+	}
+	immediate = {
+		log = "origin_jovian_league.9 check for isolated stars systems/\"clusters\" created when isolating [FromFrom.GetName] for the [This.GetRealName]"
+		# attempt to re-network the now-disconnected systems to the exit system
+		every_system = {
+			limit = {
+				has_star_flag = jovian_league_orphan_system@root
+				NOR = {
+					has_star_flag = jovian_league_exit_system@root
+					distance = {
+						source = from
+						type = hyperlane
+						use_bypasses = no
+						min_jumps > 1
+						max_jumps <= 10
+					}
+				}
+			}
+			log = "[This.GetName] was more than 10 jumps from [From.GetName]; adding hyperlane between them"
+			add_hyperlane = {
+				from = this
+				to = from
 			}
 		}
 	}
