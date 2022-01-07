@@ -18,6 +18,11 @@ Because I like origins with secondary species, and I had to do the work anyway t
 
 All flavors of the jovian league origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game.  Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
 
+## Localisation
+
+* English by corsairmarks (author)
+* German (Deutsch) by [Lucanoria](https://steamcommunity.com/id/Lucanoria)
+
 ## Compatibility
 
 If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for Necrophages as it connects to all of the code for necrophage conversion.
@@ -56,6 +61,7 @@ Some variants of a jovian league may start with a small negative income of one o
 * 1.1.0 Hyperlane connection bug fixes, add new jovian league starting systems
     * Ensure the jovian league starting systems don't create isolated systems or mini-clusters disconnected from the hyperlane network - special thanks to [doctornull](https://steamcommunity.com/id/doctornull)
     * Add two Jovial League starting system variants of the Sol system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
+    * Add German localisation by [Lucanoria](https://steamcommunity.com/id/Lucanoria)
 
 ## Source Code
 
