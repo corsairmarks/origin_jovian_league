@@ -998,7 +998,7 @@ trinary_jovian_league_02 = {
     }
 }
 
-sol_jovial_league_01 = {
+sol_jovian_league_01 = {
 	name = NAME_Sol
 	class = sc_g
 	asteroid_belt = {
@@ -1300,7 +1300,7 @@ sol_jovial_league_01 = {
 	}
 }
 
-sol_jovial_league_02 = {
+sol_jovian_league_02 = {
 	name = NAME_Sol
 	class = sc_g
 	asteroid_belt = {

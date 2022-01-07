@@ -60,7 +60,7 @@ Some variants of a jovian league may start with a small negative income of one o
 * 1.0.0 Initial version
 * 1.1.0 Hyperlane connection bug fixes, add new jovian league starting systems
     * Ensure the jovian league starting systems don't create isolated systems or mini-clusters disconnected from the hyperlane network - special thanks to [doctornull](https://steamcommunity.com/id/doctornull)
-    * Add two Jovial League starting system variants of the Sol system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
+    * Add two Jovian League starting system variants of the Sol system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
     * Add German localisation by [Lucanoria](https://steamcommunity.com/id/Lucanoria)
 
 ## Source Code
