@@ -21,9 +21,19 @@ country_event = {
 				}
 			}
 			add_research_option = tech_wormhole_stabilization
-			add_tech_progress = {
-				tech = tech_wormhole_stabilization
-				progress = 0.3
+			if = {
+				limit = { is_ai = yes }
+				# the AI needs more help to get out in a timely fashion
+				add_tech_progress = {
+					tech = tech_wormhole_stabilization
+					progress = 0.9
+				}
+			}
+			else = {
+				add_tech_progress = {
+					tech = tech_wormhole_stabilization
+					progress = 0.3
+				}
 			}
 		}
 		# mechanists starting techs
