@@ -32,6 +32,7 @@ origin_jovian_league_mechanists = {
 				value = ethic_fanatic_materialist
 			}
 		}
+		civics = { NOT = { value = civic_permanent_employment } }
 	}
 	random_weight = { base = 5 }
 	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
@@ -96,6 +97,7 @@ origin_jovian_league_necrophage = {
 				value = civic_death_cult
 				value = civic_death_cult_corporate
 				value = civic_hive_empath
+				value = civic_permanent_employment
 			}
 		}
 	}
