@@ -821,8 +821,6 @@ generate_jovian_league_capital_start_pops = {
 			ethos = random
 		}
 	}
-
-	generate_starting_zombie_pops_ojl = { COUNT = 2 }
 }
 
 # triggered by empire_init_capital_planet
@@ -1249,9 +1247,11 @@ generate_jovian_league_sibling1_start_pops = {
 			species = owner_species
 			ethos = random
 		}
+		generate_starting_zombie_pops_ojl = { COUNT = 2 }
 	}
-
-	generate_starting_zombie_pops_ojl = { COUNT = 1 }
+	else = {
+		generate_starting_zombie_pops_ojl = { COUNT = 3 }
+	}
 }
 
 # triggered by empire_init_capital_planet
@@ -1513,6 +1513,7 @@ generate_jovian_league_sibling2_start_pops = {
 			species = owner_species
 			ethos = random
 		}
+		generate_starting_zombie_pops_ojl = { COUNT = 1 }
 	}
 }
 
