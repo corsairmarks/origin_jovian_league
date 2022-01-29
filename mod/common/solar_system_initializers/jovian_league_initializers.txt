@@ -1043,7 +1043,7 @@ sol_jovian_league = {
 		class = pc_toxic
 		orbit_distance = 25
 		orbit_angle = 125
-		size = 20
+		size = 17
 		has_ring = no
 	}
 	planet = {
