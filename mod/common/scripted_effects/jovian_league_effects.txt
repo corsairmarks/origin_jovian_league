@@ -555,14 +555,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		if = {
 			limit = { owner = { is_spiritualist = yes } }
 			if = {
-				limit = {
-					owner = {
-						OR = {
-							has_valid_civic = civic_death_cult
-							has_valid_civic = civic_death_cult_corporate
-						}
-					}
-				}
+				limit = { owner = { is_death_cult_empire = yes } }
 				add_building = building_sacrificial_temple_1
 			}
 			else = {
@@ -572,6 +565,10 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		else_if = {
 			limit = { owner = { is_pleasure_seeker = yes } }
 			add_building = building_holo_theatres
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
 		}
 		add_district = district_city
 		add_planet_appropriate_generator_district_ojl = yes
@@ -682,13 +679,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 	}
 	if = {
 		limit = {
-			owner = {
-				OR = {
-					has_valid_civic = civic_memorialist
-					has_valid_civic = civic_hive_memorialist
-					has_valid_civic = civic_machine_memorialist
-				}
-			}
+			owner = { is_memorialist_empire = yes }
 		}
 		add_building = building_galactic_memorial_1
 	}
@@ -830,6 +821,8 @@ generate_jovian_league_capital_start_pops = {
 			ethos = random
 		}
 	}
+
+	generate_starting_zombie_pops_ojl = { COUNT = 2 }
 }
 
 # triggered by empire_init_capital_planet
@@ -994,10 +987,26 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
 		add_building = building_capital
-		add_building = building_bureaucratic_1
+		if ={
+			limit = { owner = { is_spiritualist = yes } }
+			if = {
+				limit = { owner = { is_death_cult_empire = yes } }
+				add_building = building_sacrificial_temple_1
+			}
+			else = {
+				add_building = building_temple
+			}
+		}
+		else = {
+			add_building = building_bureaucratic_1
+		}
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
 		}
 		if = {
 			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
@@ -1241,6 +1250,8 @@ generate_jovian_league_sibling1_start_pops = {
 			ethos = random
 		}
 	}
+
+	generate_starting_zombie_pops_ojl = { COUNT = 1 }
 }
 
 # triggered by empire_init_capital_planet
@@ -1668,6 +1679,10 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
 		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
+		}
 	}
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
@@ -1787,6 +1802,8 @@ generate_jovian_league_sibling3_start_pops = {
 			ethos = random
 		}
 	}
+
+	generate_starting_zombie_pops_ojl = { COUNT = 1 }
 }
 
 # this = system (galactic_object)
@@ -2215,5 +2232,33 @@ add_planet_appropriate_farming_district_ojl = {
 	}
 	else = {
 		add_district = district_farming
+	}
+}
+
+# this = planet
+# COUNT = number of Pops to which to apply trait_zombie
+generate_starting_zombie_pops_ojl = {
+	if = {
+		limit = { owner = { has_civic = civic_permanent_employment } }
+		while = {
+			count = $COUNT$
+			random_owned_pop = {
+				limit = {
+					NOT = { has_trait = trait_zombie }
+					OR = {
+						has_job = clerk
+						has_job = technician
+						has_job = miner
+						has_job = farmer
+					}
+					is_robotic_species = no
+				}
+				modify_species = {
+					species = this
+					add_trait = trait_zombie
+					add_traits_at_start_of_list = yes
+				}
+			}
+		}
 	}
 }

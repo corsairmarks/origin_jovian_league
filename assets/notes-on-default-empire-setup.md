@@ -56,6 +56,10 @@ Based on starting conditions from 3.1.2
 
 * -1 research lab, +1 dread encampment, +2 6-eng research
 
+#### Permanent Employment (civic_permanent_employment)
+
+* +1 posthumous employment
+
 #### Pleasure Seekers (civic_pleasure_seekers) but not corp hedonism
 
 * -1 commercial, +1 holo theater, +1 industrial
