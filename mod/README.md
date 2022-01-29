@@ -31,7 +31,7 @@ The randomization for ideal and "secondary" planet classes for the starting syst
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.2.\* "Herbert."  This mod is not compatible with achievements.
+Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.3 "Libra."  This mod is not compatible with achievements.
 
 ### Not Included in "Subtle Polish"
 
@@ -63,6 +63,10 @@ Some variants of a jovian league may start with a small negative income of one o
     * Add a jovian league variant of the Sol starting system - suggested by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978)
     * Add German localisation by [Lucanoria](https://steamcommunity.com/id/Lucanoria)
 * 1.2.0 AI gets extra progress on Wormhole Stabilization
+* 2.0.0 Update for Stellaris version 3.3 "Libra"
+    * Handle additional of Permanent Employment (including correct system setup and base-game restrictions)
+    * Sol starting system has Venus decreased in size (as per the base game)
+    * Jovian League setup adjusted for unity buildings and changed game mechanics
 
 ## Source Code
 
