@@ -67,6 +67,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Handle additional of Permanent Employment (including correct system setup and base-game restrictions)
     * Sol starting system has Venus decreased in size (as per the base game)
     * Jovian League setup adjusted for unity buildings and changed game mechanics
+    * Fix missing Sol neighbor systems
 
 ## Source Code
 
