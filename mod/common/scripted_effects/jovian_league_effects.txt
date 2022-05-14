@@ -697,6 +697,19 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 	else = {
 		add_building = building_research_lab_1
 	}
+	# Give Idyllic Bloom a Gaiaseeder to start with if they have room
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_idyllic_bloom
+					has_valid_civic = civic_hive_idyllic_bloom
+				}
+			}
+			free_building_slots > 0
+		}
+		add_building = building_gaiaseeders_1
+	}
 	if = {
 		limit = {
 			owner = {
