@@ -420,7 +420,6 @@ country_event = {
 	}
 }
 
-
 # triggered manually 1 day after game start in order to reconnect any sections
 # of the map isolated by jovian league starting system isolation
 # root = country
