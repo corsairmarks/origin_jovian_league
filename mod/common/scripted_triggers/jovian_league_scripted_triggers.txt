@@ -1,5 +1,6 @@
 # THIS = country
 is_jovian_league = {
+	optimize_memory
 	OR = {
 		has_origin = origin_jovian_league
 		has_origin = origin_jovian_league_mechanists
@@ -10,6 +11,7 @@ is_jovian_league = {
 
 # THIS = country
 is_biological_species_empire = {
+	optimize_memory
 	OR = {
 		is_machine_empire = no
 		has_valid_civic = civic_machine_assimilator

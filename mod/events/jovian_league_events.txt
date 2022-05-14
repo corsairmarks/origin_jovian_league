@@ -413,13 +413,7 @@ country_event = {
 				while = {
 					limit = { has_district = district_city }
 					remove_district = district_city
-					if = {
-						limit = { owner = { is_lithoid_empire = no } }
-						add_district = district_farming
-					}
-					else = {
-						add_district = district_mining
-					}
+					ojl_add_species_appropriate_food_district = yes
 				}
 			}
 		}
