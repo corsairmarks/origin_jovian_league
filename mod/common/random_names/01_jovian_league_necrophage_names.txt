@@ -1,5 +1,49 @@
 ### Jovian League Necrophages (duplicate of Necrophages from 00_empire_names.txt)
 
+# Necrophage Hive Mind
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 10
+			has_government = "gov_hive_mind"
+			has_origin = origin_jovian_league_necrophage
+			is_pirate = no
+			is_primitive = no
+			NOR = {
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+	lookups = "<necrophagers_start> [This.GetSpeciesName] <hive_mind>"
+	format = format.necrophage_hive_mind.1 # <necrophagers_start> [This.GetSpeciesName] <hive_mind>
+	noun = format.species # [This.GetSpeciesName]
+	prefix_format = format.hive_mind.1 # [This.GetSpeciesName] <hive_mind>
+	# Hungry Human Empire
+}
+
+# Necrophage Devouring Swarm
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 10
+			has_government = "gov_devouring_swarm"
+			has_origin = origin_jovian_league_necrophage
+			is_pirate = no
+			is_primitive = no
+			NOT = { is_country_type = fallen_empire }
+			NOT = { is_country_type = awakened_fallen_empire }
+		}
+	}
+	lookups = "<necrophagers_start> [This.GetSpeciesName] <devouring_swarm>"
+	format = format.necrophage_devouring_swarm.1 # <necrophagers_start> [This.GetSpeciesName] <devouring_swarm>
+	noun = format.species # [This.GetSpeciesName]
+	prefix_format = format.devouring_swarm.1 # [This.GetSpeciesName] <devouring_swarm>
+	# Human Empire
+}
+
 # Necrophages 1
 empire_name_format = {
 	random_weight = {
@@ -9,9 +53,10 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 		}
 	}
-	format = "format.necrophage.1"
-	prefix_format = "[This.Capital.System.GetName] <necrophagers>"
-	noun = "[This.Capital.System.GetName]"
+	lookups = "<necrophagers> [This.Capital.System.GetName]"
+	format = format.necrophage.1 # <necrophagers> of [This.Capital.System.GetName]
+	prefix_format = format_prefix.necrophage.1 # [This.Capital.System.GetName] <necrophagers>
+	noun = format.home_system # [This.Capital.System.GetName]
 	# Empire of Sol
 }
 
@@ -24,9 +69,10 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 		}
 	}
-	format = "format.necrophage.2"
-	prefix_format = "[This.Capital.GetName] <necrophagers>"
-	noun = "[This.Capital.GetName]"
+	lookups = "<necrophagers> [This.Capital.GetName]"
+	format = format.necrophage.2 # <necrophagers> of [This.Capital.GetName]
+	prefix_format = format_prefix.necrophage.2 # [This.Capital.GetName] <necrophagers>
+	noun = format.homeworld # [This.Capital.GetName]
 	# Empire of Earth
 }
 
@@ -39,9 +85,10 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 		}
 	}
-	format = "format.necrophage.3"
-	noun = "[This.GetSpeciesName]"
-	prefix_format = "[This.GetSpeciesName] <necrophagers>"
+	lookups = "[This.GetSpeciesName] <necrophagers>"
+	format = format.necrophage.3 # [This.GetSpeciesName] <necrophagers>
+	noun = format.species # [This.GetSpeciesName]
+	prefix_format = format.necrophage.3 # [This.GetSpeciesName] <necrophagers>
 	# Human Empire
 }
 
@@ -54,8 +101,9 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 		}
 	}
-	format = "format.necrophage.4"
-	noun = "[This.GetSpeciesName]"
-	prefix_format = "[This.GetSpeciesName] <necrophagers>"
+	lookups = "<necrophagers_start> [This.GetSpeciesName] <necrophagers>"
+	format = format.necrophage.4 # <necrophagers_start> [This.GetSpeciesName] <necrophagers>
+	noun = format.species # [This.GetSpeciesName]
+	prefix_format = format.necrophage.3 # [This.GetSpeciesName] <necrophagers>
 	# Great Human Empire
 }
