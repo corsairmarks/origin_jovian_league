@@ -1057,6 +1057,7 @@ sol_jovian_league = {
 		flags = { planet_earth ignore_startup_effect }
 
 		init_effect = {
+			save_global_event_target_as = sol_system_earth
 			prevent_anomaly = yes
 			clear_deposits = yes
 			add_deposit = d_society_3
