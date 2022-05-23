@@ -73,6 +73,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Convert `localisation_synced` into regular `localisation`
     * Convert `random_names` to the new, localised style
     * Idyllic Bloom gains a Gaia Seeder, as added in 3.4
+* 3.1.0 Minor trigger and effect enhancements
 
 ## Source Code
 
