@@ -1870,11 +1870,11 @@ generate_jovian_league_system_final_pass = {
 			limit = { is_catalytic_empire = yes }
 			if = {
 				limit = { has_valid_civic = civic_machine_servitor }
-				add_modifier = { modifier = catalyic_processing_rogue_servitor_base_resources }
+				add_modifier = { modifier = catalytic_processing_rogue_servitor_base_resources }
 			}
 			else_if = {
 				limit = { is_hive_empire = yes }
-				add_modifier = { modifier = catalyic_processing_hive_mind_base_resources }
+				add_modifier = { modifier = catalytic_processing_hive_mind_base_resources }
 			}
 		}
 	}

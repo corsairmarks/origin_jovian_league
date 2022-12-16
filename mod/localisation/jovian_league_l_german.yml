@@ -76,6 +76,6 @@
  d_obsolete_sentinel_posts_desc: "Aufgrund des Alters der $building_deployment_post$ sind die integrierten $building_sentinel_posts$ für eine moderne $job_patrol_drone£ $job_patrol_drone$ ohne eine Überholung der Anlage unbrauchbar."
  d_mothballed_sanctuary_factories: "£blocker£ Stillgelegte Fabriken"
  d_mothballed_sanctuary_factories_desc: "Unsere wenigen Bio-Trophäen verbrauchen sehr wenig Schmuck, daher wurden die Fabriken, die in das $building_organic_sanctuary$ dieses Planeten integriert sind, zur Reduzierung des £Energie£ $Energie$ Verbrauchs stillgelegt. Im Bedarfsfall können sie von einer £job_artisan_drohne£ $job_artisan_drohne$ wieder in Betrieb genommen werden."
- catalyic_processing_rogue_servitor_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_servitors$"
- catalyic_processing_hive_mind_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_hive_mind$"
+ catalytic_processing_rogue_servitor_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_servitors$"
+ catalytic_processing_hive_mind_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_hive_mind$"
  mod_country_base_alloys_produces_add: "$mod_country_alloys_produces_add$"
