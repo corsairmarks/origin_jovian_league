@@ -35,7 +35,10 @@ origin_jovian_league_mechanists = {
 		civics = { NOT = { value = civic_permanent_employment } }
 	}
 	random_weight = { base = 5 }
-	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+	modifier = {
+		planet_pop_assembly_mult = 0.15
+		ROBOT_species_trait_picks_add = 1
+	}
 	description = "origin_tooltip_jovian_league_mechanists_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
