@@ -41,6 +41,7 @@ country_event = {
 			limit = { has_origin = origin_jovian_league_mechanists }
 			give_technology = { message = no tech = tech_powered_exoskeletons }
 			give_technology = { message = no tech = tech_robotic_workers }
+			add_research_option = tech_robomodding
 		}
 	}
 }
