@@ -855,7 +855,31 @@ generate_jovian_league_capital_start_pops = {
 		}
 	}
 	ojl_setup_origin_mechanists_robot_pops = yes
+}
 
+# triggered by empire_init_capital_planet
+# this = planet (capital)
+generate_jovian_league_capital_final_pass = {
+	if = {
+		limit = { root.owner = { has_origin = origin_jovian_league } }
+		if = {
+			limit = { root.owner = { is_gestalt = no } }
+			add_modifier = {
+				modifier = prosp_uni_mod
+				days = 7200
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = prosp_uni_mod_gestalt
+				days = 7200
+			}
+		}
+	}
+	else_if = {
+		limit = { root.owner = { has_origin = origin_jovian_league_lost_colony } }
+		add_modifier = { modifier = colonial_spirit_mod }
+	}
 	if = {
 		limit = { owner = { any_owned_pop_species = { has_trait = trait_exotic_metabolism } } }
 		add_deposit = d_exotic_mountain

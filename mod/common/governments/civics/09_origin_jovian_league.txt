@@ -123,3 +123,30 @@ origin_jovian_league_necrophage = {
 	}
 	flags = { is_jovian_league custom_start_screen }
 }
+
+origin_jovian_league_lost_colony = {
+	is_origin = yes
+	playable = { always = yes }
+	max_once_global = yes
+	icon = "gfx/interface/icons/origins/origins_lost_colony.dds"
+	picture = GFX_origin_lost_colony
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	description = "origin_tooltip_jovian_league_lost_colony_effects"
+	advanced_start = no
+	non_colonizable_planet_class_neighbor = yes
+	initializers = {
+		unary_jovian_league_01
+		unary_jovian_league_02
+		trinary_jovian_league_01
+		trinary_jovian_league_02
+		sol_jovian_league
+	}
+	flags = { is_jovian_league custom_start_screen }
+}

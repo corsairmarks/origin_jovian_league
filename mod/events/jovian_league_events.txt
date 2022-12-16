@@ -48,7 +48,7 @@ country_event = {
 
 # triggered by empire_init_capital_planet
 # from = founder species
-# fromfrom = secondary species (if exists) // Corsair's Note: this appears to be broken; the default gave uses last_created_species to get the secondary
+# fromfrom = secondary species (if exists) // Corsair's Note: this appears to be broken; the default game uses last_created_species to get the secondary
 planet_event = {
 	id = origin_jovian_league.2
 	hide_window = yes
@@ -78,6 +78,7 @@ planet_event = {
 				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling1_start_buildings_and_districts = yes
 				generate_jovian_league_sibling1_start_pops = yes
+				generate_jovian_league_capital_final_pass = yes
 			}
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling2 }
