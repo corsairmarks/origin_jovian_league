@@ -1073,18 +1073,7 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		else = {
 			ojl_add_planet_appropriate_mining_district = yes
 		}
-		if = {
-			limit = { free_building_slots > 0 }
-			if = {
-				limit = { owner = { has_valid_civic = civic_environmentalist } }
-				add_building = building_ranger_lodge
-				add_blocker = { type = d_big_nature_preserve_blocker }
-			}
-			else_if = {
-				limit = { owner = { is_relentless_industrialist_empire = yes } }
-				add_building = building_coordinated_fulfillment_center_1
-			}
-		}
+		# no industry for a fulfillment center, not enough Pops to staff a ranger lodge
 	}
 	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
