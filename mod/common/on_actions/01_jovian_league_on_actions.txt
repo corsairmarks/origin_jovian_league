@@ -9,12 +9,15 @@ on_game_start_country = {
 		origin_jovian_league.5
 		# recheck jobs after all the reconfiguration
 		origin_jovian_league.6
+		origin_jovian_league_lost_colony.3
 		# switches origin from origin_jovian_league_mechanists to origin_mechanists to tie in to mechanist events/effects/weights (AI players)
 		origin_jovian_league_mechanists.1
 		# switches origin from origin_jovian_league_syncretic to origin_syncretic_evolution to tie in to syncretic evolution events/effects/weights (AI players)
 		origin_jovian_league_syncretic.1
 		# switches origin from origin_jovian_league_necrophage to origin_necrophage to tie in to necrophage events/effects/weights (AI players)
 		origin_jovian_league_necrophage.33
+		# switches origin from origin_jovian_league_lost_colony to origin_lost_colony to tie in to lost colony events/effects/weights (AI players)
+		origin_jovian_league_lost_colony.1
 		origin_jovian_league.8
 	}
 }
@@ -29,6 +32,8 @@ on_press_begin = {
 		origin_jovian_league_syncretic.2
 		# switches origin from origin_jovian_league_necrophage to origin_necrophage to tie in to necrophage events/effects/weights (non-AI players)
 		origin_jovian_league_necrophage.34
+		# switches origin from origin_jovian_league_lost_colony to origin_lost_colony to tie in to lost colony events/effects/weights (AI players)
+		origin_jovian_league_lost_colony.2
 	}
 }
 

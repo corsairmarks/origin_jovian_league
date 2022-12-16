@@ -1,0 +1,51 @@
+namespace = origin_jovian_league_lost_colony
+
+# triggered by on_game_start_country (AI only)
+# sets the custom origin to the built-in origin after setup
+country_event = {
+	id = origin_jovian_league_lost_colony.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_lost_colony
+		is_ai = yes
+	}
+	immediate = {
+		set_origin = origin_lost_colony
+	}
+}
+
+# triggered by on_press_begin (non-AI only)
+# sets the custom origin to the built-in origin after setup and the intro screen
+country_event = {
+	id = origin_jovian_league_lost_colony.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_jovian_league_lost_colony
+		is_ai = no
+	}
+	immediate = {
+		set_origin = origin_lost_colony
+	}
+}
+
+# disable AI jovian league lost colonies if advanced starts are disabled
+country_event = {
+	id = origin_jovian_league_lost_colony.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = yes
+		has_origin = origin_jovian_league_lost_colony
+		NOT = { has_country_flag = human_2 }
+		check_galaxy_setup_value = {
+			setting = num_advanced_empires
+			value <= 0
+		}
+	}
+	immediate = {
+		log = "REMOVED JOVIAN LEAGUE LOST COLONY"
+		set_origin = origin_jovian_league
+	}
+}
