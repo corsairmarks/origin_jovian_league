@@ -1,6 +1,7 @@
 origin_jovian_league = {
 	is_origin = yes
 	playable = { always = yes }
+	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_third_time_charm
 	possible = { always = yes }
@@ -21,6 +22,7 @@ origin_jovian_league = {
 origin_jovian_league_mechanists = {
 	is_origin = yes
 	playable = { has_utopia = yes }
+	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_mechanist
 	possible = {
@@ -55,6 +57,7 @@ origin_jovian_league_mechanists = {
 origin_jovian_league_syncretic = {
 	is_origin = yes
 	playable = { has_utopia = yes }
+	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_syncretic_evolution
 	possible = {
@@ -82,6 +85,7 @@ origin_jovian_league_syncretic = {
 origin_jovian_league_necrophage = {
 	is_origin = yes
 	playable = { has_necroids = yes }
+	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_necrophage
 	possible = {
