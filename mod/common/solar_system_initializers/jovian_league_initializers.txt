@@ -1313,7 +1313,7 @@ sol_jovian_league = {
 # sol_neighbor_t2_no_guaranteed_colony (Sirius without a habitable planet) regardless
 # of the value of num_guaranteed_colonies
 ojl_sol_neighbor_t1_no_guaranteed_colony = {
-	name = "NAME_Barnard's_Star"
+	name = "NAME_Barnards_Star"
 	class = sc_m
 
 	init_effect = {
