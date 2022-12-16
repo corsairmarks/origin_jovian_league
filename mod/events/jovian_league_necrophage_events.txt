@@ -34,7 +34,7 @@ country_event = {
 			else_if = {
 				limit = {
 					has_population_control = {
-						value = yes
+						type = yes
 						country = prev
 					}
 				}
@@ -86,7 +86,7 @@ country_event = {
 			else_if = {
 				limit = {
 					has_population_control = {
-						value = yes
+						type = yes
 						country = prev
 					}
 				}
