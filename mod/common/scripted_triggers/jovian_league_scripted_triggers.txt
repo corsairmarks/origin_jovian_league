@@ -6,6 +6,7 @@ is_jovian_league = {
 		has_origin = origin_jovian_league_mechanists
 		has_origin = origin_jovian_league_syncretic
 		has_origin = origin_jovian_league_necrophage
+		has_origin = origin_jovian_league_lost_colony
 	}
 }
 
