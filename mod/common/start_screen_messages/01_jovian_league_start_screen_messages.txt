@@ -116,6 +116,16 @@ part = {
 	}
 }
 
+# Lost Colony (all)
+part = {
+	location = 0
+	localization = "START_SCREEN_PART_ONE_JOVIAN_LEAGUE_LOST_COLONY"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_lost_colony
+	}
+}
+
 ### Part II ###
 
 # Regular (non-MegaCorp)
@@ -340,6 +350,16 @@ part = {
 	}
 }
 
+# Lost Colony (all)
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_LOST_COLONY"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_lost_colony
+	}
+}
+
 ### Part III ###
 
 # Wormhole
@@ -387,3 +407,13 @@ part = {
 	}
 }
 
+# Lost Colony origin notes
+part = {
+	location = 3
+	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_LOST_COLONY"
+
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_lost_colony
+	}
+}
