@@ -30,7 +30,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			num_guaranteed_colonies = 0
+			num_guaranteed_colonies <= 0
 		}
 		localization_key = jovian_league_unary_system_no_habitable_worlds
 	}
@@ -52,7 +52,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			num_guaranteed_colonies = 0
+			num_guaranteed_colonies <= 0
 		}
 		localization_key = jovian_league_trinary_system_no_habitable_worlds
 	}
