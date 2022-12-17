@@ -128,7 +128,7 @@ origin_jovian_league_lost_colony = {
 	is_origin = yes
 	playable = { always = yes }
 	max_once_global = yes
-	icon = "gfx/interface/icons/origins/origins_lost_colony.dds"
+	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_lost_colony
 	possible = {
 		ethics = {
