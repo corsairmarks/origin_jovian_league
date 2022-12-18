@@ -84,6 +84,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Update Jovian League Mechanists to show the correct bonuses and to start with specialized robots
     * Update Jovian League game start scripts to add Environmentalists and Relentless Industrialists buildings
     * Add safety checks to avoid creating the "exit" wormhole in a fallen empire or marauder system
+    * Add a jovian league variant of Lost Colony - suggested by [dsecret88](https://steamcommunity.com/id/Dragyn88)
 
 ## Source Code
 
