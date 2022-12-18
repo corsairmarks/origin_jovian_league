@@ -2,13 +2,17 @@
 
 This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
-New in version 1.1.0 is a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).  Also a special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+Also includes a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).
 
-This origin was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit.
+New for version 4.0.0, support has been added for a Lost Colony variation. Suggestion by [dsecret88](https://steamcommunity.com/id/Dragyn88).
 
 ## Notes
 
 Because there isn't a way to remove a technology from an empire, in lieu of starting the game without Hyperspace Travel (Hyperdrive I) technology, I thought it would be a good proxy to start gated behind a wormhole.  Researching the technology early-game will slow initial technological progress, but skipping it will strongly limit expansion options (notably restricting access to space mining and strategic resources).  Beware - it doesn't protect you from jump drives!
+
+Special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+
+This origin was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit.
 
 # Changes
 
@@ -27,11 +31,11 @@ All flavors of the jovian league origin will respect the special features of you
 
 If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for Necrophages as it connects to all of the code for necrophage conversion.
 
-The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with `planet_class = pc_arid` or whatever class you want. Deposits and features can be rerolled for a planet with `effect reroll_deposits = yes` (these are both built-in console commands).
+The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with `effect planet_class = pc_arid` or whatever class you want. Deposits and features can be rerolled for a planet with `effect reroll_deposits = yes` (these are both built-in console commands).
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.4 "Cepheus."  This mod is not compatible with achievements.
+Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.6 "Orion."  This mod is not compatible with achievements.
 
 ### Not Included in "Subtle Polish"
 
@@ -74,6 +78,11 @@ Some variants of a jovian league may start with a small negative income of one o
     * Convert `random_names` to the new, localised style
     * Idyllic Bloom gains a Gaia Seeder, as added in 3.4
 * 3.1.0 Minor trigger and effect enhancements
+* 4.0.0 Update for Stellaris version 3.6 "Orion" (and changes from version 3.5 "Fornax")
+    * Each Jovian League variant can only spawn once - it was getting a bit _too_ common
+    * Integrate underlying game changes (notably random empire names)
+    * Update Jovian League Mechanists to show the correct bonuses and to start with specialized robots
+    * Update Jovian League game start scripts to add Environmentalists and Relentless Industrialists buildings
 
 ## Source Code
 

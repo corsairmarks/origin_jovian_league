@@ -1,12 +1,16 @@
 [h1]Overview[/h1]
 This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
-New in version 1.1.0 is a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [url=https://steamcommunity.com/profiles/76561198071084874]Andora[/url] and [url=https://steamcommunity.com/profiles/76561199132491978]transfemgodtamer[/url].  Also a special thanks to [url=https://steamcommunity.com/id/doctornull]doctornull[/url] for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+Also includes a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [url=https://steamcommunity.com/profiles/76561198071084874]Andora[/url] and [url=https://steamcommunity.com/profiles/76561199132491978]transfemgodtamer[/url].
 
-This origin was inspired by comments from [url=https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/]this[/url] post on Reddit.
+New for version 4.0.0, support has been added for a Lost Colony variation. Suggestion by [url=https://steamcommunity.com/id/Dragyn88]dsecret88[/url].
 
 [h2]Notes[/h2]
 Because there isn't a way to remove a technology from an empire, in lieu of starting the game without Hyperspace Travel (Hyperdrive I) technology, I thought it would be a good proxy to start gated behind a wormhole.  Researching the technology early-game will slow initial technological progress, but skipping it will strongly limit expansion options (notably restricting access to space mining and strategic resources).  Beware - it doesn't protect you from jump drives!
+
+Special thanks to [url=https://steamcommunity.com/id/doctornull]doctornull[/url] for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
+
+This origin was inspired by comments from [url=https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/]this[/url] post on Reddit.
 
 [h1]Changes[/h1]
 A brand-new origin "jovian league" with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
@@ -23,11 +27,11 @@ All flavors of the jovian league origin will respect the special features of you
 [h2]Compatibility[/h2]
 If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for necrophages as it connects to all of the code for Necrophage conversion.
 
-The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with [b]planet_class = pc_arid[/b] or whatever class you want. Deposits and features can be rerolled for a planet with [b]effect reroll_deposits = yes[/b] (these are both built-in console commands).
+The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with [b]effect planet_class = pc_arid[/b] or whatever class you want. Deposits and features can be rerolled for a planet with [b]effect reroll_deposits = yes[/b] (these are both built-in console commands).
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod does not overwrite [i]any[/i] base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.4 "Cepheus."  This mod is not compatible with achievements.
+Finally - because this mod does not overwrite [i]any[/i] base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.6 "Orion."  This mod is not compatible with achievements.
 
 [h3]Not Included in "Subtle Polish"[/h3]
 This mod is intentionally not included in my modpack [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089]Subtle Polish: A Collection of Fixes and Enhancements[/url] because it is a new origin.  It is otherwise fully compatible.
@@ -52,4 +56,4 @@ See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2682659676
 [h2]Source Code[/h2]
 Hosted on [url=https://github.com/corsairmarks/origin_jovian_league]GitHub[/url]
 
-[url=https://discord.gg/bHVez2C][img]https://i.imgur.com/4Und3QN.png[/img][/url]
+[url=https://discord.gg/2qjkAF8DY7][img]https://i.imgur.com/4Und3QN.png[/img][/url]
