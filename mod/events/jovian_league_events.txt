@@ -219,6 +219,8 @@ country_event = {
 						}
 					}
 					has_natural_wormhole = no
+					is_fe_cluster = no
+					is_marauder_cluster = no
 					starting_system = no
 				}
 				save_event_target_as = jovian_league_exit_system
@@ -235,21 +237,39 @@ country_event = {
 							}
 						}
 						has_natural_wormhole = no
+						is_fe_cluster = no
+						is_marauder_cluster = no
 					}
 					save_event_target_as = jovian_league_exit_system
 				}
 				if = {
 					limit = { NOT = { exists = event_target:jovian_league_exit_system } }
-					log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target with more than 1 hyperlane - you will probably be trapped in two isolated systems connected by a wormhole"
+					log = "jovian league wormhole exit from [jovian_league_system.GetName] expanding search to consider other fallen empire/marauder systems"
 					random_neighbor_system = {
-						limit = { has_natural_wormhole = no }
+						limit = {
+							any_neighbor_system = {
+								NOR = {
+									is_same_value = event_target:jovian_league_system
+									has_star_flag = jovian_league_orphan_system@root
+								}
+							}
+							has_natural_wormhole = no
+						}
 						save_event_target_as = jovian_league_exit_system
 					}
 					if = {
 						limit = { NOT = { exists = event_target:jovian_league_exit_system } }
-						log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
+						log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target with more than 1 hyperlane - you will probably be trapped in two isolated systems connected by a wormhole"
 						random_neighbor_system = {
+							limit = { has_natural_wormhole = no }
 							save_event_target_as = jovian_league_exit_system
+						}
+						if = {
+							limit = { NOT = { exists = event_target:jovian_league_exit_system } }
+							log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
+							random_neighbor_system = {
+								save_event_target_as = jovian_league_exit_system
+							}
 						}
 					}
 				}

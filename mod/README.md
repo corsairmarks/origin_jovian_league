@@ -83,6 +83,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Integrate underlying game changes (notably random empire names)
     * Update Jovian League Mechanists to show the correct bonuses and to start with specialized robots
     * Update Jovian League game start scripts to add Environmentalists and Relentless Industrialists buildings
+    * Add safety checks to avoid creating the "exit" wormhole in a fallen empire or marauder system
 
 ## Source Code
 
