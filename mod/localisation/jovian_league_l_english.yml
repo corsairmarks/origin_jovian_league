@@ -71,6 +71,22 @@
  jovian_league_trinary_system_no_habitable_worlds: "The planets and moons orbiting the companion stars promise access to resources in short supply on our home moon now that they can be accessed economically. However, they may be the last worlds we conquer."
  jovian_league_trinary_system_one_habitable_world: "Two of the worlds belonging to the system secondary star display the telltale signs of a nitrogen-oxygen atmosphere. $jovian_league_system_any_habitable_worlds_end$"
  jovian_league_trinary_system_two_habitable_worlds: "Many worlds circling both the system secondary and tertiary stars display the telltale signs of a nitrogen-oxygen atmosphere. $jovian_league_system_any_habitable_worlds_end$"
+
+ # Sol works as-is with 3 and 4 (but not Lost Colony)
+
+ # TODO: special description for Sol start?
+ START_SCREEN_VOID_DWELLERS_SOL: "To most, the vacuum of space is a hostile environment to be conquered or overcome. To us, it is home. For thousands of years, our species has resided on three space stations, each orbiting a different planet in our dilapidated solar system. Whether they were built by our ancestors or someone else, we do not know.\n\nAlthough our biology would suggest that our species at some point originated on a planet, recorded history makes no mention of it. Some speculate that the toxic wasteland of a planet found beneath one of our stations is the lost homeworld of our species, but the truth may never be known.\n\nIt has only been a few centuries since spaceflight allowing travel between our three stations was invented - or rediscovered, depending on who you ask. Suspicion and mistrust gradually gave way to trade and mutual cooperation. By the time of our first hyperdrive, the three habitats had united under one flag."
+
+ # Sol: T1 (with 1 or 2 guaranteed worlds) are Luna and Mars
+ # Sol: T2 (only with 2 guaranteed worlds) are Saturn's moons Enceladus and Titan, plus Neptune's moon Triton
+ jovian_league_sol_system_description: "Our fascination with our sibling moons lead us to a vast understanding of our jovian system and the inner solar system. The outer solar system was obscured by a dense astroid belt and an ice asteroid belt. The belts hampered our ability to fully exploit the outer system until propulsion technologies enabled navigation outside the system plane and back. [GetJovianLeagueSolOuterSystemDescription]"
+ jovian_league_sol_system_no_habitable_worlds: "The planets and moons beyond the belts promise access to resources in short supply on our home moon now that they can be accessed economically. However, they may be the last worlds we conquer."
+ jovian_league_sol_system_one_habitable_world: "In defiance of our understanding of our understanding of the habitable zone around stars, two of these worlds display the telltale signs of a nitrogen-oxygen atmosphere. $jovian_league_system_any_habitable_worlds_end$"
+ jovian_league_sol_system_two_habitable_worlds: "In defiance of our understanding of our understanding of the habitable zone around stars, many of the outer worlds display the telltale signs of a nitrogen-oxygen atmosphere. $jovian_league_system_any_habitable_worlds_end$"
+
+
+
+
  jovian_league_system_any_habitable_worlds_end: "We are again ready to expand to the worlds within our grasp... although they may be the last."
  d_malformed_synapse_nodes: "£blocker£ Malformed $building_hive_node$"
  d_malformed_synapse_nodes_desc: "These Core-integrated $building_hive_node$ did not develop properly when the colony was first established. They retransmit the will of the Hive, but the specialized interfaces for £job_synapse_drone£ $job_synapse_drone_plural$ require regrowth."
