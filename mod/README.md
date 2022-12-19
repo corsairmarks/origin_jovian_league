@@ -85,6 +85,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Update Jovian League game start scripts to add Environmentalists and Relentless Industrialists buildings
     * Add safety checks to avoid creating the "exit" wormhole in a fallen empire or marauder system
     * Add a jovian league variant of Lost Colony - suggested by [dsecret88](https://steamcommunity.com/id/Dragyn88)
+* 4.0.1 Fix a bug with the trigger that helps determine the correct type of generator districts for a planet
 
 ## Source Code
 
