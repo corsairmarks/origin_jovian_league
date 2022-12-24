@@ -68,6 +68,7 @@ planet_event = {
 		generate_jovian_league_capital_start_deposits_and_blockers = yes
 		generate_jovian_league_capital_start_buildings_and_districts = yes
 		generate_jovian_league_capital_start_pops = yes
+		generate_jovian_league_capital_final_pass = yes
 		solar_system = {
 			# from here we can find the primary moons, T1 moons/planets, and T2 moons/planets
 			save_jovian_ideal_design_pc = yes
@@ -78,7 +79,6 @@ planet_event = {
 				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling1_start_buildings_and_districts = yes
 				generate_jovian_league_sibling1_start_pops = yes
-				generate_jovian_league_capital_final_pass = yes
 			}
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling2 }
@@ -105,7 +105,7 @@ planet_event = {
 			}
 			# set up T1
 			if = {
-				limit = { num_guaranteed_colonies >= 1 }
+				limit = { num_guaranteed_colonies > 0 }
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t1_colony_ideal }
 					if = {
@@ -129,7 +129,7 @@ planet_event = {
 			}
 			# set up T2
 			if = {
-				limit = { num_guaranteed_colonies >= 2 }
+				limit = { num_guaranteed_colonies > 1 }
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t2_colony_ideal }
 					if = {
