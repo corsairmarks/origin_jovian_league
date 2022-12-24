@@ -73,16 +73,47 @@ setup_secondary_species = {
 	}
 }
 
-# used toset up a planet with the terraforming_candidate modifier
+# used to set up a planet with the terraforming_candidate modifier
 # this = planet
 generate_jovian_league_terraform_candidate = {
 	optimize_memory
 	set_planet_flag = ignore_startup_effect
 	prevent_anomaly = yes
 	clear_deposits = yes
-	add_modifier = {
-		modifier = terraforming_candidate
-		days = -1
+	if = {
+		limit = { colonizable_planet = no }
+		if = {
+			limit = {
+				NOR = {
+					is_planet_class = pc_frozen
+					is_planet_class = pc_toxic
+				}
+			}
+			add_modifier = {
+				modifier = terraforming_candidate
+				days = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_aquatics = yes
+				is_planet_class = pc_frozen
+			}
+			add_modifier = {
+				modifier = frozen_terraforming_candidate
+				days = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_toxoids = yes
+				is_planet_class = pc_toxic
+			}
+			add_modifier = {
+				modifier = toxic_terraforming_candidate
+				days = -1
+			}
+		}
 	}
 }
 
