@@ -89,6 +89,7 @@ Some variants of a jovian league may start with a small negative income of one o
 * 4.0.2 Bugfix patch
     * Fix a bug where empires were getting (many) Terraforming Candidate modifiers on already-colonizable worlds - they are intended to have a chance to spawn when the number of guaranteed colonies is 0 or 1
     * Fix a bug where Prosperous Unification/Colonial Spirit/Exotic Mountains spawned on the wrong Jovian League planet (was spawning on the first "sibling" instead of the capital)
+* 4.0.3 Reroll the random seed between calls to a couple randomized effects
 
 ## Source Code
 

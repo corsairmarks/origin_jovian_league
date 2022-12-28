@@ -125,6 +125,7 @@ generate_jovian_league_potential_terraform_candidate = {
 		50 = { generate_jovian_league_terraform_candidate = yes }
 		50 = { }
 	}
+	reroll_random = yes
 }
 
 # duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
@@ -2264,6 +2265,7 @@ change_to_random_secondary_pc = {
 			change_pc = pc_nuked
 		}
 		reroll_deposits = yes
+		reroll_random = yes
 	}
 	else = {
 		log_error = "cannot set planet class to a random secondary if jovian_league_ideal_planet_class_code is not set"
@@ -2275,6 +2277,7 @@ change_to_random_normal_pc = {
 	optimize_memory
 	change_pc = "rl_habitable_normal"
 	reroll_deposits = yes
+	reroll_random = yes
 }
 
 # this = planet
