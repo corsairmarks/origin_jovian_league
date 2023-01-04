@@ -2374,17 +2374,44 @@ ojl_setup_civic_permanent_employment_zombie_pops = {
 ojl_setup_origin_mechanists_robot_pops = {
 	if = {
 		limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+		modify_species = {
+			species = event_target:jovian_league_secondary_species
+			add_trait = trait_robot_power_drills
+			add_trait = trait_robot_bulky
+			add_trait = trait_robot_high_maintenance
+			add_traits_at_start_of_list = yes
+			change_scoped_species = no
+			effect = {
+				save_event_target_as = miner_robot
+			}
+		}
+		modify_species = {
+			species = event_target:jovian_league_secondary_species
+			add_trait = trait_robot_harvesters
+			add_trait = trait_robot_bulky
+			add_trait = trait_robot_high_maintenance
+			add_traits_at_start_of_list = yes
+			change_scoped_species = no
+			effect = {
+				save_event_target_as = farmer_robot
+			}
+		}
+		modify_species = {
+			species = event_target:jovian_league_secondary_species
+			add_trait = trait_robot_superconductive
+			add_trait = trait_robot_bulky
+			add_trait = trait_robot_high_maintenance
+			add_traits_at_start_of_list = yes
+			change_scoped_species = no
+			effect = {
+				save_event_target_as = technician_robot
+			}
+		}
 		every_owned_pop = {
 			limit = { is_robotic_species = yes }
 			if = {
 				limit = { has_job = miner }
-				modify_species = {
-					species = this
-					add_trait = trait_robot_power_drills
-					add_trait = trait_robot_bulky
-					add_trait = trait_robot_high_maintenance
-					add_traits_at_start_of_list = yes
-				}
+				change_species = event_target:miner_robot
 			}
 			else_if = {
 				limit = {
@@ -2393,23 +2420,11 @@ ojl_setup_origin_mechanists_robot_pops = {
 						has_job = angler
 					}
 				}
-				modify_species = {
-					species = this
-					add_trait = trait_robot_harvesters
-					add_trait = trait_robot_bulky
-					add_trait = trait_robot_high_maintenance
-					add_traits_at_start_of_list = yes
-				}
+				change_species = event_target:farmer_robot
 			}
 			else_if = {
 				limit = { has_job = technician }
-				modify_species = {
-					species = this
-					add_trait = trait_robot_superconductive
-					add_trait = trait_robot_bulky
-					add_trait = trait_robot_high_maintenance
-					add_traits_at_start_of_list = yes
-				}
+				change_species = event_target:technician_robot
 			}
 		}
 	}
