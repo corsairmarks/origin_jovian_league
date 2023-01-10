@@ -1,4 +1,4 @@
-# THIS = country
+# this = country
 is_jovian_league = {
 	optimize_memory
 	OR = {
@@ -10,7 +10,7 @@ is_jovian_league = {
 	}
 }
 
-# THIS = country
+# this = country
 is_biological_species_empire = {
 	optimize_memory
 	OR = {

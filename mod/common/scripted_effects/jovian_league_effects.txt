@@ -28,7 +28,7 @@ setup_secondary_species = {
 			}
 		}
 		last_created_species = {
-			set_species_flag = syncretic_species@PREV
+			set_species_flag = syncretic_species@prev
 			# syncretic/necrophage secondary species rights reset in origin_jovian_league.5
 			save_event_target_as = jovian_league_secondary_species
 		}
@@ -36,13 +36,13 @@ setup_secondary_species = {
 	else_if = {
 		limit = { has_valid_civic = civic_machine_servitor }
 		last_created_species = {
-			set_species_flag = organic_trophy_species@PREV
+			set_species_flag = organic_trophy_species@prev
 			set_citizenship_type = {
-				country = PREV
+				country = prev
 				type = citizenship_limited
 			}
 			set_living_standard = {
-				country = PREV
+				country = prev
 				type = living_standard_organic_trophy
 			}
 			save_event_target_as = jovian_league_secondary_species
@@ -51,13 +51,13 @@ setup_secondary_species = {
 	else_if = {
 		limit = { has_valid_civic = civic_machine_assimilator }
 		last_created_species = {
-			set_species_flag = cyborg_species@PREV
+			set_species_flag = cyborg_species@prev
 			set_citizenship_type = {
-				country = PREV
+				country = prev
 				type = citizenship_full_machine
 			}
 			set_living_standard = {
-				country = PREV
+				country = prev
 				type = living_standard_hive_mind
 			}
 			save_event_target_as = jovian_league_secondary_species
@@ -67,7 +67,7 @@ setup_secondary_species = {
 		limit = { has_origin = origin_jovian_league_mechanists }
 		create_built_robot_species = yes
 		last_created_species = {
-			set_species_flag = mechanist_robot_species@PREV
+			set_species_flag = mechanist_robot_species@prev
 			save_event_target_as = jovian_league_secondary_species
 		}
 	}
@@ -2028,10 +2028,10 @@ save_jovian_ideal_design_pc = {
 				log = "the planet ideal design class representative is not one of the 9 basic classes or pc_nuked - using the default code"
 			}
 		}
-		PREV = {
+		prev = {
 			set_variable = {
 				which = jovian_league_ideal_planet_class_code
-				value = PREV.jovian_league_ideal_planet_class_code
+				value = prev.jovian_league_ideal_planet_class_code
 			}
 		}
 	}
@@ -2041,10 +2041,10 @@ save_jovian_ideal_design_pc = {
 change_to_ideal_pc = {
 	optimize_memory
 	if = {
-		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
+		limit = { prev = { is_variable_set = jovian_league_ideal_planet_class_code } }
 		set_variable = {
 			which = jovian_league_ideal_planet_class_code
-			value = PREV.jovian_league_ideal_planet_class_code
+			value = prev.jovian_league_ideal_planet_class_code
 		}
 		if = {
 			limit = { has_modifier = terraforming_candidate }
@@ -2158,10 +2158,10 @@ change_to_ideal_pc = {
 change_to_random_secondary_pc = {
 	optimize_memory
 	if = {
-		limit = { PREV = { is_variable_set = jovian_league_ideal_planet_class_code } }
+		limit = { prev = { is_variable_set = jovian_league_ideal_planet_class_code } }
 		set_variable = {
 			which = jovian_league_ideal_planet_class_code
-			value = PREV.jovian_league_ideal_planet_class_code
+			value = prev.jovian_league_ideal_planet_class_code
 		}
 		if = {
 			limit = { has_modifier = terraforming_candidate }
