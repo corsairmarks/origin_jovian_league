@@ -424,7 +424,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_global_flag = agrarian_idyll_lithoid_installed
+		has_agrarian_idyll_lithoid_active = yes
 		is_jovian_league = yes
 		has_valid_civic = civic_agrarian_idyll
 	}
