@@ -37,13 +37,13 @@ Because the jovian league origin starts the owner with four colonized moons, it 
 
 Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.6 "Orion."  This mod is not compatible with achievements.
 
-### Not Included in "Subtle Polish"
-
-This mod is intentionally not included in my modpack [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089) because it is a new origin.  It is otherwise fully compatible.
-
 ### When to Install
 
 This mod should be added before starting a new game.  The main effect of new origins and starting systems are only available during empire creation, and the custom code to set up the new systems only executed during empire initialization.  This mod does define some new deposits and related events, and thus is not recommended to be removed during a game.  If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
+
+### Not Included in "Subtle Polish"
+
+This mod is intentionally not included in my modpack [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089) because it is a new origin.  It is otherwise fully compatible.
 
 ### Optional Mod Dependencies
 
@@ -53,7 +53,7 @@ This mod should be added before starting a new game.  The main effect of new ori
 
 [Yet Another Planetary Sky Fix](https://steamcommunity.com/sharedfiles/filedetails/?id=2527918521) to add visible, ringed gas giants to the planetary sky graphics for your starting colony worlds.  Highly recommended to use another UI-expanding mod such as [Bigger Planet View](https://steamcommunity.com/sharedfiles/filedetails/?id=1587178040) or [Planetary Diversity - Planet View](https://steamcommunity.com/sharedfiles/filedetails/?id=1866576239) to see the full-height planet graphics, which makes the variant skies easier to see.
 
-### Known Issues
+## Known Issues
 
 The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
 
