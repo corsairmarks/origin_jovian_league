@@ -45,7 +45,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "REMOVED JOVIAN LEAGUE LOST COLONY"
+		log = "REMOVED JOVIAN LEAGUE LOST COLONY FROM [This.GetRealName]"
 		set_origin = origin_jovian_league
 	}
 }
