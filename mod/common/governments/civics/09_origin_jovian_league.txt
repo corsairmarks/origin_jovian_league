@@ -36,7 +36,7 @@ origin_jovian_league_mechanists = {
 		}
 		civics = { NOT = { value = civic_permanent_employment } }
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 	modifier = {
 		planet_pop_assembly_mult = 0.15
 		ROBOT_species_trait_picks_add = 1
@@ -64,7 +64,7 @@ origin_jovian_league_syncretic = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		civics = { NOT = { value = civic_fanatic_purifiers } }
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_syncretic_effects"
 	has_secondary_species = {
 		title = civic_syncretic_evolution_secondary_species
@@ -108,7 +108,7 @@ origin_jovian_league_necrophage = {
 			}
 		}
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_necrophage_effects"
 	traits = { trait = trait_necrophage }
 	has_secondary_species = { title = civic_necrophage_secondary_species }
@@ -132,12 +132,10 @@ origin_jovian_league_lost_colony = {
 	picture = GFX_origin_lost_colony
 	possible = {
 		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
+			NOT = { value = ethic_gestalt_consciousness }
 		}
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_lost_colony_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
