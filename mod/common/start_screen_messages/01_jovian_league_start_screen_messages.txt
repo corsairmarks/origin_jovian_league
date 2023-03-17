@@ -126,6 +126,8 @@ part = {
 	}
 }
 
+# TODO: intro for 3 new flavors - shroud, toxic, fotd
+
 ### Part II ###
 
 # Regular (non-MegaCorp)
@@ -417,3 +419,7 @@ part = {
 		has_origin = origin_jovian_league_lost_colony
 	}
 }
+
+# TODO: outtro for 3 new flavors - shroud, toxic, fotd
+
+# TODO: eager explorer civics need flavor

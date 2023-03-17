@@ -7,6 +7,9 @@ is_jovian_league = {
 		has_origin = origin_jovian_league_syncretic
 		has_origin = origin_jovian_league_necrophage
 		has_origin = origin_jovian_league_lost_colony
+		has_origin = origin_jovian_league_shroudwalker_apprentice
+		has_origin = origin_jovian_league_toxic_knights
+		has_origin = origin_jovian_league_fear_of_the_dark
 	}
 }
 
