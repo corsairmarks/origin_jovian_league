@@ -82,3 +82,10 @@
  catalytic_processing_rogue_servitor_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_servitors$"
  catalytic_processing_hive_mind_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_hive_mind$"
  mod_country_base_alloys_produces_add: "$mod_country_alloys_produces_add$"
+
+ # localisation to make the game happy with the conditional content
+ # matches localisation from Planetary Diversity so that it won't matter which mod loads first
+ d_technocanal: "Techno-Canal System"
+ d_technocanal_blocker: "$d_technocanal$"
+ technoorganic: "Techno-Organic Planet"
+ technoorganic2: "$technoorganic$"
