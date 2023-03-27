@@ -382,201 +382,260 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 		}
 	}
 
-	switch = {
-		trigger = is_planet_class
-		pc_arid = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
-
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
-
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_bountiful_plains
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_tropical_island
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arid
+				is_pd_arid = yes
 			}
 		}
-		pc_desert = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_nutritious_mudland
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_marvelous_oasis
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_bountiful_plains
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_tropical_island
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_desert
+				is_pd_desert = yes
 			}
 		}
-		pc_savannah = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_bountiful_plains
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_black_soil
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_nutritious_mudland
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_marvelous_oasis
+		}
+
+		set_planet_flag = tasty_desert
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_savannah
+				is_pd_savannah = yes
 			}
 		}
-		pc_continental = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_rugged_woods
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_black_soil
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_bountiful_plains
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_black_soil
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_continental
+				is_pd_continental = yes
 			}
 		}
-		pc_ocean = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_green_hills
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_submerged_ore_veins
-			}
-			else = {
-				add_deposit = d_teeming_reef
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_rugged_woods
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_black_soil
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_ocean
+				is_pd_ocean = yes
 			}
 		}
-		pc_tropical = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_green_hills
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_submerged_ore_veins
-			}
-			else = {
-				add_deposit = d_tropical_island
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_green_hills
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_submerged_ore_veins
+		}
+		else = {
+			add_deposit = d_teeming_reef
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tropical
+				is_pd_tropical = yes
 			}
 		}
-		pc_alpine = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_forgiving_tundra
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_fungal_forest
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_green_hills
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_submerged_ore_veins
+		}
+		else = {
+			add_deposit = d_tropical_island
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_alpine
+				is_pd_alpine = yes
 			}
 		}
-		pc_arctic = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_lichen_fields
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_fungal_forest
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_forgiving_tundra
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_fungal_forest
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arctic
+				is_pd_arctic = yes
 			}
 		}
-		pc_tundra = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_forgiving_tundra
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_rich_mountain
-			}
-			else = {
-				add_deposit = d_fungal_forest
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_lichen_fields
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_fungal_forest
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tundra
+				is_pd_tundra = yes
 			}
 		}
-		pc_nuked = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 3 (4) farming (lithoids swap 3 minerals)
-			add_deposit = d_lichen_fields
-			if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_deposit = d_submerged_ore_veins
-			}
-			else = {
-				add_deposit = d_fungal_forest
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_forgiving_tundra
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_rich_mountain
+		}
+		else = {
+			add_deposit = d_fungal_forest
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_nuked
+				is_pd_nuked = yes
 			}
 		}
-		default = {
-			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_searing_desert
+
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
+
+		# 1 + 3 (4) farming (lithoids swap 3 minerals)
+		add_deposit = d_lichen_fields
+		if = {
+			limit = { owner = { is_lithoid_empire = yes } }
+			add_deposit = d_submerged_ore_veins
 		}
+		else = {
+			add_deposit = d_fungal_forest
+		}
+	}
+	else = {
+		log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
 	}
 }
 
@@ -735,20 +794,21 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		add_building = building_galactic_memorial_1
 	}
 	if = {
-		limit = { owner = { has_valid_civic = civic_reanimated_armies } }
-		add_building = building_dread_encampment
-	}
-	else = {
-		add_building = building_research_lab_1
+		limit = { owner = { is_eager_explorer_empire = no } }
+		if = {
+			limit = { owner = { has_valid_civic = civic_reanimated_armies } }
+			add_building = building_dread_encampment
+		}
+		else = {
+			add_building = building_research_lab_1
+		}
 	}
 	# Give Idyllic Bloom a Gaiaseeder to start with if they have room
 	if = {
 		limit = {
 			owner = {
-				OR = {
-					has_valid_civic = civic_idyllic_bloom
-					has_valid_civic = civic_hive_idyllic_bloom
-				}
+				is_idyllic_bloom_empire = yes
+				NOT = { has_origin = origin_life_seeded }
 			}
 			free_building_slots > 0
 		}
@@ -770,7 +830,12 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		add_district = district_industrial
 	}
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league
+				is_eager_explorer_empire = no
+			}
+		}
 		add_district = district_industrial
 	}
 }
@@ -819,7 +884,7 @@ generate_jovian_league_capital_start_pops = {
 	}
 	else_if = {
 		limit = {
-			owner = { 
+			owner = {
 				OR = {
 					has_origin = origin_jovian_league_mechanists
 					has_valid_civic = civic_machine_servitor
@@ -849,7 +914,7 @@ generate_jovian_league_capital_start_pops = {
 	}
 
 	while = {
-		limit = { num_pops < 12 }
+		limit = { num_pops < 12 } # TODO
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -937,141 +1002,200 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 		add_deposit = d_mothballed_sanctuary_factories
 	}
 
-	switch = {
-		trigger = is_planet_class
-		pc_arid = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
-
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_rich_mountain
-
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_great_river
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arid
+				is_pd_arid = yes
+			}
 		}
-		pc_desert = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_rich_mountain
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_nutritious_mudland
-			add_deposit = d_great_river
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_great_river
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_desert
+				is_pd_desert = yes
+			}
 		}
-		pc_savannah = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 2 + 3 (5) mining
-			add_deposit = d_prosperous_mesa
-			add_deposit = d_submerged_ore_veins
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_nutritious_mudland
+		add_deposit = d_great_river
+
+		set_planet_flag = tasty_desert
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_savannah
+				is_pd_savannah = yes
+			}
 		}
-		pc_continental = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 2 + 3 (5) mining
-			add_deposit = d_prosperous_mesa
-			add_deposit = d_rich_mountain
+		# 2 + 3 (5) mining
+		add_deposit = d_prosperous_mesa
+		add_deposit = d_submerged_ore_veins
 
-			# 1 + 2 (3) farming
-			add_deposit = d_rugged_woods
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_continental
+				is_pd_continental = yes
+			}
 		}
-		pc_ocean = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_submerged_ore_veins
+		# 2 + 3 (5) mining
+		add_deposit = d_prosperous_mesa
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_rugged_woods
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_ocean
+				is_pd_ocean = yes
+			}
 		}
-		pc_tropical = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 2 + 3 (5) mining
-			add_deposit = d_prosperous_mesa
-			add_deposit = d_submerged_ore_veins
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_submerged_ore_veins
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tropical
+				is_pd_tropical = yes
+			}
 		}
-		pc_alpine = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_rich_mountain
+		# 2 + 3 (5) mining
+		add_deposit = d_prosperous_mesa
+		add_deposit = d_submerged_ore_veins
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_alpine
+				is_pd_alpine = yes
+			}
 		}
-		pc_arctic = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_rich_mountain
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arctic
+				is_pd_arctic = yes
+			}
 		}
-		pc_tundra = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_rich_mountain
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tundra
+				is_pd_tundra = yes
+			}
 		}
-		pc_nuked = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 2 + 3 (5) mining
-			add_deposit = d_ore_rich_caverns
-			add_deposit = d_submerged_ore_veins
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_rich_mountain
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_nuked
+				is_pd_nuked = yes
+			}
 		}
-		default = {
-			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
-		}
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_searing_desert
+
+		# 2 + 3 (5) mining
+		add_deposit = d_ore_rich_caverns
+		add_deposit = d_submerged_ore_veins
+
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else = {
+		log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
 	}
 }
 
@@ -1302,7 +1426,7 @@ generate_jovian_league_sibling1_start_pops = {
 	}
 
 	while = {
-		limit = { num_pops < 10 }
+		limit = { num_pops < 10 } # TODO
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1326,7 +1450,7 @@ generate_jovian_league_sibling1_start_pops = {
 			ethos = random
 		}
 	}
-	
+
 	if = {
 		limit = {
 			owner = {
@@ -1370,143 +1494,200 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 		add_deposit = d_obsolete_sentinel_posts
 	}
 
-	switch = {
-		trigger = is_planet_class
-		pc_arid = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
-
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
-
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_great_river
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arid
+				is_pd_arid = yes
+			}
 		}
-		pc_desert = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_nutritious_mudland
-			add_deposit = d_great_river
-
-			set_planet_flag = tasty_desert
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_great_river
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_desert
+				is_pd_desert = yes
+			}
 		}
-		pc_savannah = {
-			# 1 + 2 (3) energy
-			add_deposit = d_arid_highlands
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_nutritious_mudland
+		add_deposit = d_great_river
+
+		set_planet_flag = tasty_desert
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_savannah
+				is_pd_savannah = yes
+			}
 		}
-		pc_continental = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_arid_highlands
+		add_deposit = d_searing_desert
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_rugged_woods
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_continental
+				is_pd_continental = yes
+			}
 		}
-		pc_ocean = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_rugged_woods
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_ocean
+				is_pd_ocean = yes
+			}
 		}
-		pc_tropical = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_rushing_waterfalls
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tropical
+				is_pd_tropical = yes
+			}
 		}
-		pc_alpine = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_rushing_waterfalls
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_alpine
+				is_pd_alpine = yes
+			}
 		}
-		pc_arctic = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arctic
+				is_pd_arctic = yes
+			}
 		}
-		pc_tundra = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_frozen_gas_lake
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tundra
+				is_pd_tundra = yes
+			}
 		}
-		pc_nuked = {
-			# 1 + 2 (3) energy
-			add_deposit = d_hot_springs
-			add_deposit = d_searing_desert
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_frozen_gas_lake
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_nuked
+				is_pd_nuked = yes
+			}
 		}
-		default = {
-			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
-		}
+		# 1 + 2 (3) energy
+		add_deposit = d_hot_springs
+		add_deposit = d_searing_desert
+
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
+
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else = {
+		log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
 	}
 }
 
@@ -1543,7 +1724,12 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league
+				is_eager_explorer_empire = no
+			}
+		}
 		if = {
 			limit = {
 				owner = {
@@ -1590,7 +1776,7 @@ generate_jovian_league_sibling2_start_pops = {
 	}
 
 	while = {
-		limit = { num_pops < 2 }
+		limit = { num_pops < 2 } # TODO
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1613,7 +1799,7 @@ generate_jovian_league_sibling2_start_pops = {
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
+		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop 
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1639,141 +1825,200 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_obsolete_sentinel_posts
 	}
 
-	switch = {
-		trigger = is_planet_class
-		pc_arid = {
-			# 2 + 3 (5) energy
-			add_deposit = d_searing_desert
-			add_deposit = d_geothermal_vent
-
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
-
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_great_river
+	if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arid
+				is_pd_arid = yes
+			}
 		}
-		pc_desert = {
-			# 2 + 3 (5) energy
-			add_deposit = d_searing_desert
-			add_deposit = d_geothermal_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_nutritious_mudland
-			add_deposit = d_great_river
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_great_river
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_desert
+				is_pd_desert = yes
+			}
 		}
-		pc_savannah = {
-			# 2 + 3 (5) energy
-			add_deposit = d_searing_desert
-			add_deposit = d_geothermal_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_bountiful_plains
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_nutritious_mudland
+		add_deposit = d_great_river
+
+		set_planet_flag = tasty_desert
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_savannah
+				is_pd_savannah = yes
+			}
 		}
-		pc_continental = {
-			# 2 + 3 (5) energy
-			add_deposit = d_rushing_waterfalls
-			add_deposit = d_tempestous_mountain
+		# 2 + 3 (5) energy
+		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_rugged_woods
-			add_deposit = d_fertile_lands
+		# 1 + 2 (3) farming
+		add_deposit = d_bountiful_plains
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_continental
+				is_pd_continental = yes
+			}
 		}
-		pc_ocean = {
-			# 2 + 3 (5) energy
-			add_deposit = d_rushing_waterfalls
-			add_deposit = d_underwater_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_rushing_waterfalls
+		add_deposit = d_tempestous_mountain
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_rugged_woods
+		add_deposit = d_fertile_lands
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_ocean
+				is_pd_ocean = yes
+			}
 		}
-		pc_tropical = {
-			# 2 + 3 (5) energy
-			add_deposit = d_rushing_waterfalls
-			add_deposit = d_tempestous_mountain
+		# 2 + 3 (5) energy
+		add_deposit = d_rushing_waterfalls
+		add_deposit = d_underwater_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_prosperous_mesa
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_green_hills
-			add_deposit = d_lush_jungle
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tropical
+				is_pd_tropical = yes
+			}
 		}
-		pc_alpine = {
-			# 2 + 3 (5) energy
-			add_deposit = d_frozen_gas_lake
-			add_deposit = d_tempestous_mountain
+		# 2 + 3 (5) energy
+		add_deposit = d_rushing_waterfalls
+		add_deposit = d_tempestous_mountain
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_prosperous_mesa
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_green_hills
+		add_deposit = d_lush_jungle
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_alpine
+				is_pd_alpine = yes
+			}
 		}
-		pc_arctic = {
-			# 2 + 3 (5) energy
-			add_deposit = d_frozen_gas_lake
-			add_deposit = d_geothermal_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_frozen_gas_lake
+		add_deposit = d_tempestous_mountain
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_arctic
+				is_pd_arctic = yes
+			}
 		}
-		pc_tundra = {
-			# 2 + 3 (5) energy
-			add_deposit = d_frozen_gas_lake
-			add_deposit = d_geothermal_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_frozen_gas_lake
+		add_deposit = d_geothermal_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_mineral_fields
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_forgiving_tundra
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_tundra
+				is_pd_tundra = yes
+			}
 		}
-		pc_nuked = {
-			# 2 + 3 (5) energy
-			add_deposit = d_searing_desert
-			add_deposit = d_underwater_vent
+		# 2 + 3 (5) energy
+		add_deposit = d_frozen_gas_lake
+		add_deposit = d_geothermal_vent
 
-			# 1 + 2 (3) mining
-			add_deposit = d_veiny_cliffs
-			add_deposit = d_ore_rich_caverns
+		# 1 + 2 (3) mining
+		add_deposit = d_mineral_fields
+		add_deposit = d_ore_rich_caverns
 
-			# 1 + 2 (3) farming
-			add_deposit = d_lichen_fields
-			add_deposit = d_fungal_caves
+		# 1 + 2 (3) farming
+		add_deposit = d_forgiving_tundra
+		add_deposit = d_fungal_caves
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_planet_class = pc_nuked
+				is_pd_nuked = yes
+			}
 		}
-		default = {
-			log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
-		}
+		# 2 + 3 (5) energy
+		add_deposit = d_searing_desert
+		add_deposit = d_underwater_vent
+
+		# 1 + 2 (3) mining
+		add_deposit = d_veiny_cliffs
+		add_deposit = d_ore_rich_caverns
+
+		# 1 + 2 (3) farming
+		add_deposit = d_lichen_fields
+		add_deposit = d_fungal_caves
+	}
+	else = {
+		log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
 	}
 }
 
@@ -1880,7 +2125,7 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 
 	while = {
-		limit = { num_pops < 4 }
+		limit = { num_pops < 4 } # TODO
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1904,9 +2149,9 @@ generate_jovian_league_sibling3_start_pops = {
 			ethos = random
 		}
 	}
-	
+
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
+		limit = { owner = { has_origin = origin_jovian_league } }  # default gets a bonus pop
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -1962,71 +2207,129 @@ save_jovian_ideal_design_pc = {
 			which = jovian_league_ideal_planet_class_code
 			value = -1
 		}
-		switch = {
-			trigger = is_planet_class
-			pc_arid = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 0
+
+		if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_arid
+					is_pd_arid = yes
 				}
 			}
-			pc_desert = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 1
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 0
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_desert
+					is_pd_desert = yes
 				}
 			}
-			pc_savannah = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 2
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 1
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_savannah
+					is_pd_savannah = yes
 				}
 			}
-			pc_continental = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 3
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 2
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_continental
+					is_pd_continental = yes
 				}
 			}
-			pc_ocean = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 4
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 3
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_ocean
+					is_pd_ocean = yes
 				}
 			}
-			pc_tropical = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 5
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 4
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_tropical
+					is_pd_tropical = yes
 				}
 			}
-			pc_alpine = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 6
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 5
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_alpine
+					is_pd_alpine = yes
 				}
 			}
-			pc_arctic = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 7
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 6
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_arctic
+					is_pd_arctic = yes
 				}
 			}
-			pc_tundra = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 8
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 7
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_tundra
+					is_pd_tundra = yes
 				}
 			}
-			pc_nuked = {
-				set_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = -1
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = 8
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_nuked
+					is_pd_nuked = yes
 				}
 			}
-			default = {
-				log = "the planet ideal design class representative is not one of the 9 basic classes or pc_nuked - using the default code"
+			set_variable = {
+				which = jovian_league_ideal_planet_class_code
+				value = -1
 			}
+		}
+		else = {
+			log = "the planet ideal design class representative is not one of the 9 basic classes or pc_nuked - using the default code"
 		}
 		prev = {
 			set_variable = {
@@ -2038,120 +2341,37 @@ save_jovian_ideal_design_pc = {
 }
 
 # this = planet
+# event_target:jovian_league_species the founder species
 change_to_ideal_pc = {
 	optimize_memory
 	if = {
-		limit = { prev = { is_variable_set = jovian_league_ideal_planet_class_code } }
-		set_variable = {
-			which = jovian_league_ideal_planet_class_code
-			value = prev.jovian_league_ideal_planet_class_code
-		}
-		if = {
-			limit = { has_modifier = terraforming_candidate }
-			remove_modifier = terraforming_candidate
-		}
-		set_planet_flag = prescripted_ideal
-		if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 0
+		limit = { has_modifier = terraforming_candidate }
+		remove_modifier = terraforming_candidate
+	}
+	if = {
+		limit = { has_modifier = frozen_terraforming_candidate }
+		remove_modifier = frozen_terraforming_candidate
+	}
+	if = {
+		limit = { has_modifier = toxic_terraforming_candidate }
+		remove_modifier = toxic_terraforming_candidate
+	}
+	set_planet_flag = prescripted_ideal
+	if = {
+		limit = {
+			owner = {
+				NOR = {
+					has_valid_civic = civic_machine_assimilator
+					has_valid_civic = civic_machine_servitor
 				}
 			}
-			change_pc = pc_arid
 		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 1
-				}
-			}
-			change_pc = pc_desert
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 2
-				}
-			}
-			change_pc = pc_savannah
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 3
-				}
-			}
-			change_pc = pc_continental
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 4
-				}
-			}
-			change_pc = pc_ocean
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 5
-				}
-			}
-			change_pc = pc_tropical
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 6
-				}
-			}
-			change_pc = pc_alpine
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 7
-				}
-			}
-			change_pc = pc_arctic
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = jovian_league_ideal_planet_class_code
-					value = 8
-				}
-			}
-			change_pc = pc_tundra
-		}
-		else_if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = jovian_league_ideal_planet_class_code
-						value < 0
-					}
-					check_variable = {
-						which = jovian_league_ideal_planet_class_code
-						value > 8
-					}
-				}
-			}
-			change_pc = pc_nuked
-		}
-		reroll_deposits = yes
+		change_pc = event_target:jovian_league_species
 	}
 	else = {
-		log_error = "cannot set planet class to design ideal if jovian_league_ideal_planet_class_code is not set"
+		change_pc = last_created_species
 	}
+	reroll_deposits = yes
 }
 
 # this = planet
@@ -2362,7 +2582,7 @@ ojl_setup_civic_permanent_employment_zombie_pops = {
 					modify_species = {
 						species = this
 						remove_trait = trait_syncretic_proles
-					}	
+					}
 				}
 			}
 		}
@@ -2414,3 +2634,7 @@ ojl_setup_origin_mechanists_robot_pops = {
 		}
 	}
 }
+
+# TODO: reduce Pop counts for eager explorers by -10 overall, but they still get +4 from default origin
+# reduce spawned colonies?
+# def reduce per colony
