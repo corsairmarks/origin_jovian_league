@@ -5,9 +5,7 @@ country_event = {
 	id = origin_jovian_league.1
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		is_jovian_league = yes
-	}
+	trigger = { is_jovian_league = yes }
 	immediate = {
 		if = {
 			limit = { is_eager_explorer_empire = no }
@@ -58,9 +56,7 @@ planet_event = {
 	is_triggered_only = yes
 	trigger = {
 		exists = owner
-		owner = {
-			is_jovian_league = yes
-		}
+		owner = { is_jovian_league = yes }
 	}
 	immediate = {
 		from = { save_event_target_as = jovian_league_species }
@@ -167,9 +163,7 @@ country_event = {
 	id = origin_jovian_league.3
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		is_jovian_league = yes
-	}
+	trigger = { is_jovian_league = yes }
 	immediate = {
 		# must be AFTER game_start.2, because that clears all modifiers in starting systems
 		capital_scope.solar_system = {
@@ -207,9 +201,7 @@ country_event = {
 	id = origin_jovian_league.4
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		is_jovian_league = yes
-	}
+	trigger = { is_jovian_league = yes }
 	immediate = {
 		# select a wormhole exit that is already connected via hyperlane
 		capital_scope.solar_system = {
@@ -273,9 +265,7 @@ country_event = {
 						if = {
 							limit = { NOT = { exists = event_target:jovian_league_exit_system } }
 							log_error = "jovian league wormhole from [jovian_league_system.GetName] couldn't find a target without another wormhole - things might get weird with two wormholes in one system"
-							random_neighbor_system = {
-								save_event_target_as = jovian_league_exit_system
-							}
+							random_neighbor_system = { save_event_target_as = jovian_league_exit_system }
 						}
 					}
 				}
@@ -402,9 +392,7 @@ country_event = {
 	id = origin_jovian_league.6
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		is_jovian_league = yes
-	}
+	trigger = { is_jovian_league = yes }
 	immediate = {
 		every_owned_planet = {
 			limit = { is_colony = yes }
