@@ -9,30 +9,33 @@ country_event = {
 		is_jovian_league = yes
 	}
 	immediate = {
-		# set flags that wormholes have been encountered
-		set_country_flag = encountered_first_wormhole
-		add_seen_bypass_type = wormhole
-		# wormhole techs
 		if = {
-			limit = {
-				NOR = {
-					has_technology = tech_wormhole_stabilization
-					has_tech_option = tech_wormhole_stabilization
-				}
-			}
-			add_research_option = tech_wormhole_stabilization
+			limit = { is_eager_explorer_empire = no }
+			# set flags that wormholes have been encountered
+			set_country_flag = encountered_first_wormhole
+			add_seen_bypass_type = wormhole
+			# wormhole techs
 			if = {
-				limit = { is_ai = yes }
-				# the AI needs more help to get out in a timely fashion
-				add_tech_progress = {
-					tech = tech_wormhole_stabilization
-					progress = 0.9
+				limit = {
+					NOR = {
+						has_technology = tech_wormhole_stabilization
+						has_tech_option = tech_wormhole_stabilization
+					}
 				}
-			}
-			else = {
-				add_tech_progress = {
-					tech = tech_wormhole_stabilization
-					progress = 0.3
+				add_research_option = tech_wormhole_stabilization
+				if = {
+					limit = { is_ai = yes }
+					# the AI needs more help to get out in a timely fashion
+					add_tech_progress = {
+						tech = tech_wormhole_stabilization
+						progress = 0.9
+					}
+				}
+				else = {
+					add_tech_progress = {
+						tech = tech_wormhole_stabilization
+						progress = 0.3
+					}
 				}
 			}
 		}
@@ -74,30 +77,33 @@ planet_event = {
 			save_jovian_ideal_design_pc = yes
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling1 }
-				set_owner = root.owner
+				set_owner = space_owner
 				change_colony_foundation_date = -9900
 				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling1_start_buildings_and_districts = yes
 				generate_jovian_league_sibling1_start_pops = yes
 			}
-			random_system_planet = {
-				limit = { has_planet_flag = jovian_league_sibling2 }
-				if = {
-					limit = { root.owner = { is_biological_species_empire = yes } }
-					change_to_random_secondary_pc = yes
+			if = {
+				limit = { is_eager_explorer_empire = no }
+				random_system_planet = {
+					limit = { has_planet_flag = jovian_league_sibling2 }
+					if = {
+						limit = { space_owner = { is_biological_species_empire = yes } }
+						change_to_random_secondary_pc = yes
+					}
+					else = {
+						change_to_random_normal_pc = yes
+					}
+					set_owner = space_owner
+					change_colony_foundation_date = -8100
+					generate_jovian_league_sibling2_start_deposits_and_blockers = yes
+					generate_jovian_league_sibling2_start_buildings_and_districts = yes
+					generate_jovian_league_sibling2_start_pops = yes
 				}
-				else = {
-					change_to_random_normal_pc = yes
-				}
-				set_owner = root.owner
-				change_colony_foundation_date = -8100
-				generate_jovian_league_sibling2_start_deposits_and_blockers = yes
-				generate_jovian_league_sibling2_start_buildings_and_districts = yes
-				generate_jovian_league_sibling2_start_pops = yes
 			}
 			random_system_planet = {
 				limit = { has_planet_flag = jovian_league_sibling3 }
-				set_owner = root.owner
+				set_owner = space_owner
 				change_colony_foundation_date = -9000
 				generate_jovian_league_sibling3_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling3_start_buildings_and_districts = yes
@@ -109,7 +115,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t1_colony_ideal }
 					if = {
-						limit = { root.owner = { is_biological_species_empire = yes } }
+						limit = { space_owner = { is_biological_species_empire = yes } }
 						change_to_ideal_pc = yes
 					}
 					else = {
@@ -119,7 +125,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t1_colony_secondary }
 					if = {
-						limit = { root.owner = { is_biological_species_empire = yes } }
+						limit = { space_owner = { is_biological_species_empire = yes } }
 						change_to_random_secondary_pc = yes
 					}
 					else = {
@@ -133,7 +139,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t2_colony_ideal }
 					if = {
-						limit = { root.owner = { is_biological_species_empire = yes } }
+						limit = { space_owner = { is_biological_species_empire = yes } }
 						change_to_ideal_pc = yes
 					}
 					else = {
@@ -143,7 +149,7 @@ planet_event = {
 				every_system_planet = {
 					limit = { has_planet_flag = jovian_league_t2_colony_secondary }
 					if = {
-						limit = { root.owner = { is_biological_species_empire = yes } }
+						limit = { space_owner = { is_biological_species_empire = yes } }
 						change_to_random_secondary_pc = yes
 					}
 					else = {

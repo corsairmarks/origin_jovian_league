@@ -369,15 +369,16 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 	if = {
 		limit = { owner = { is_lithoid_empire = yes } }
 		if = {
-			limit = { owner = { NOT = { has_valid_civic = civic_hive_devouring_swarm } } }
+			limit = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
 			while = {
-				count = 4
+				count = 2
 				add_deposit = d_hibernating_lithoids
 			}
 		}
-		else = {
+		else_if = {
+			limit = { owner = { NOT = { has_origin = origin_broken_shackles } } }
 			while = {
-				count = 2
+				count = 4
 				add_deposit = d_hibernating_lithoids
 			}
 		}
@@ -705,7 +706,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 				add_building = building_ranger_lodge
 				add_blocker = { type = d_big_nature_preserve_blocker }
 			}
-			else_if = {
+			if = {
 				limit = { owner = { is_relentless_industrialist_empire = yes } }
 				add_building = building_coordinated_fulfillment_center_1
 			}
@@ -789,9 +790,7 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 		add_building = building_necrophage_elevation_chamber
 	}
 	if = {
-		limit = {
-			owner = { is_memorialist_empire = yes }
-		}
+		limit = { owner = { is_memorialist_empire = yes } }
 		add_building = building_galactic_memorial_1
 	}
 	if = {
@@ -845,6 +844,19 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 # this = planet (capital)
 generate_jovian_league_capital_start_pops = {
 	optimize_memory
+	set_variable = {
+		which = total_pop_count
+		value = 12
+	}
+
+	if = {
+		limit = { owner = { is_eager_explorer_empire = yes } }
+		change_variable = {
+			which = total_pop_count
+			value = -3
+		}
+	}
+
 	if = {
 		limit = {
 			owner = {
@@ -905,31 +917,22 @@ generate_jovian_league_capital_start_pops = {
 			create_pop = {
 				species = event_target:jovian_league_secondary_species
 				ethos = random
-			}
-			if = {
-				limit = { owner = { is_machine_empire = yes } }
-				last_created_pop = { clear_ethos = yes }
+				effect = {
+					if = {
+						limit = { owner = { is_machine_empire = yes } }
+						clear_ethos = yes
+					}
+				}
 			}
 		}
 		clear_variable = secondary_pop_count
 	}
 
-	while = {
-		limit = { num_pops < 12 } # TODO
-		create_pop = {
-			species = owner_species
-			ethos = random
-		}
-	}
-
 	if = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		while = {
-			count = 2
-			create_pop = {
-				species = owner_species
-				ethos = random
-			}
+		change_variable = {
+			which = total_pop_count
+			value = 2
 		}
 	}
 	else_if = {
@@ -939,19 +942,47 @@ generate_jovian_league_capital_start_pops = {
 				is_homicidal = yes
 			}
 		}
-		create_pop = {
-			species = owner_species
-			ethos = random
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
+		limit = { owner = { has_origin = origin_jovian_league } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
+		}
+		if = {
+			limit = { owner = { is_eager_explorer_empire = yes } }
+			change_variable = {
+				which = total_pop_count
+				value = 1
+			}
+		}
+	}
+
+	while = {
+		limit = {
+			check_variable = {
+				which = total_pop_count
+				value < trigger:num_pops
+			}
+		}
 		create_pop = {
 			species = owner_species
 			ethos = random
+			effect = {
+				if = {
+					owner = { is_gestalt = yes }
+					clear_ethos = yes
+				}
+			}
 		}
 	}
+
+	clear_variable = total_pop_count
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -959,9 +990,9 @@ generate_jovian_league_capital_start_pops = {
 # this = planet (capital)
 generate_jovian_league_capital_final_pass = {
 	if = {
-		limit = { root.owner = { has_origin = origin_jovian_league } }
+		limit = { owner = { has_origin = origin_jovian_league } }
 		if = {
-			limit = { root.owner = { is_gestalt = no } }
+			limit = { owner = { is_gestalt = no } }
 			add_modifier = {
 				modifier = prosp_uni_mod
 				days = 7200
@@ -975,7 +1006,7 @@ generate_jovian_league_capital_final_pass = {
 		}
 	}
 	else_if = {
-		limit = { root.owner = { has_origin = origin_jovian_league_lost_colony } }
+		limit = { owner = { has_origin = origin_jovian_league_lost_colony } }
 		add_modifier = { modifier = colonial_spirit_mod }
 	}
 	if = {
@@ -1357,6 +1388,19 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 # this = planet (second orbit)
 generate_jovian_league_sibling1_start_pops = {
 	optimize_memory
+	set_variable = {
+		which = total_pop_count
+		value = 10
+	}
+
+	if = {
+		limit = { owner = { is_eager_explorer_empire = yes } }
+		change_variable = {
+			which = total_pop_count
+			value = -3
+		}
+	}
+
 	if = {
 		limit = {
 			owner = {
@@ -1417,38 +1461,29 @@ generate_jovian_league_sibling1_start_pops = {
 			create_pop = {
 				species = event_target:jovian_league_secondary_species
 				ethos = random
-			}
-			if = {
-				limit = { owner = { is_machine_empire = yes } }
-				last_created_pop = { clear_ethos = yes }
+				effect = {
+					if = {
+						limit = { owner = { is_machine_empire = yes } }
+						clear_ethos = yes
+					}
+				}
 			}
 		}
 		clear_variable = secondary_pop_count
 	}
 
-	while = {
-		limit = { num_pops < 10 } # TODO
-		create_pop = {
-			species = owner_species
-			ethos = random
-		}
-	}
-
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
-		while = {
-			count = 2
-			create_pop = {
-				species = owner_species
-				ethos = random
-			}
+		change_variable = {
+			which = total_pop_count
+			value = 2
 		}
 	}
 	else_if = {
 		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		create_pop = {
-			species = owner_species
-			ethos = random
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
@@ -1459,23 +1494,53 @@ generate_jovian_league_sibling1_start_pops = {
 				is_homicidal = yes
 			}
 		}
-		create_pop = {
-			species = owner_species
-			ethos = random
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop
+		limit = { owner = { has_origin = origin_jovian_league } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
+		}
+	}
+
+	while = {
+		limit = {
+			check_variable = {
+				which = total_pop_count
+				value < trigger:num_pops
+			}
+		}
 		create_pop = {
 			species = owner_species
 			ethos = random
+			effect = {
+				if = {
+					owner = { is_gestalt = yes }
+					clear_ethos = yes
+				}
+			}
+		}
+	}
+
+	clear_variable = total_pop_count
+	if = {
+		limit = {
+			owner = {
+				has_origin = origin_jovian_league
+				is_eager_explorer_empire = no
+			}
 		}
 		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 2 }
 	}
 	else = {
 		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 3 }
 	}
+
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -1752,6 +1817,11 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 # this = planet (third orbit)
 generate_jovian_league_sibling2_start_pops = {
 	optimize_memory
+	set_variable = {
+		which = total_pop_count
+		value = 2
+	}
+
 	if = {
 		limit = { owner = { has_valid_civic = civic_machine_assimilator } }
 		set_variable = {
@@ -1767,23 +1837,16 @@ generate_jovian_league_sibling2_start_pops = {
 			create_pop = {
 				species = event_target:jovian_league_secondary_species
 				ethos = random
-			}
-			if = {
-				limit = { owner = { is_machine_empire = yes } }
-				last_created_pop = { clear_ethos = yes }
+				effect = {
+					if = {
+						limit = { owner = { is_machine_empire = yes } }
+						clear_ethos = yes
+					}
+				}
 			}
 		}
 		clear_variable = secondary_pop_count
 	}
-
-	while = {
-		limit = { num_pops < 2 } # TODO
-		create_pop = {
-			species = owner_species
-			ethos = random
-		}
-	}
-
 	if = {
 		limit = {
 			owner = {
@@ -1793,20 +1856,46 @@ generate_jovian_league_sibling2_start_pops = {
 				}
 			}
 		}
-		create_pop = {
-			species = owner_species
-			ethos = random
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } } # default gets a bonus pop 
+		limit = { owner = { has_origin = origin_jovian_league } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
+		}
+	}
+
+	while = {
+		limit = {
+			check_variable = {
+				which = total_pop_count
+				value < trigger:num_pops
+			}
+		}
 		create_pop = {
 			species = owner_species
 			ethos = random
+			effect = {
+				if = {
+					owner = { is_gestalt = yes }
+					clear_ethos = yes
+				}
+			}
 		}
+	}
+
+	clear_variable = total_pop_count
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
 		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	}
+
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -2080,6 +2169,19 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 # this = planet (fourth orbit)
 generate_jovian_league_sibling3_start_pops = {
 	optimize_memory
+	set_variable = {
+		which = total_pop_count
+		value = 4
+	}
+
+	if = {
+		limit = { owner = { is_eager_explorer_empire = yes } }
+		change_variable = {
+			which = total_pop_count
+			value = -2
+		}
+	}
+
 	if = {
 		limit = {
 			owner = {
@@ -2116,50 +2218,65 @@ generate_jovian_league_sibling3_start_pops = {
 			create_pop = {
 				species = event_target:jovian_league_secondary_species
 				ethos = random
-			}
-			if = {
-				limit = { owner = { is_machine_empire = yes } }
-				last_created_pop = { clear_ethos = yes }
+				effect = {
+					if = {
+						limit = { owner = { is_machine_empire = yes } }
+						clear_ethos = yes
+					}
+				}
 			}
 		}
 		clear_variable = secondary_pop_count
 	}
 
-	while = {
-		limit = { num_pops < 4 } # TODO
-		create_pop = {
-			species = owner_species
-			ethos = random
-		}
-	}
-
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
-		while = {
-			count = 2
-			create_pop = {
-				species = owner_species
-				ethos = random
-			}
+		change_variable = {
+			which = total_pop_count
+			value = 2
 		}
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
-		create_pop = {
-			species = owner_species
-			ethos = random
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
 	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }  # default gets a bonus pop
-		create_pop = {
-			species = owner_species
-			ethos = random
+		limit = { owner = { has_origin = origin_jovian_league } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
 		}
 	}
 
-	ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
+	while = {
+		limit = {
+			check_variable = {
+				which = total_pop_count
+				value < trigger:num_pops
+			}
+		}
+		create_pop = {
+			species = owner_species
+			ethos = random
+			effect = {
+				if = {
+					limit = { owner = { is_gestalt = yes } }
+					clear_ethos = yes
+				}
+			}
+		}
+	}
+
+	clear_variable = total_pop_count
+	if = {
+		limit = { owner = { is_eager_explorer_empire = no } }
+		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
+	}
+
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -2643,7 +2760,3 @@ ojl_setup_origin_mechanists_robot_pops = {
 		}
 	}
 }
-
-# TODO: reduce Pop counts for eager explorers by -10 overall, but they still get +4 from default origin
-# reduce spawned colonies?
-# def reduce per colony
