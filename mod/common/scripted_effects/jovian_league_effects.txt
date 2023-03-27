@@ -85,6 +85,7 @@ generate_jovian_league_terraform_candidate = {
 		if = {
 			limit = {
 				NOR = {
+					is_planet_class = pc_molten
 					is_planet_class = pc_frozen
 					is_planet_class = pc_toxic
 				}

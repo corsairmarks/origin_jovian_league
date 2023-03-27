@@ -122,7 +122,7 @@ unary_jovian_league_01 = {
 		}
 		moon = {
 			count = 1
-			class = "ojl_rl_rocky_unhabitable_planets"
+			class = "ojl_rl_barren_planets"
 			orbit_distance = @jovian_moon_distance
 			orbit_angle = { min = 90 max = 270 }
 			size = { min = @moon_min_size max = @moon_max_size }
@@ -377,7 +377,7 @@ unary_jovian_league_02 = {
 		}
 		moon = {
 			count = 1
-			class = "ojl_rl_rocky_unhabitable_planets"
+			class = "ojl_rl_barren_planets"
 			orbit_distance = @jovian_moon_distance
 			orbit_angle = { min = 90 max = 270 }
 			size = { min = @moon_min_size max = @moon_max_size }
@@ -612,7 +612,7 @@ trinary_jovian_league_01 = {
 			}
 			moon = {
 				count = 1
-				class = "ojl_rl_rocky_unhabitable_planets"
+				class = "ojl_rl_barren_planets"
 				orbit_distance = @jovian_moon_distance
 				orbit_angle = { min = 90 max = 270 }
 				size = { min = @moon_min_size max = @moon_max_size }
@@ -875,7 +875,7 @@ trinary_jovian_league_02 = {
 			}
 			moon = {
 				count = 1
-				class = "ojl_rl_rocky_unhabitable_planets"
+				class = "ojl_rl_barren_planets"
 				orbit_distance = @jovian_moon_distance
 				orbit_angle = { min = 90 max = 270 }
 				size = { min = @moon_min_size max = @moon_max_size }

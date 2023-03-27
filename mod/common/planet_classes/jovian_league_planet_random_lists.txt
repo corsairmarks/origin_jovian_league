@@ -10,6 +10,14 @@ random_list = {
 }
 
 random_list = {
+	name = "ojl_rl_barren_planets"
+	planets = {
+		"pc_barren"
+		"pc_barren_cold"
+	}
+}
+
+random_list = {
 	name = "ojl_rl_habitable_warm"
 	planets = {
 		"pc_arid"
