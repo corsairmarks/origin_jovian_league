@@ -283,26 +283,10 @@ country_event = {
 		}
 
 		if = {
-			limit = { exists = event_target:jovian_league_exit_system }
-			log = "jovian league wormhole exit from [jovian_league_system.GetName] for the [Root.GetRealName] is [jovian_league_exit_system.GetName]"
-
-			# spawn wormholes
-			event_target:jovian_league_exit_system = {
-				set_star_flag = jovian_league_exit_system@root
-				event_target:jovian_league_system = {
-					prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
-						spawn_natural_wormhole = {
-							bypass_type = wormhole
-							random_pos = yes
-						}
-					}
-					spawn_natural_wormhole = {
-						bypass_type = wormhole
-						random_pos = no
-						orbit_angle = 270
-						orbit_distance = 500
-					}
-					link_wormholes = prev
+			limit = {
+				OR = {
+					exists = event_target:jovian_league_exit_system
+					is_eager_explorer_empire = yes
 				}
 			}
 
@@ -317,16 +301,42 @@ country_event = {
 				}
 			}
 
-			country_event = {
-				id = origin_jovian_league.9
-				days = 1
-				scopes = {
-					from = event_target:jovian_league_exit_system
-					fromfrom = event_target:jovian_league_system
+			if = {
+				limit = { exists = event_target:jovian_league_exit_system }
+				log = "jovian league wormhole exit from [jovian_league_system.GetName] for the [Root.GetRealName] is [jovian_league_exit_system.GetName]"
+
+				# spawn wormholes
+				event_target:jovian_league_exit_system = {
+					set_star_flag = jovian_league_exit_system@root
+					event_target:jovian_league_system = {
+						prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+							spawn_natural_wormhole = {
+								bypass_type = wormhole
+								random_pos = yes
+							}
+						}
+						spawn_natural_wormhole = {
+							bypass_type = wormhole
+							random_pos = no
+							orbit_angle = 270
+							orbit_distance = 500
+						}
+						link_wormholes = prev
+					}
+				}
+
+				country_event = {
+					id = origin_jovian_league.9
+					days = 1
+					scopes = {
+						from = event_target:jovian_league_exit_system
+						fromfrom = event_target:jovian_league_system
+					}
 				}
 			}
 		}
-		else = {
+		else_if = {
+			limit = { is_eager_explorer_empire = no }
 			log_error = "jovian league wormhole for [jovian_league_system.GetName] couldn't find any valid targets - some trickery must be afoot, so the system was NOT isolated"
 		}
 	}
