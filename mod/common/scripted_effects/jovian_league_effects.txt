@@ -2345,22 +2345,11 @@ save_jovian_ideal_design_pc = {
 # event_target:jovian_league_species the founder species
 change_to_ideal_pc = {
 	optimize_memory
-	if = {
-		limit = { has_modifier = terraforming_candidate }
-		remove_modifier = terraforming_candidate
-	}
-	if = {
-		limit = { has_modifier = frozen_terraforming_candidate }
-		remove_modifier = frozen_terraforming_candidate
-	}
-	if = {
-		limit = { has_modifier = toxic_terraforming_candidate }
-		remove_modifier = toxic_terraforming_candidate
-	}
+	remove_terraforming_candidate_modifiers = yes
 	set_planet_flag = prescripted_ideal
 	if = {
 		limit = {
-			owner = {
+			space_owner = {
 				NOR = {
 					has_valid_civic = civic_machine_assimilator
 					has_valid_civic = civic_machine_servitor
@@ -2380,6 +2369,7 @@ change_to_random_secondary_pc = {
 	optimize_memory
 	if = {
 		limit = { prev = { is_variable_set = jovian_league_ideal_planet_class_code } }
+		remove_terraforming_candidate_modifiers = yes
 		set_variable = {
 			which = jovian_league_ideal_planet_class_code
 			value = prev.jovian_league_ideal_planet_class_code
@@ -2496,9 +2486,27 @@ change_to_random_secondary_pc = {
 # this = planet
 change_to_random_normal_pc = {
 	optimize_memory
+	remove_terraforming_candidate_modifiers = yes
 	change_pc = "rl_habitable_normal"
 	reroll_deposits = yes
 	reroll_random = yes
+}
+
+# this = planet
+remove_terraforming_candidate_modifiers = {
+	optimize_memory
+	if = {
+		limit = { has_modifier = terraforming_candidate }
+		remove_modifier = terraforming_candidate
+	}
+	if = {
+		limit = { has_modifier = frozen_terraforming_candidate }
+		remove_modifier = frozen_terraforming_candidate
+	}
+	if = {
+		limit = { has_modifier = toxic_terraforming_candidate }
+		remove_modifier = toxic_terraforming_candidate
+	}
 }
 
 # this = planet
