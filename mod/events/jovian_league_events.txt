@@ -47,6 +47,8 @@ country_event = {
 	}
 }
 
+# TODO: 3 new event files with basic origin-swapping events, + any special setup
+
 # triggered by empire_init_capital_planet
 # from = founder species
 # fromfrom = secondary species (if exists) // Corsair's Note: this appears to be broken; the default game uses last_created_species to get the secondary
@@ -68,20 +70,28 @@ planet_event = {
 		generate_jovian_league_capital_start_buildings_and_districts = yes
 		generate_jovian_league_capital_start_pops = yes
 		generate_jovian_league_capital_final_pass = yes
+		if = { # TODO: move to relevant event
+			limit = { owner = { has_origin = origin_jovian_league_toxic_knights } }
+			toxic_knights_order_habitat_setup = yes # TODO: make a custom version of this effect
+			# NOTE: blockers need to all be on the capital for events
+		}
 		solar_system = {
 			# from here we can find the primary moons, T1 moons/planets, and T2 moons/planets
 			save_jovian_ideal_design_pc = yes
-			random_system_planet = {
-				limit = { has_planet_flag = jovian_league_sibling1 }
-				set_owner = space_owner
-				change_colony_foundation_date = -9900
-				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
-				generate_jovian_league_sibling1_start_buildings_and_districts = yes
-				generate_jovian_league_sibling1_start_pops = yes
-				generate_jovian_league_sibling_final_pass = yes
+			if = {
+				limit = { space_owner = { NOT = { has_origin = origin_jovian_league_fear_of_the_dark } } }
+				random_system_planet = {
+					limit = { has_planet_flag = jovian_league_sibling1 }
+					set_owner = space_owner
+					change_colony_foundation_date = -9900
+					generate_jovian_league_sibling1_start_deposits_and_blockers = yes
+					generate_jovian_league_sibling1_start_buildings_and_districts = yes
+					generate_jovian_league_sibling1_start_pops = yes
+					generate_jovian_league_sibling_final_pass = yes
+				}
 			}
 			if = {
-				limit = { owner = { is_eager_explorer_empire = no } }
+				limit = { space_owner = { is_eager_explorer_empire = no } }
 				random_system_planet = {
 					limit = { has_planet_flag = jovian_league_sibling2 }
 					if = {
@@ -279,6 +289,7 @@ country_event = {
 			limit = {
 				OR = {
 					exists = event_target:jovian_league_exit_system
+					has_origin = origin_jovian_league_shroudwalker_apprentice
 					is_eager_explorer_empire = yes
 				}
 			}
@@ -295,6 +306,31 @@ country_event = {
 			}
 
 			if = {
+				limit = { has_origin = origin_jovian_league_shroudwalker_apprentice }
+				event_target:jovian_league_system = {
+					spawn_natural_wormhole = {
+						bypass_type = shroud_tunnel
+						random_pos = no
+						orbit_angle = 270
+						orbit_distance = 500
+					}
+					set_star_flag = shroud_tunnel_node
+				}
+			
+				if = {
+					limit = {
+						NAND = {
+							exists = event_target:shroud_tunnel_nexus
+							event_target:shroud_tunnel_nexus = { has_star_flag = shroud_tunnel_nexus }
+						}
+					}
+					random_system = {
+						limit = { has_star_flag = shroudwalker_enclave_system }
+						link_wormholes = event_target:jovian_league_system
+					}
+				}
+			}
+			else_if = {
 				limit = { exists = event_target:jovian_league_exit_system }
 				log = "jovian league wormhole exit from [jovian_league_system.GetName] for the [Root.GetRealName] is [jovian_league_exit_system.GetName]"
 
