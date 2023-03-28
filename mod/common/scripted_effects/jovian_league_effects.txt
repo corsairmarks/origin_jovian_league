@@ -828,7 +828,7 @@ generate_jovian_league_capital_start_pops = {
 		limit = { owner = { is_eager_explorer_empire = yes } }
 		change_variable = {
 			which = total_pop_count
-			value = -3
+			value = -4
 		}
 	}
 
@@ -848,17 +848,17 @@ generate_jovian_league_capital_start_pops = {
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
 			if = {
-				limit = { owner = { is_homicidal = yes } }
+				limit = {
+					owner = {
+						OR = {
+							is_homicidal = yes
+							is_hive_empire = yes
+						}
+					}
+				}
 				change_variable = {
 					which = secondary_pop_count
 					value = -2
-				}
-			}
-			else_if = {
-				limit = { owner = { is_hive_empire = yes } }
-				change_variable = {
-					which = secondary_pop_count
-					value = -1
 				}
 			}
 		}
@@ -993,7 +993,6 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
-		add_deposit = d_collapsed_capital_warrens
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
 			add_deposit = d_malformed_synapse_nodes
@@ -1357,17 +1356,17 @@ generate_jovian_league_sibling1_start_pops = {
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
 			if = {
-				limit = { owner = { is_homicidal = yes } }
+				limit = {
+					OR = {
+						owner = {
+							is_homicidal = yes
+							is_hive_empire = yes
+						}
+					}
+				}
 				change_variable = {
 					which = secondary_pop_count
 					value = -3
-				}
-			}
-			else_if = {
-				limit = { owner = { is_hive_empire = yes } }
-				change_variable = {
-					which = secondary_pop_count
-					value = -2
 				}
 			}
 		}
@@ -2106,7 +2105,7 @@ generate_jovian_league_sibling3_start_pops = {
 		limit = { owner = { is_eager_explorer_empire = yes } }
 		change_variable = {
 			which = total_pop_count
-			value = -2
+			value = -1
 		}
 	}
 
@@ -2129,7 +2128,10 @@ generate_jovian_league_sibling3_start_pops = {
 			limit = {
 				owner = {
 					has_origin = origin_jovian_league_necrophage
-					is_homicidal = yes
+					OR = {
+						is_homicidal = yes
+						is_hive_empire = yes
+					}
 				}
 			}
 			change_variable = {
