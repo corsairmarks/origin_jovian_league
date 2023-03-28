@@ -78,9 +78,10 @@ planet_event = {
 				generate_jovian_league_sibling1_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling1_start_buildings_and_districts = yes
 				generate_jovian_league_sibling1_start_pops = yes
+				generate_jovian_league_sibling_final_pass = yes
 			}
 			if = {
-				limit = { is_eager_explorer_empire = no }
+				limit = { owner = { is_eager_explorer_empire = no } }
 				random_system_planet = {
 					limit = { has_planet_flag = jovian_league_sibling2 }
 					if = {
@@ -95,6 +96,7 @@ planet_event = {
 					generate_jovian_league_sibling2_start_deposits_and_blockers = yes
 					generate_jovian_league_sibling2_start_buildings_and_districts = yes
 					generate_jovian_league_sibling2_start_pops = yes
+					generate_jovian_league_sibling_final_pass = yes
 				}
 			}
 			random_system_planet = {
@@ -104,6 +106,7 @@ planet_event = {
 				generate_jovian_league_sibling3_start_deposits_and_blockers = yes
 				generate_jovian_league_sibling3_start_buildings_and_districts = yes
 				generate_jovian_league_sibling3_start_pops = yes
+				generate_jovian_league_sibling_final_pass = yes
 			}
 			# set up T1
 			if = {

@@ -321,7 +321,6 @@ adjust_jovian_league_system_resources_for_civics = {
 						has_deposit = d_engineering_6
 					}
 				}
-				clear_deposits = yes
 				add_deposit = d_engineering_6
 			}
 		}
@@ -646,76 +645,15 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 generate_jovian_league_capital_start_buildings_and_districts = {
 	optimize_memory
 	if = {
-		limit = { owner = { is_regular_empire = yes } }
-		add_building = building_capital
-		add_district = district_city
-		if = {
-			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-			add_building = building_robot_assembly_plant
-		}
-		if = {
-			limit = { owner = { is_spiritualist = yes } }
-			if = {
-				limit = { owner = { is_death_cult_empire = yes } }
-				add_building = building_sacrificial_temple_1
-			}
-			else = {
-				add_building = building_temple
-			}
-		}
-		else_if = {
-			limit = { owner = { is_pleasure_seeker = yes } }
-			add_building = building_holo_theatres
-		}
-		if = {
-			limit = { owner = { has_valid_civic = civic_permanent_employment } }
-			add_building = building_posthumous_employment_center
-		}
-		ojl_add_planet_appropriate_commercial_or_generator_district = yes
-		if = {
-			limit = {
-				owner = {
-					is_lithoid_empire = yes
-					has_country_flag = non_lithoid_subspecies
-				}
-			}
-			ojl_add_planet_appropriate_farming_district = yes
-		}
-		else = {
-			ojl_add_species_appropriate_food_district = yes
-		}
-		if = {
-			limit = {
-				owner = {
-					is_anglers_empire = yes
-					OR = {
-						is_spiritualist = yes
-						is_pleasure_seeker = yes
-					}
-				}
-			}
-			ojl_add_species_appropriate_food_district = yes
-		}
-		else = {
-			add_district = district_industrial
-		}
-		if = {
-			limit = { free_building_slots > 0 }
-			if = {
-				limit = { owner = { has_valid_civic = civic_environmentalist } }
-				add_building = building_ranger_lodge
-				add_blocker = { type = d_big_nature_preserve_blocker }
-			}
-			if = {
-				limit = { owner = { is_relentless_industrialist_empire = yes } }
-				add_building = building_coordinated_fulfillment_center_1
-			}
-		}
+		limit = { owner = { NOT = { has_valid_civic = civic_agrarian_idyll } } }
+		ojl_add_authority_appropriate_housing_district = yes
 	}
-	else_if = {
+	else = {
+		ojl_add_planet_appropriate_farming_district = yes
+	}
+	if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		add_district = district_hive
 		if = {
 			limit = {
 				owner = {
@@ -727,72 +665,108 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			}
 			add_building = building_spawning_pool
 		}
-		else = {
-			ojl_add_planet_appropriate_mining_district = yes
-		}
-		ojl_add_species_appropriate_food_district = yes
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
 		add_building = building_machine_capital
 		add_building = building_machine_assembly_plant
-		add_district = district_nexus
-		ojl_add_planet_appropriate_commercial_or_generator_district = yes
 		if = {
 			limit = { owner = { has_valid_civic = civic_machine_servitor } }
 			add_building = building_organic_sanctuary
 		}
+	}
+	else = {
+		add_building = building_capital
 		if = {
-			limit = {
-				owner = {
-					OR = {
-						has_valid_civic = civic_machine_assimilator
-						has_valid_civic = civic_machine_servitor
-					}
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
+		}
+	}
+
+	while = {
+		limit = { free_building_slots < 1 }
+		ojl_add_authority_appropriate_housing_district = yes
+	}
+
+	if = {
+		limit = {
+			owner = {
+				is_machine_empire = yes
+				NOR = {
+					has_valid_civic = civic_machine_assimilator
+					has_valid_civic = civic_machine_servitor
 				}
 			}
-			if = {
-				limit = { owner = { has_country_flag = lithoid_subspecies } }
-				ojl_add_planet_appropriate_mining_district = yes
-			}
-			else_if = {
-				limit = { owner = { has_country_flag = non_lithoid_subspecies } }
-				ojl_add_planet_appropriate_farming_district = yes
-			}
-			else = {
-				log_error = "empire is an assimilator or servitor but has a subspecies that isn't flagged for lithoid/non_lithoid: fallback generator district added to capital"
-				ojl_add_planet_appropriate_commercial_or_generator_district = yes
-			}
 		}
-		else_if = {
+		ojl_add_planet_appropriate_commercial_or_generator_district = yes
+	}
+	else_if = {
+		limit = { owner = { has_country_flag = non_lithoid_subspecies } }
+		ojl_add_planet_appropriate_farming_district = yes
+	}
+	else = {
+		ojl_add_species_appropriate_food_district = yes
+	}
+
+	add_district = district_industrial
+	if = {
+		limit = { owner = { is_eager_explorer_empire = no } }
+		if = {
 			limit = {
 				owner = {
 					is_anglers_empire = yes
 					is_catalytic_empire = yes
 				}
 			}
-			ojl_add_planet_appropriate_farming_district = yes
+			ojl_add_planet_appropriate_mining_district = yes
+		}
+		else_if = {
+			limit = {
+				owner = {
+					is_hive_empire = yes
+					is_eager_explorer_empire = yes
+				}
+			}
+			ojl_add_species_appropriate_food_district = yes
 		}
 		else = {
+			add_district = district_industrial
+		}
+	}
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		if = {
+			limit = {
+				owner = {
+					is_hive_empire = yes
+					is_eager_explorer_empire = yes
+				}
+			}
+			ojl_add_species_appropriate_food_district = yes
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						is_machine_empire = yes
+						AND = {
+							is_hive_empire = yes
+							is_eager_explorer_empire = no
+						}
+					}
+				}
+			}
 			ojl_add_planet_appropriate_commercial_or_generator_district = yes
 		}
-	}
-	else = {
-		log_error = "unable to initialize empire-type-specific buildings/districts: not a regular/megacorp, hive, or machine"
-	}
-	if = {
-		limit = {
-			owner = {
-				has_origin = origin_jovian_league_necrophage
-				is_homicidal = no
-			}
+		else = {
+			add_district = district_industrial
 		}
-		add_building = building_necrophage_elevation_chamber
 	}
-	if = {
-		limit = { owner = { is_memorialist_empire = yes } }
-		add_building = building_galactic_memorial_1
-	}
+
 	if = {
 		limit = { owner = { is_eager_explorer_empire = no } }
 		if = {
@@ -803,40 +777,41 @@ generate_jovian_league_capital_start_buildings_and_districts = {
 			add_building = building_research_lab_1
 		}
 	}
-	# Give Idyllic Bloom a Gaiaseeder to start with if they have room
+
 	if = {
 		limit = {
 			owner = {
-				is_idyllic_bloom_empire = yes
-				NOT = { has_origin = origin_life_seeded }
+				has_origin = origin_jovian_league_necrophage
+				is_homicidal = no
 			}
-			free_building_slots > 0
 		}
-		add_building = building_gaiaseeders_1
+		add_building = building_necrophage_elevation_chamber
 	}
+
 	if = {
-		limit = {
-			owner = {
-				is_anglers_empire = yes
-				OR = {
-					is_catalytic_empire = yes
-					is_lithoid_empire = yes
+		limit = { free_building_slots > 0 }
+		if = {
+			limit = { owner = { is_memorialist_empire = yes } }
+			add_building = building_galactic_memorial_1
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_environmentalist } }
+			add_building = building_ranger_lodge
+			add_blocker = { type = d_big_nature_preserve_blocker }
+		}
+		if = {
+			limit = {
+				owner = {
+					is_idyllic_bloom_empire = yes
+					NOT = { has_origin = origin_life_seeded }
 				}
 			}
+			add_building = building_gaiaseeders_1
 		}
-		ojl_add_planet_appropriate_farming_district = yes
-	}
-	else = {
-		add_district = district_industrial
-	}
-	if = {
-		limit = {
-			owner = {
-				has_origin = origin_jovian_league
-				is_eager_explorer_empire = no
-			}
+		if = {
+			limit = { owner = { is_relentless_industrialist_empire = yes } }
+			add_building = building_coordinated_fulfillment_center_1
 		}
-		add_district = district_industrial
 	}
 }
 
@@ -964,18 +939,13 @@ generate_jovian_league_capital_start_pops = {
 	}
 
 	while = {
-		limit = {
-			check_variable = {
-				which = total_pop_count
-				value < trigger:num_pops
-			}
-		}
+		limit = { num_pops < total_pop_count }
 		create_pop = {
 			species = owner_species
 			ethos = random
 			effect = {
 				if = {
-					owner = { is_gestalt = yes }
+					limit = { owner = { is_gestalt = yes } }
 					clear_ethos = yes
 				}
 			}
@@ -1236,58 +1206,13 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 generate_jovian_league_sibling1_start_buildings_and_districts = {
 	optimize_memory
 	if = {
-		limit = { owner = { is_regular_empire = yes } }
-		add_building = building_capital
-		if ={
-			limit = { owner = { is_spiritualist = yes } }
-			if = {
-				limit = { owner = { is_death_cult_empire = yes } }
-				add_building = building_sacrificial_temple_1
-			}
-			else = {
-				add_building = building_temple
-			}
-		}
-		else = {
-			add_building = building_bureaucratic_1
-		}
-		if = {
-			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-			add_building = building_robot_assembly_plant
-		}
-		if = {
-			limit = { owner = { has_valid_civic = civic_permanent_employment } }
-			add_building = building_posthumous_employment_center
-		}
-		if = {
-			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
-			ojl_add_species_appropriate_food_district = yes
-		}
-		else = {
-			add_district = district_city
-		}
-		if = {
-			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-			ojl_add_planet_appropriate_commercial_or_generator_district = yes
-		}
-		else = {
-			ojl_add_species_appropriate_food_district = yes
-		}
-		if = {
-			limit = {
-				owner = {
-					is_lithoid_empire = yes
-					is_anglers_empire = yes
-				}
-			}
-			ojl_add_planet_appropriate_farming_district = yes
-		}
-		else = {
-			ojl_add_planet_appropriate_mining_district = yes
-		}
-		# no industry for a fulfillment center, not enough Pops to staff a ranger lodge
+		limit = { owner = { NOT = { has_valid_civic = civic_agrarian_idyll } } }
+		ojl_add_authority_appropriate_housing_district = yes
 	}
-	else_if = {
+	else = {
+		ojl_add_planet_appropriate_farming_district = yes
+	}
+	if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
 		if = {
@@ -1301,11 +1226,6 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 			}
 			add_building = building_spawning_pool
 		}
-		add_district = district_hive
-		while = {
-			count = 2
-			ojl_add_species_appropriate_food_district = yes
-		}
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
@@ -1314,17 +1234,77 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		add_building = building_uplink_node
 		if = {
 			limit = { owner = { has_valid_civic = civic_machine_servitor } }
-			add_district = district_nexus
 			add_building = building_organic_sanctuary
 		}
-		else = {
-			ojl_add_planet_appropriate_commercial_or_generator_district = yes
-		}
-		ojl_add_planet_appropriate_commercial_or_generator_district = yes
 	}
 	else = {
-		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+		add_building = building_capital
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
+		}
+		if = {
+			limit = { owner = { is_spiritualist = yes } }
+			if = {
+				limit = { owner = { is_death_cult_empire = yes } }
+				add_building = building_sacrificial_temple_1
+			}
+			else = {
+				add_building = building_temple
+			}
+		}
+		else_if = {
+			limit = { owner = { is_pleasure_seeker = yes } }
+			add_building = building_holo_theatres
+		}
+		else_if = {
+				limit = { owner = { has_valid_civic = civic_environmentalist } }
+				add_building = building_ranger_lodge
+				add_blocker = { type = d_big_nature_preserve_blocker }
+			}
+		else = {
+			add_building = building_commercial_zone # need amentities more than unity
+		}
+		# no industry for a fulfillment center, gaia-seeder too expensive
 	}
+
+	set_variable = {
+		which = num_rural_districts
+		value = 2
+	}
+	if = {
+		limit = { owner = { is_eager_explorer_empire = yes } }
+		change_variable = {
+			which = num_rural_districts
+			value = -1
+		}
+	}
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		change_variable = {
+			which = num_rural_districts
+			value = 1
+		}
+	}
+	if = {
+		limit = { owner = { is_catalytic_empire = yes } }
+		while = {
+			count = num_rural_districts
+			ojl_add_planet_appropriate_farming_district = yes
+		}
+	}
+	else = {
+		while = {
+			count = num_rural_districts
+			ojl_add_planet_appropriate_mining_district = yes
+		}
+	}
+
+	clear_variable = num_rural_districts
 	if = {
 		limit = {
 			owner = {
@@ -1334,53 +1314,13 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		}
 		add_building = building_necrophage_elevation_chamber
 	}
+
 	if = {
-		limit = { owner = { NOT = { has_valid_civic = civic_machine_servitor } } }
-		ojl_add_planet_appropriate_mining_district = yes
-	}
-	if = {
-		limit = { owner = { is_machine_empire = yes } }
-		set_colony_type = col_generator
-	}
-	else_if = {
-		limit = {
-			owner = {
-				OR = {
-					AND = {
-						is_hive_empire = yes
-						is_lithoid_empire = no
-					}
-					is_catalytic_empire = yes
-				}
-			}
-		}
+		limit = { owner = { is_catalytic_empire = yes } }
 		set_colony_type = col_farming
 	}
 	else = {
 		set_colony_type = col_mining
-	}
-	if = {
-		limit = { owner = { is_catalytic_empire = yes } }
-		remove_district = district_mining
-		ojl_add_planet_appropriate_farming_district = yes
-		if = {
-			limit = {
-				owner = {
-					NAND = {
-						is_lithoid_empire = yes
-						has_country_flag = lithoid_subspecies
-					}
-				}
-			}
-			if = {
-				limit = { owner = { is_machine_empire = yes } }
-				remove_district = district_generator
-			}
-			else = {
-				remove_district = district_mining
-			}
-			ojl_add_planet_appropriate_farming_district = yes
-		}
 	}
 }
 
@@ -1509,18 +1449,13 @@ generate_jovian_league_sibling1_start_pops = {
 	}
 
 	while = {
-		limit = {
-			check_variable = {
-				which = total_pop_count
-				value < trigger:num_pops
-			}
-		}
+		limit = { num_pops < total_pop_count }
 		create_pop = {
 			species = owner_species
 			ethos = random
 			effect = {
 				if = {
-					owner = { is_gestalt = yes }
+					limit = { owner = { is_gestalt = yes } }
 					clear_ethos = yes
 				}
 			}
@@ -1542,6 +1477,27 @@ generate_jovian_league_sibling1_start_pops = {
 	}
 
 	ojl_setup_origin_mechanists_robot_pops = yes
+}
+
+# triggered by empire_init_capital_planet
+# this = planet (second/third/fourth orbit)
+generate_jovian_league_sibling_final_pass = {
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league } }
+		if = {
+			limit = { owner = { is_gestalt = no } }
+			add_modifier = {
+				modifier = prosp_uni_mod
+				days = 7200
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = prosp_uni_mod_gestalt
+				days = 7200
+			}
+		}
+	}
 }
 
 # triggered by empire_init_capital_planet
@@ -1567,9 +1523,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_arid = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_arid_highlands
+		# 2 + 3 (5) energy
 		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_veiny_cliffs
@@ -1586,9 +1542,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_desert = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_arid_highlands
+		# 2 + 3 (5) energy
 		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_mineral_fields
@@ -1607,9 +1563,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_savannah = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_arid_highlands
+		# 2 + 3 (5) energy
 		add_deposit = d_searing_desert
+		add_deposit = d_geothermal_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_mineral_fields
@@ -1626,9 +1582,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_continental = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_rushing_waterfalls
+		add_deposit = d_tempestous_mountain
 
 		# 1 + 2 (3) mining
 		add_deposit = d_veiny_cliffs
@@ -1645,9 +1601,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_ocean = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_rushing_waterfalls
+		add_deposit = d_underwater_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_mineral_fields
@@ -1664,9 +1620,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_tropical = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_rushing_waterfalls
+		add_deposit = d_tempestous_mountain
 
 		# 1 + 2 (3) mining
 		add_deposit = d_mineral_fields
@@ -1683,9 +1639,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_alpine = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_frozen_gas_lake
+		add_deposit = d_tempestous_mountain
 
 		# 1 + 2 (3) mining
 		add_deposit = d_veiny_cliffs
@@ -1702,9 +1658,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_arctic = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_frozen_gas_lake
+		add_deposit = d_geothermal_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_veiny_cliffs
@@ -1721,9 +1677,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_tundra = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_frozen_gas_lake
+		add_deposit = d_geothermal_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_mineral_fields
@@ -1740,9 +1696,9 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 				is_pd_nuked = yes
 			}
 		}
-		# 1 + 2 (3) energy
-		add_deposit = d_hot_springs
+		# 2 + 3 (5) energy
 		add_deposit = d_searing_desert
+		add_deposit = d_underwater_vent
 
 		# 1 + 2 (3) mining
 		add_deposit = d_veiny_cliffs
@@ -1761,55 +1717,22 @@ generate_jovian_league_sibling2_start_deposits_and_blockers = {
 # this = planet (third orbit)
 generate_jovian_league_sibling2_start_buildings_and_districts = {
 	optimize_memory
+	# Pop assembly buildings too expensive on this small colony
 	if = {
-		limit = { owner = { is_regular_empire = yes } }
-		add_building = building_colony_shelter
-	}
-	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
-		if = {
-			limit = {
-				owner = {
-					NAND = {
-						has_origin = origin_jovian_league_necrophage
-						has_valid_civic = civic_hive_devouring_swarm
-					}
-				}
-			}
-			add_building = building_spawning_pool
-		}
 	}
 	else_if = {
 		limit = { owner = { is_machine_empire = yes } }
 		add_building = building_deployment_post
-		add_building = building_machine_assembly_plant
 	}
 	else = {
-		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+		add_building = building_colony_shelter
 	}
 
 	if = {
-		limit = {
-			owner = {
-				has_origin = origin_jovian_league
-				is_eager_explorer_empire = no
-			}
-		}
-		if = {
-			limit = {
-				owner = {
-					OR = {
-						is_regular_empire = yes
-						is_hive_empire = yes
-					}
-				}
-			}
-			ojl_add_species_appropriate_food_district = yes
-		}
-		else = {
-			ojl_add_planet_appropriate_commercial_or_generator_district = yes
-		}
+		limit = { owner = { has_origin = origin_jovian_league } }
+		ojl_add_planet_appropriate_commercial_or_generator_district = yes
 	}
 }
 
@@ -1871,18 +1794,13 @@ generate_jovian_league_sibling2_start_pops = {
 	}
 
 	while = {
-		limit = {
-			check_variable = {
-				which = total_pop_count
-				value < trigger:num_pops
-			}
-		}
+		limit = { num_pops < total_pop_count }
 		create_pop = {
 			species = owner_species
 			ethos = random
 			effect = {
 				if = {
-					owner = { is_gestalt = yes }
+					limit = { owner = { is_gestalt = yes } }
 					clear_ethos = yes
 				}
 			}
@@ -1930,8 +1848,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_bountiful_plains
+		# 3 + 2 (5) farming
+		add_deposit = d_tropical_island
 		add_deposit = d_great_river
 	}
 	else_if = {
@@ -1949,8 +1867,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_mineral_fields
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_nutritious_mudland
+		# 3 + 2 (5) farming
+		add_deposit = d_marvelous_oasis
 		add_deposit = d_great_river
 
 		set_planet_flag = tasty_desert
@@ -1970,8 +1888,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_mineral_fields
 		add_deposit = d_prosperous_mesa
 
-		# 1 + 2 (3) farming
-		add_deposit = d_bountiful_plains
+		# 3 + 2 (5) farming
+		add_deposit = d_black_soil
 		add_deposit = d_fertile_lands
 	}
 	else_if = {
@@ -1989,8 +1907,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_prosperous_mesa
 
-		# 1 + 2 (3) farming
-		add_deposit = d_rugged_woods
+		# 3 + 2 (5) farming
+		add_deposit = d_black_soil
 		add_deposit = d_fertile_lands
 	}
 	else_if = {
@@ -2008,8 +1926,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_mineral_fields
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_green_hills
+		# 3 + 2 (5) farming
+		add_deposit = d_teeming_reef
 		add_deposit = d_lush_jungle
 	}
 	else_if = {
@@ -2027,8 +1945,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_mineral_fields
 		add_deposit = d_prosperous_mesa
 
-		# 1 + 2 (3) farming
-		add_deposit = d_green_hills
+		# 3 + 2 (5) farming
+		add_deposit = d_tropical_island
 		add_deposit = d_lush_jungle
 	}
 	else_if = {
@@ -2046,8 +1964,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_forgiving_tundra
+		# 3 + 2 (5) farming
+		add_deposit = d_fungal_forest
 		add_deposit = d_fungal_caves
 	}
 	else_if = {
@@ -2065,8 +1983,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_lichen_fields
+		# 3 + 2 (5) farming
+		add_deposit = d_fungal_forest
 		add_deposit = d_fungal_caves
 	}
 	else_if = {
@@ -2084,8 +2002,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_mineral_fields
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_forgiving_tundra
+		# 3 + 2 (5) farming
+		add_deposit = d_fungal_forest
 		add_deposit = d_fungal_caves
 	}
 	else_if = {
@@ -2103,8 +2021,8 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_ore_rich_caverns
 
-		# 1 + 2 (3) farming
-		add_deposit = d_lichen_fields
+		# 3 + 2 (5) farming
+		add_deposit = d_fungal_forest
 		add_deposit = d_fungal_caves
 	}
 	else = {
@@ -2117,18 +2035,6 @@ generate_jovian_league_sibling3_start_deposits_and_blockers = {
 generate_jovian_league_sibling3_start_buildings_and_districts = {
 	optimize_memory
 	if = {
-		limit = { owner = { is_regular_empire = yes } }
-		add_building = building_colony_shelter
-		if = {
-			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
-			add_building = building_robot_assembly_plant
-		}
-		if = {
-			limit = { owner = { has_valid_civic = civic_permanent_employment } }
-			add_building = building_posthumous_employment_center
-		}
-	}
-	else_if = {
 		limit = { owner = { is_hive_empire = yes } }
 		add_building = building_hive_capital
 		if = {
@@ -2149,7 +2055,15 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 		add_building = building_machine_assembly_plant
 	}
 	else = {
-		log_error = "unable to initialize empire-type-specific buildings/districts on [This.GetName] for [This.Owner.GetRealName]: not a regular/megacorp, hive, or machine"
+		add_building = building_colony_shelter
+		if = {
+			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
+			add_building = building_robot_assembly_plant
+		}
+		if = {
+			limit = { owner = { has_valid_civic = civic_permanent_employment } }
+			add_building = building_posthumous_employment_center
+		}
 	}
 	if = {
 		limit = {
@@ -2160,9 +2074,23 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 		}
 		add_building = building_necrophage_elevation_chamber
 	}
-	ojl_add_planet_appropriate_commercial_or_generator_district = yes
-	ojl_add_planet_appropriate_commercial_or_generator_district = yes
-	set_colony_type = col_generator
+	if = {
+		limit = { owner = { is_machine_empire = no } }
+		ojl_add_species_appropriate_food_district = yes
+		ojl_add_species_appropriate_food_district = yes
+		if = {
+			limit = { is_lithoid_empire = no }
+			set_colony_type = col_farming
+		}
+		else = {
+			set_colony_type = col_mining
+		}
+	}
+	else = {
+		ojl_add_planet_appropriate_commercial_or_generator_district = yes
+		ojl_add_planet_appropriate_commercial_or_generator_district = yes
+		set_colony_type = col_generator
+	}
 }
 
 # triggered by empire_init_capital_planet
@@ -2253,12 +2181,7 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 
 	while = {
-		limit = {
-			check_variable = {
-				which = total_pop_count
-				value < trigger:num_pops
-			}
-		}
+		limit = { num_pops < total_pop_count }
 		create_pop = {
 			species = owner_species
 			ethos = random
@@ -2284,19 +2207,19 @@ generate_jovian_league_sibling3_start_pops = {
 generate_jovian_league_system_final_pass = {
 	optimize_memory
 	adjust_jovian_league_system_resources_for_civics = yes
-	space_owner = {
-		if = {
-			limit = { is_catalytic_empire = yes }
-			if = {
-				limit = { has_valid_civic = civic_machine_servitor }
-				add_modifier = { modifier = catalytic_processing_rogue_servitor_base_resources }
-			}
-			else_if = {
-				limit = { is_hive_empire = yes }
-				add_modifier = { modifier = catalytic_processing_hive_mind_base_resources }
-			}
-		}
-	}
+	# space_owner = {
+	# 	if = {
+	# 		limit = { is_catalytic_empire = yes }
+	# 		if = {
+	# 			limit = { has_valid_civic = civic_machine_servitor }
+	# 			add_modifier = { modifier = catalytic_processing_rogue_servitor_base_resources }
+	# 		}
+	# 		else_if = {
+	# 			limit = { is_hive_empire = yes }
+	# 			add_modifier = { modifier = catalytic_processing_hive_mind_base_resources }
+	# 		}
+	# 	}
+	# }
 	every_system_planet = {
 		limit = { is_colony = yes }
 		if = {
@@ -2681,6 +2604,22 @@ ojl_add_planet_appropriate_farming_district = {
 	}
 	else = {
 		add_district = district_farming
+	}
+}
+
+# this = planet
+ojl_add_authority_appropriate_housing_district = {
+	optimize_memory
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		add_district = district_hive
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		add_district = district_nexus
+	}
+	else = {
+		add_district = district_city
 	}
 }
 
