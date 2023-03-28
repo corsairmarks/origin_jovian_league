@@ -110,6 +110,7 @@ generate_jovian_league_terraform_candidate = {
 				has_toxoids = yes
 				is_planet_class = pc_toxic
 			}
+			set_planet_flag = toxic_terraforming_candidate
 			add_modifier = {
 				modifier = toxic_terraforming_candidate
 				days = -1
@@ -135,6 +136,25 @@ generate_jovian_league_potential_terraform_candidate = {
 # this = galactic_object (i.e. solar system)
 generate_jovian_league_system_resources = {
 	optimize_memory
+	if = {
+		limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
+		random_system_planet = {
+			limit = { has_planet_flag = jovian_league_parent }
+			set_planet_flag = ignore_startup_effect
+			set_planet_flag = has_megastructure
+			spawn_planet = {
+				class = "pc_habitat"
+				location = this
+				orbit_angle_offset = 45
+				orbit_distance_offset = 9.899
+				size = 6
+				has_ring = no
+				deposit_blockers = none
+				flags = { toxic_knights_habitat megastructure habitat }
+			}
+		}
+	}
+
 	every_system_planet = {
 		limit = {
 			colonizable_planet = no
@@ -295,9 +315,28 @@ generate_jovian_league_system_resources = {
 		}
 
 		set_planet_flag = starting_deposit
-		random_list = {
-			50 = { set_deposit = d_minerals_2 }
-			50 = { set_deposit = d_minerals_3 }
+		if = {
+			limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
+			# matches deposits added in the Toxic God initializers
+			add_deposit = d_minerals_6
+			add_deposit = d_alloys_3
+		}
+		else = {
+			random_list = {
+				50 = { set_deposit = d_minerals_2 }
+				50 = { set_deposit = d_minerals_3 }
+			}
+		}
+	}
+
+	if = {
+		limit = { space_owner = { space_owner = { has_origin = origin_jovian_league_fear_of_the_dark } } }
+		random_system_planet = {
+			limit = { has_planet_flag = divider_flag }
+			remove_terraforming_candidate_modifiers = yes
+			#add_deposit = d_alloys_5 # TODO maybe?
+			change_pc = pc_broken
+			set_name = NAME_Divider
 		}
 	}
 }
