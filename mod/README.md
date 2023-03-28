@@ -95,7 +95,13 @@ Some variants of a jovian league may start with a small negative income of one o
     * Consume the compatibility trigger from another mod
     * Remove old compatibility global flag
 * 6.0.0 Update for Stellaris version 3.7 "Canis Minor"
-    * 
+    * Tweak initial jovial league district, building, and Pop spawning
+    * Remove obsolete static modifiers
+    * All planets now benefit from Prosperous Unification modifiers
+    * Support the new "Eager Explorer" civics for early jump drives - your starting system will not have a wormhole, and you will have one less colonized jovian moon
+    * Add a jovian league variant of Knights of the Toxic God - the Keep will orbit your initial jovian planet, and all of your moons will be toxic-touched (other special features subject to change) - suggested by [zephramwolf](https://steamcommunity.com/profiles/76561198028125519)
+    * Add a jovian league variant of Teachers of the Shroud - instead of a wormhole, begin with a Shroud Tunnel to the Shroudwalkers - suggested by [Undisclosed](https://steamcommunity.com/id/theluin)
+    * Add a jovian league variant of Fear of the Dark - 1-2 of your initial jovian moons belong to the dissenters
 
 ## Source Code
 
