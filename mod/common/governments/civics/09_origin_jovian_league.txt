@@ -163,19 +163,13 @@ origin_jovian_league_shroudwalker_apprentice = {
 				value = ethic_fanatic_spiritualist
 			}
 		}
-		civics = {
-			NOT = {
-				value = civic_fanatic_purifiers
-				# TODO: not OZ
-			}
-		}
+		civics = { NOT = { value = civic_fanatic_purifiers } }
 	}
 	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_lost_colony_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
-		# TODO: don't spawn the wormhole, or make a custom shroud tunnel?
 		unary_jovian_league_01
 		unary_jovian_league_02
 		trinary_jovian_league_01
@@ -191,17 +185,12 @@ origin_jovian_league_toxic_knights = {
 	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_toxic_knights
-	possible = {
-		ethics = {
-			NOT = { value = ethic_gestalt_consciousness }
-		}
-	}
+	possible = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
 	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_lost_colony_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
-		# TODO: toxic knight variants
 		unary_jovian_league_01
 		unary_jovian_league_02
 		trinary_jovian_league_01
@@ -218,13 +207,11 @@ origin_jovian_league_fear_of_the_dark = {
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_fear_of_the_dark
 	possible = {
-		ethics = {
-			NOT = { value = ethic_gestalt_consciousness }
-		}
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		civics = {
 			NOR = {
 				value = civic_inwards_perfection
-				value = civic_fanatic_purifiers # TODO: not allowed for OZ
+				value = civic_fanatic_purifiers
 				value = civic_eager_explorers
 				value = civic_privatized_exploration
 			}
@@ -235,9 +222,6 @@ origin_jovian_league_fear_of_the_dark = {
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
-		fear_of_the_dark_system
-		sol_system_fear_of_the_dark_system
-		# TODO: make some initializers that work with fotd
 		unary_jovian_league_01
 		unary_jovian_league_02
 		trinary_jovian_league_01
