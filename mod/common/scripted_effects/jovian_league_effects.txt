@@ -2209,19 +2209,6 @@ generate_jovian_league_sibling3_start_pops = {
 generate_jovian_league_system_final_pass = {
 	optimize_memory
 	adjust_jovian_league_system_resources_for_civics = yes
-	# space_owner = {
-	# 	if = {
-	# 		limit = { is_catalytic_empire = yes }
-	# 		if = {
-	# 			limit = { has_valid_civic = civic_machine_servitor }
-	# 			add_modifier = { modifier = catalytic_processing_rogue_servitor_base_resources }
-	# 		}
-	# 		else_if = {
-	# 			limit = { is_hive_empire = yes }
-	# 			add_modifier = { modifier = catalytic_processing_hive_mind_base_resources }
-	# 		}
-	# 	}
-	# }
 	every_system_planet = {
 		limit = { is_colony = yes }
 		if = {
