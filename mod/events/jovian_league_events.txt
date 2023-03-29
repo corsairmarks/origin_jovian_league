@@ -202,10 +202,7 @@ planet_event = {
 			# set up Knights of the Toxic God keep
 			if = {
 				limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
-				random_system_planet = {
-					limit = { has_planet_flag = jovian_league_parent }
-					generate_jovian_league_toxic_knights_habitat = yes
-				}
+				space_owner.home_planet.orbit = { generate_jovian_league_toxic_knights_habitat = yes }
 			}
 			generate_jovian_league_system_final_pass = yes
 		}

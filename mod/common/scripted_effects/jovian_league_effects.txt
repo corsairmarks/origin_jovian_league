@@ -2298,16 +2298,24 @@ generate_jovian_league_necrophage_primitives = {
 }
 
 # based on logic from common/scripted_effect/01_start_of_game_effects.txt:ln~3599 toxic_knights_order_habitat_setup
+# however, logic here still allows the habitat to be flagged as a special type
 # this = planet (around which the habitat should orbit)
 generate_jovian_league_toxic_knights_habitat = {
 	optimize_memory
-	set_planet_flag = ignore_startup_effect
 	set_planet_flag = has_megastructure
-	save_event_target_as = toxic_knight_keep_parent
+	if = {
+		limit = { has_planet_flag = starting_mining_target }
+		remove_planet_flag = starting_mining_target
+	}
+	if = {
+		limit = { has_orbital_station = yes }
+		orbital_station = { dismantle = yes }
+	}
 	solar_system = {
 		spawn_planet = {
 			class = "pc_habitat"
-			location = event_target:toxic_knight_keep_parent
+			location = prev
+			orbit_location = yes
 			orbit_angle_offset = 45
 			orbit_distance_offset = 9.899
 			size = 6
@@ -2315,17 +2323,65 @@ generate_jovian_league_toxic_knights_habitat = {
 			deposit_blockers = none
 			flags = { toxic_knights_habitat megastructure habitat advanced_habitat }
 			init_effect = {
+				if = {
+					limit = { orbit = { has_deposit_for = shipclass_research_station } }
+					set_planet_flag = research_habitat
+				}
+				else_if = {
+					limit = {
+						orbit = {
+							OR = {
+								has_deposit = d_minerals_1
+								has_deposit = d_minerals_2
+								has_deposit = d_minerals_3
+								has_deposit = d_minerals_4
+								has_deposit = d_minerals_5
+								has_deposit = d_minerals_6
+								has_deposit = d_minerals_7
+								has_deposit = d_minerals_8
+								has_deposit = d_minerals_9
+								has_deposit = d_minerals_10
+								has_deposit = d_alloys_1
+								has_deposit = d_alloys_2
+								has_deposit = d_alloys_3
+								has_deposit = d_alloys_4
+								has_deposit = d_alloys_5
+								has_deposit = d_alloys_10
+								has_deposit = d_alloys_25
+							}
+						}
+					}
+					set_planet_flag = mining_habitat
+				}
+				else_if = {
+					limit = {
+						orbit = {
+							OR = {
+								has_deposit = d_energy_1
+								has_deposit = d_energy_2
+								has_deposit = d_energy_3
+								has_deposit = d_energy_4
+								has_deposit = d_energy_5
+								has_deposit = d_energy_6
+								has_deposit = d_energy_7
+								has_deposit = d_energy_8
+								has_deposit = d_energy_9
+								has_deposit = d_energy_10
+							}
+						}
+					}
+					set_planet_flag = energy_habitat
+				}
 				set_owner = space_owner
 				set_name = random
 				set_planet_entity = {
 					entity = "habitat_phase_02_entity"
 					graphical_culture = owner
 				}
-				set_planet_size = 6
 				set_colony_type = col_habitat_fortress
-				add_district = district_orders_demesne
 				add_building = building_hab_major_capital
 				add_building = building_order_keep
+				add_district = district_orders_demesne
 				while = {
 					count = 4
 					create_pop = {
