@@ -55,6 +55,26 @@ country_event = {
 			give_technology = { message = no tech = tech_robotic_workers }
 			add_research_option = tech_robomodding
 		}
+		# toxic knights habitat tech
+		if = {
+			limit = { has_origin = origin_jovian_league_toxic_knights }
+			add_research_option = tech_habitat_1
+
+			if = {
+				limit = {
+					OR = {
+						is_lithoid_empire = no
+						is_catalytic_empire = yes
+					}
+				}
+				give_technology = { message = no tech = tech_eco_simulation }
+				give_technology = { message = no tech = tech_hydroponics }
+			}
+			else = {
+				give_technology = { message = no tech = tech_powered_exoskeletons }
+				give_technology = { message = no tech = tech_space_mining_1 }
+			}
+		}
 	}
 }
 
@@ -65,10 +85,8 @@ planet_event = {
 	id = origin_jovian_league.2
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		exists = owner
-		owner = { is_jovian_league = yes }
-	}
+	pre_triggers = { has_owner = yes }
+	trigger = { owner = { is_jovian_league = yes } }
 	immediate = {
 		from = { save_event_target_as = jovian_league_species }
 		owner = {
@@ -79,11 +97,6 @@ planet_event = {
 		generate_jovian_league_capital_start_buildings_and_districts = yes
 		generate_jovian_league_capital_start_pops = yes
 		generate_jovian_league_capital_final_pass = yes
-		if = { # TODO: move to relevant event
-			limit = { owner = { has_origin = origin_jovian_league_toxic_knights } }
-			toxic_knights_order_habitat_setup = yes # TODO: make a custom version of this effect
-			# NOTE: blockers need to all be on the capital for events
-		}
 		solar_system = {
 			# from here we can find the primary moons, T1 moons/planets, and T2 moons/planets
 			save_jovian_ideal_design_pc = yes
@@ -106,7 +119,12 @@ planet_event = {
 				}
 			}
 			if = {
-				limit = { space_owner = { is_eager_explorer_empire = no } }
+				limit = {
+					space_owner = {
+						is_eager_explorer_empire = no
+						NOT = { has_origin = origin_jovian_league_toxic_knights }
+					}
+				}
 				random_system_planet = {
 					limit = { has_planet_flag = jovian_league_sibling2 }
 					if = {
@@ -179,6 +197,15 @@ planet_event = {
 					else = {
 						change_to_random_normal_pc = yes
 					}
+				}
+			}
+			# set up Knights of the Toxic God keep
+			if = {
+				limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
+				random_system_planet = {
+					limit = { has_planet_flag = jovian_league_parent }
+					set_owner = space_owner
+					generate_jovian_league_toxic_knights_habitat = yes
 				}
 			}
 			generate_jovian_league_system_final_pass = yes
@@ -471,7 +498,10 @@ planet_event = {
 	trigger = {
 		has_deposit = d_mothballed_sanctuary_factories
 		NOR = {
-			owner = { has_valid_civic = civic_machine_servitor }
+			AND = {
+				exists = owner
+				owner = { has_valid_civic = civic_machine_servitor }
+			}
 			has_building = building_organic_sanctuary
 			has_building = building_organic_paradise
 		}

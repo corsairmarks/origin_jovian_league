@@ -34,7 +34,12 @@
  START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_MECHANISTS: "$START_SCREEN_PART_FOUR_DIVIDER$§LNach dem Drücken von §H$START_SCREEN_BEGIN$§L, wird Ihr Ursprung auf §H$origin_mechanists$ Festgelegt§L damit Sie von allen integrierten Effekten profitieren können (vor allem von den erhöhten Chancen, roboterbezogene Technologien zu erhalten).§!"
  START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_SYNCRETIC: "$START_SCREEN_PART_FOUR_DIVIDER$§LNach dem Drücken von §H$START_SCREEN_BEGIN$§L, wird Ihr Ursprung auf §H$origin_syncretic_evolution$ Festgelegt§L damit Sie von allen integrierten Effekten profitieren können (einige Unterschiede in der Geschichte, Skripting für die KI).§!"
  START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_NECROPHAGE: "$START_SCREEN_PART_FOUR_DIVIDER$§LNach dem Drücken von §H$START_SCREEN_BEGIN$§L, wird Ihr Ursprung auf §H$origin_necrophage$ Festgelegt§L damit Sie von allen integrierten Effekten profitieren können (Gebäude und Prozess der Nekrophagenumwandlung, Art der Säuberung, modifizierte Traditionen, Technologiegewichtung, Ereignisoptionen und andere Merkmale des Nekrophagen-Daseins).§!"
- origin_tooltip_jovian_league_base_effects: "- Beginnen Sie statt mit einer großen Heimatwelt mit vier kleinen, kolonisierten Monden, die einen einzigen Gasriesen umkreisen\n- Ihr Heimatsternsystem ist §Hdisconnected§! aus dem Hyperraum-Netzwerk, sondern hat stattdessen ein §Hwormhole§! die zu einem nahe gelegenen System führen\n- Erhalten Sie die Forschungsoption für £physics_research£§H$tech_wormhole_stabilization$§! Technologie mit §G30%§! Fortschritt\n- Garantiert bewohnbare Welten spawnen in deinem Heimatsystem als zusätzliche Monde oder Planeten, je nachdem, welche Initialisierungsoption gewählt wird"
+
+ origin_tooltip_jovian_league_base_moons_bullet: "- Beginnen Sie statt mit einer großen Heimatwelt mit vier kleinen, kolonisierten Monden, die einen einzigen Gasriesen umkreisen"
+ origin_tooltip_jovian_league_base_wormhole_bullet: "- Ihr Heimatsternsystem ist §Hdisconnected§! aus dem Hyperraum-Netzwerk, sondern hat stattdessen ein §Hwormhole§! die zu einem nahe gelegenen System führen"
+ origin_tooltip_jovian_league_base_wormhole_research_bullet: "- Erhalten Sie die Forschungsoption für £physics_research£§H$tech_wormhole_stabilization$§! Technologie mit §G30%§! Fortschritt"
+ origin_tooltip_jovian_league_base_guaranteed_habitable_bullet: "- Garantiert bewohnbare Welten spawnen in deinem Heimatsystem als zusätzliche Monde oder Planeten, je nachdem, welche Initialisierungsoption gewählt wird"
+ origin_tooltip_jovian_league_base_effects: "$origin_tooltip_jovian_league_base_moons_bullet$\n$origin_tooltip_jovian_league_base_wormhole_bullet$\n$origin_tooltip_jovian_league_base_wormhole_research_bullet$\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$"
  origin_jovian_league: "Jovian League"
  origin_jovian_league_desc: "Diese Zivilisation ist auf einem Mond entstanden, der einen Gasriesen umkreist, der mehrere weitere bewohnbare Satelliten beherbergt. Da diese Zivilisation schon lange vor ihrem $renaissance_age$ von diesen Geschwistermonden wusste, war es schon immer ihre Bestimmung, die Leere zwischen den Welten zu erobern. Rudimentäre Raumfahrt war alles, was nötig war, um die Geschwistermonde zu kolonisieren, was schnell zur Bildung einer interplanetarischen Regierung führte."
  origin_tooltip_jovian_league_effects: "$origin_tooltip_jovian_league_base_effects$\n$origin_tooltip_default_effects$" 
@@ -50,6 +55,15 @@
  origin_jovian_league_lost_colony: "$origin_jovian_league$ ($origin_lost_colony$)"
  origin_jovian_league_lost_colony_desc: "$origin_lost_colony_desc$"
  origin_tooltip_jovian_league_lost_colony_effects: "$origin_tooltip_jovian_league_base_effects$\n$origin_tooltip_lost_colony_effects$"
+ origin_jovian_league_shroudwalker_apprentice: "$origin_jovian_league$ ($origin_shroudwalker_apprentice$)"
+ origin_jovian_league_shroudwalker_apprentice_desc: "$origin_shroudwalker_apprentice_desc$"
+ origin_tooltip_jovian_league_shroudwalker_apprentice_effects: "$origin_tooltip_jovian_league_base_moons_bullet$\n- Your home star system is §Hdisconnected§! from the hyperlane network but instead has a §Hshroud tunnel§! leading to a §H$gov_shroudwalker_enclave$§!\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_tooltip_shroudwalker_apprentice_effects$"
+ origin_jovian_league_toxic_knights: "$origin_jovian_league$ ($origin_toxic_knights$)"
+ origin_jovian_league_toxic_knights_desc: "$origin_toxic_knights_desc$"
+ origin_tooltip_jovian_league_toxic_knights_effects: "- Instead of one large home world, begin with three small, colonized moons and a special Keep habitat orbiting a single gas giant\n$origin_tooltip_jovian_league_base_wormhole_bullet$\n$origin_tooltip_jovian_league_base_wormhole_research_bullet$\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_toxic_knights_effects$"
+ origin_jovian_league_fear_of_the_dark: "$origin_jovian_league$ ($origin_fear_of_the_dark$)"
+ origin_jovian_league_fear_of_the_dark_desc: "$origin_fear_of_the_dark_desc$" # TODO: rewrite to make more sense for O:JL
+ origin_tooltip_jovian_league_fear_of_the_dark_effects: "- Instead of one large home world, begin with three small, colonized moons orbiting a single gas giant\n$origin_tooltip_jovian_league_base_wormhole_bullet$\n$origin_tooltip_jovian_league_base_wormhole_research_bullet$\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_tooltip_fear_of_the_dark_effects$"
  unary_jovian_league_01_NAME: "Einseitig: Alle Monde"
  unary_jovian_league_01_DESC: "Einseitiges System mit einem einzigen Stern. Heimatwelt ist ein Mond, der einen Gasriesen umkreist, mit drei weiteren bewohnbaren Monden. Alle garantiert bewohnbaren Welten sind ebenfalls Monde, die um Gasriesen kreisen, die denselben Stern umkreisen.\n\n$system_initializer_DESC$"
  unary_jovian_league_02_NAME: "Einseitig: Gemischte Monde und Planeten"
@@ -79,9 +93,8 @@
  d_obsolete_sentinel_posts_desc: "Aufgrund des Alters der $building_deployment_post$ sind die integrierten $building_sentinel_posts$ für eine moderne $job_patrol_drone£ $job_patrol_drone$ ohne eine Überholung der Anlage unbrauchbar."
  d_mothballed_sanctuary_factories: "£blocker£ Stillgelegte Fabriken"
  d_mothballed_sanctuary_factories_desc: "Unsere wenigen Bio-Trophäen verbrauchen sehr wenig Schmuck, daher wurden die Fabriken, die in das $building_organic_sanctuary$ dieses Planeten integriert sind, zur Reduzierung des £Energie£ $Energie$ Verbrauchs stillgelegt. Im Bedarfsfall können sie von einer £job_artisan_drohne£ $job_artisan_drohne$ wieder in Betrieb genommen werden."
- catalytic_processing_rogue_servitor_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_servitors$"
- catalytic_processing_hive_mind_base_resources: "$civic_catalytic_processing$ $budget_group_base_income$: $personality_hive_mind$"
- mod_country_base_alloys_produces_add: "$mod_country_alloys_produces_add$"
+ d_toxic_gods_blessing_desc: "Sludgelands"
+ d_toxic_gods_blessing_desc: "The touch of the Diety uniquely blessed these lands to repel the other effects of its passage. However, this \"safety\" comes at the price of a viscous sludge that inevitably seeps into any structures causing them to need continuous repair."
 
  # localisation to make the game happy with the conditional content
  # matches localisation from Planetary Diversity so that it won't matter which mod loads first

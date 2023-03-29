@@ -130,32 +130,12 @@ generate_jovian_league_potential_terraform_candidate = {
 	reroll_random = yes
 }
 
-# TODO: move the origin stuff to an effect within capoital setup, the initializer won't have an owner yet!
 # duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
 # from appearing on specific planets, generates gatherer targets before "open" deposits that need one constructed, and avoids overwriting
 # deposits that it already added
 # this = galactic_object (i.e. solar system)
 generate_jovian_league_system_resources = {
 	optimize_memory
-	if = {
-		limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
-		random_system_planet = {
-			limit = { has_planet_flag = jovian_league_parent }
-			set_planet_flag = ignore_startup_effect
-			set_planet_flag = has_megastructure
-			spawn_planet = {
-				class = "pc_habitat"
-				location = this
-				orbit_angle_offset = 45
-				orbit_distance_offset = 9.899
-				size = 6
-				has_ring = no
-				deposit_blockers = none
-				flags = { toxic_knights_habitat megastructure habitat }
-			}
-		}
-	}
-
 	every_system_planet = {
 		limit = {
 			colonizable_planet = no
@@ -316,41 +296,19 @@ generate_jovian_league_system_resources = {
 		}
 
 		set_planet_flag = starting_deposit
-		if = {
-			limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
-			# matches deposits added in the Toxic God initializers
-			add_deposit = d_minerals_6
-			add_deposit = d_alloys_3
-		}
-		else = {
-			random_list = {
-				50 = { set_deposit = d_minerals_2 }
-				50 = { set_deposit = d_minerals_3 }
-			}
-		}
-	}
-
-	if = {
-		limit = { space_owner = { space_owner = { has_origin = origin_jovian_league_fear_of_the_dark } } }
-		random_system_planet = {
-			limit = { has_planet_flag = divider_flag }
-			remove_terraforming_candidate_modifiers = yes
-			add_deposit = d_alloys_5
-			change_pc = pc_broken
-			set_name = NAME_Divider
+		random_list = {
+			50 = { set_deposit = d_minerals_2 }
+			50 = { set_deposit = d_minerals_3 }
 		}
 	}
 }
 
 # duplicates special effects for Reanimators (civic_reanimated_armies) from generate_start_buildings_and_districts
 # this = galactic_object (i.e. solar system)
-adjust_jovian_league_system_resources_for_civics = {
+adjust_jovian_league_system_resources_for_civics_and_origins = {
 	optimize_memory
 	if = {
-		limit = {
-			has_owner = yes
-			space_owner = { has_valid_civic = civic_reanimated_armies }
-		}
+		limit = { space_owner = { has_valid_civic = civic_reanimated_armies } }
 		while = {
 			count = 2
 			random_system_planet = {
@@ -363,6 +321,34 @@ adjust_jovian_league_system_resources_for_civics = {
 				}
 				add_deposit = d_engineering_6
 			}
+		}
+	}
+	if = {
+		limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
+		# mimics logic in the Toxic God initializers
+		random_system_planet = {
+			limit = {
+				has_planet_flag = starting_deposit
+				OR = {
+					has_deposit = d_minerals_2
+					has_deposit = d_minerals_3
+				}
+			}
+			clear_deposits = yes
+			add_deposit = d_minerals_6
+			add_deposit = d_alloys_3
+		}
+	}
+	if = {
+		limit = { space_owner = { has_origin = origin_jovian_league_fear_of_the_dark } }
+		random_system_planet = {
+			limit = { has_planet_flag = divider_flag }
+			remove_terraforming_candidate_modifiers = yes
+			change_pc = pc_broken
+			set_name = NAME_Divider
+			set_planet_flag = starting_deposit
+			set_planet_flag = starting_mining_target
+			add_deposit = d_alloys_5
 		}
 	}
 }
@@ -678,7 +664,25 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 	else = {
 		log_error = "unable to initialize planet-class-specific deposits on [This.GetName] for [This.Owner.GetRealName]: not one of the 9 default classes or pc_nuked"
 	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league_toxic_knights } }
+		add_deposit = d_toxic_god_blight_upon_the_land
+		add_deposit = d_toxic_god_deitys_swarms
+		add_deposit = d_toxic_god_pools_most_venemous
+		add_deposit = d_toxic_god_pestilential_wasteland
+		add_deposit = d_toxic_god_envenomed_seas
+		add_deposit = d_toxic_gods_blessing
+	}
 }
+
+# TODO: toxic gods get less infrastructure:
+# remove_district = district_city
+# remove_district = district_farming
+# remove_district = district_generator
+# remove_building = building_commercial_zone
+# -7 Pops total
+# eager + toxic - needs to remove 2 extra, since they sib2
 
 # triggered by empire_init_capital_planet
 # this = planet (capital)
@@ -2248,7 +2252,7 @@ generate_jovian_league_sibling3_start_pops = {
 # this = system (galactic_object)
 generate_jovian_league_system_final_pass = {
 	optimize_memory
-	adjust_jovian_league_system_resources_for_civics = yes
+	adjust_jovian_league_system_resources_for_civics_and_origins = yes
 	every_system_planet = {
 		limit = { is_colony = yes }
 		if = {
@@ -2271,6 +2275,7 @@ generate_jovian_league_system_final_pass = {
 # duplicates logic from necroids.4; does not alter foundation date
 # this = planet
 generate_jovian_league_necrophage_primitives = {
+	optimize_memory
 	if = {
 		limit = { space_owner = { is_hive_empire = no } }
 		generate_very_early_pre_ftls_on_planet = yes
@@ -2292,9 +2297,46 @@ generate_jovian_league_necrophage_primitives = {
 	}
 }
 
+# based on logic from common/scripted_effect/01_start_of_game_effects.txt:ln~3599 toxic_knights_order_habitat_setup
+# this = planet (around which the habitat should orbit)
+generate_jovian_league_toxic_knights_habitat = {
+	optimize_memory
+	set_planet_flag = ignore_startup_effect
+	set_planet_flag = has_megastructure
+	spawn_planet = {
+		class = "pc_habitat"
+		location = this
+		orbit_angle_offset = 45
+		orbit_distance_offset = 9.899
+		size = 6
+		has_ring = no
+		deposit_blockers = none
+		flags = { toxic_knights_habitat megastructure habitat advanced_habitat }
+		init_effect = {
+			set_planet_entity = {
+				entity = "habitat_phase_02_entity"
+				graphical_culture = owner
+			}
+			set_planet_size = 6
+			set_colony_type = col_habitat_fortress
+			add_district = district_orders_demesne
+			add_building = building_hab_major_capital
+			add_building = building_order_keep
+			while = {
+				count = 4
+				create_pop = {
+					species = owner_species
+					ethos = random
+				}
+			}
+		}
+	}
+}
+
 # based on logic from common/scripted_effect/01_start_of_game_effects.txt:ln~3777 fear_of_the_dark_binary_planets
 # this = planet (space-faring)
 generate_jovian_league_fear_of_the_dark_planet = {
+	optimize_memory
 	space_owner = { save_event_target_as = fotd_country } # needed for built-in effects
 	save_global_event_target_as = fotd_seperatist_planet@space_owner
 	set_planet_flag = fotd_seperatist_planet@space_owner

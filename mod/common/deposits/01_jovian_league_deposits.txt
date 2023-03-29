@@ -103,3 +103,47 @@ d_mothballed_sanctuary_factories = {
 		}
 	}
 }
+
+d_toxic_gods_blessing = {
+	icon = d_bubbling_swamp
+	potential = { always = no }
+	can_be_cleared = { always = no }
+	triggered_planet_modifier = {
+		potential = { has_deposit = d_toxic_god_blight_upon_the_land }
+		planet_max_districts_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { has_deposit = d_toxic_god_deitys_swarms }
+		planet_max_districts_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { has_deposit = d_toxic_god_pools_most_venemous }
+		planet_max_districts_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { has_deposit = d_toxic_god_pestilential_wasteland }
+		planet_max_districts_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { has_deposit = d_toxic_god_envenomed_seas }
+		planet_max_districts_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { num_free_districts < 5 }
+		planet_structures_upkeep_mult = value:toxic_gods_blessing_maintenance
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_deposit = d_toxic_god_blight_upon_the_land
+				has_deposit = d_toxic_god_deitys_swarms
+				has_deposit = d_toxic_god_pools_most_venemous
+				has_deposit = d_toxic_god_pestilential_wasteland
+				has_deposit = d_toxic_god_envenomed_seas
+			}
+		}
+		planet_jobs_unity_produces_mult = 0.1
+	}
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+}

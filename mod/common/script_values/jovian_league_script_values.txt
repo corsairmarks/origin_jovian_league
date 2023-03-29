@@ -1,0 +1,6 @@
+# this = planet
+toxic_gods_blessing_maintenance = {
+	base = 5
+	subtract = trigger:num_free_districts
+	mult = 0.02
+}
