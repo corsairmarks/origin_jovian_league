@@ -362,6 +362,10 @@ part = {
 	}
 }
 
+# TODO: outtro for 3 new flavors - toxic, shroud, fotd
+
+# TODO: eager explorer civics need flavor
+
 ### Part III ###
 
 # Wormhole
@@ -420,6 +424,47 @@ part = {
 	}
 }
 
-# TODO: outtro for 3 new flavors - shroud, toxic, fotd
+# Knights of the Toxic God origin notes
+part = {
+	location = 3
+	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_TOXIC_KNIGHTS"
 
-# TODO: eager explorer civics need flavor
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_toxic_knights
+	}
+}
+
+# Teacher of the Shroud origin notes
+part = {
+	location = 3
+	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_SHROUDWALKER"
+
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_shroudwalker_apprentice
+	}
+}
+
+# Fear of the Dark origin notes
+part = {
+	location = 3
+	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_FEAR_OF_THE_DARK"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_fear_of_the_dark
+	}
+}
+
+### Part V ###
+
+# Eager Explorers origin notes
+part = {
+	location = 4
+	localization = "START_SCREEN_PART_FIVE_JOVIAN_LEAGUE_EAGER_EXPLORERS"
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		is_eager_explorer_empire = yes
+	}
+}
