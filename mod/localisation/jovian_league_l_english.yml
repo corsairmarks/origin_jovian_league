@@ -100,7 +100,7 @@
  d_obsolete_sentinel_posts_desc: "Due to the age of the $building_deployment_post$, the integrated $building_sentinel_posts$ are unusable by a modern £job_patrol_drone£ $job_patrol_drone$ without a facility overhaul."
  d_mothballed_sanctuary_factories: "£blocker£ Mothballed Factories"
  d_mothballed_sanctuary_factories_desc: "Our few bio-trophies consume very few trinkets, so the factories integrated into this planet's $building_organic_sanctuary$ have been mothballed to reduce £energy£ $energy$ usage. Should the need arise they can be restored for use by an £job_artisan_drone£ $job_artisan_drone$."
- d_toxic_gods_blessing_desc: "Sludgelands"
+ d_toxic_gods_blessing: "Sludgelands"
  d_toxic_gods_blessing_desc: "The touch of the Diety uniquely blessed these lands to repel the other effects of its passage. However, this \"safety\" comes at the price of a viscous sludge that inevitably seeps into any structures causing them to need continuous repair."
 
  # localisation to make the game happy with the conditional content
