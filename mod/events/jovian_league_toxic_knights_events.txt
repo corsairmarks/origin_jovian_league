@@ -13,6 +13,11 @@ country_event = {
 	immediate = {
 		set_origin = origin_toxic_knights
 	}
+	after = {
+		country_event = {
+			id = toxoids.7000
+		}
+	}
 }
 
 # triggered by triggered by on_press_begin (non-AI only)
@@ -27,5 +32,10 @@ country_event = {
 	}
 	immediate = {
 		set_origin = origin_toxic_knights
+	}
+	after = {
+		country_event = {
+			id = toxoids.7000
+		}
 	}
 }
