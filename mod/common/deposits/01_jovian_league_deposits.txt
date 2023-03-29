@@ -129,8 +129,9 @@ d_toxic_gods_blessing = {
 		planet_max_districts_add = 1
 	}
 	triggered_planet_modifier = {
-		potential = { num_free_districts < 5 }
-		planet_structures_upkeep_mult = value:toxic_gods_blessing_maintenance
+		potential = { free_district_slots < 5 }
+		planet_structures_upkeep_mult = 1
+		mult = value:toxic_gods_blessing_maintenance
 	}
 	triggered_planet_modifier = {
 		potential = {
