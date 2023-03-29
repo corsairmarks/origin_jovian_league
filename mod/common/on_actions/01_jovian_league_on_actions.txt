@@ -18,6 +18,12 @@ on_game_start_country = {
 		origin_jovian_league_necrophage.33
 		# switches origin from origin_jovian_league_lost_colony to origin_lost_colony to tie in to lost colony events/effects/weights (AI players)
 		origin_jovian_league_lost_colony.1
+		# switches origin from origin_jovian_league_toxic_knights to origin_toxic_knights to tie in to knights of the toxic god events/effects/weights (AI players)
+		origin_jovian_league_toxic_knights.1
+		# switches origin from origin_jovian_league_shroudwalker_apprentice to origin_shroudwalker_apprentice to tie in to teachers of the shroud events/effects/weights (AI players)
+		origin_jovian_league_shroudwalker.1
+		# switches origin from origin_jovian_league_fear_of_the_dark to origin_fear_of_the_dark to tie in to fear of the dark events/effects/weights (AI players)
+		origin_jovian_league_fear_of_the_dark.1
 		origin_jovian_league.8
 	}
 }
@@ -34,6 +40,12 @@ on_press_begin = {
 		origin_jovian_league_necrophage.34
 		# switches origin from origin_jovian_league_lost_colony to origin_lost_colony to tie in to lost colony events/effects/weights (non-AI players)
 		origin_jovian_league_lost_colony.2
+		# switches origin from origin_jovian_league_toxic_knights to origin_toxic_knights to tie in to knights of the toxic god events/effects/weights (non-AI players)
+		origin_jovian_league_toxic_knights.1
+		# switches origin from origin_jovian_league_shroudwalker_apprentice to origin_shroudwalker_apprentice to tie in to teachers of the shroud events/effects/weights (non-AI players)
+		origin_jovian_league_shroudwalker.1
+		# switches origin from origin_jovian_league_fear_of_the_dark to origin_fear_of_the_dark to tie in to fear of the dark events/effects/weights (non-AI players)
+		origin_jovian_league_fear_of_the_dark.1
 	}
 }
 
