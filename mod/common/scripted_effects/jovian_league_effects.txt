@@ -2303,30 +2303,35 @@ generate_jovian_league_toxic_knights_habitat = {
 	optimize_memory
 	set_planet_flag = ignore_startup_effect
 	set_planet_flag = has_megastructure
-	spawn_planet = {
-		class = "pc_habitat"
-		location = this
-		orbit_angle_offset = 45
-		orbit_distance_offset = 9.899
-		size = 6
-		has_ring = no
-		deposit_blockers = none
-		flags = { toxic_knights_habitat megastructure habitat advanced_habitat }
-		init_effect = {
-			set_planet_entity = {
-				entity = "habitat_phase_02_entity"
-				graphical_culture = owner
-			}
-			set_planet_size = 6
-			set_colony_type = col_habitat_fortress
-			add_district = district_orders_demesne
-			add_building = building_hab_major_capital
-			add_building = building_order_keep
-			while = {
-				count = 4
-				create_pop = {
-					species = owner_species
-					ethos = random
+	save_event_target_as = toxic_knight_keep_parent
+	solar_system = {
+		spawn_planet = {
+			class = "pc_habitat"
+			location = event_target:toxic_knight_keep_parent
+			orbit_angle_offset = 45
+			orbit_distance_offset = 9.899
+			size = 6
+			has_ring = no
+			deposit_blockers = none
+			flags = { toxic_knights_habitat megastructure habitat advanced_habitat }
+			init_effect = {
+				set_owner = space_owner
+				set_name = random
+				set_planet_entity = {
+					entity = "habitat_phase_02_entity"
+					graphical_culture = owner
+				}
+				set_planet_size = 6
+				set_colony_type = col_habitat_fortress
+				add_district = district_orders_demesne
+				add_building = building_hab_major_capital
+				add_building = building_order_keep
+				while = {
+					count = 4
+					create_pop = {
+						species = owner_species
+						ethos = random
+					}
 				}
 			}
 		}

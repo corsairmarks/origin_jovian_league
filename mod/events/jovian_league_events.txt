@@ -204,7 +204,6 @@ planet_event = {
 				limit = { space_owner = { has_origin = origin_jovian_league_toxic_knights } }
 				random_system_planet = {
 					limit = { has_planet_flag = jovian_league_parent }
-					set_owner = space_owner
 					generate_jovian_league_toxic_knights_habitat = yes
 				}
 			}
