@@ -218,7 +218,7 @@ origin_jovian_league_fear_of_the_dark = {
 		}
 	}
 	random_weight = { base = 2 }
-	description = "origin_tooltip_fear_of_the_dark_effects"
+	description = "origin_tooltip_jovian_league_fear_of_the_dark_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
