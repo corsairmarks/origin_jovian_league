@@ -18,7 +18,7 @@ unary_jovian_league_01 = {
 	}
 	usage = origin
 	max_instances = -1
-	flags = { empire_home_system jovian_league_unary }
+	flags = { empire_home_system jovian_league_system jovian_league_unary }
 	init_effect = {
 		set_star_flag = empire_cluster
 		every_neighbor_system = {
@@ -275,7 +275,7 @@ unary_jovian_league_02 = {
 	}
 	usage = origin
 	max_instances = -1
-	flags = { empire_home_system jovian_league_unary }
+	flags = { empire_home_system jovian_league_system jovian_league_unary }
 	init_effect = {
 		set_star_flag = empire_cluster
 		every_neighbor_system = {
@@ -523,7 +523,7 @@ trinary_jovian_league_01 = {
 	}
 	usage = origin
 	max_instances = -1
-	flags = { empire_home_system jovian_league_trinary }
+	flags = { empire_home_system jovian_league_system jovian_league_trinary }
 	init_effect = {
 		set_star_flag = empire_cluster
 		every_neighbor_system = {
@@ -786,7 +786,7 @@ trinary_jovian_league_02 = {
 	}
 	usage = origin
 	max_instances = -1
-	flags = { empire_home_system jovian_league_trinary }
+	flags = { empire_home_system jovian_league_system jovian_league_trinary }
 	init_effect = {
 		set_star_flag = empire_cluster
 		every_neighbor_system = {
@@ -1067,7 +1067,7 @@ sol_jovian_league = {
 		type = icy_asteroid_belt
 		radius = 290
 	}
-	flags = { empire_home_system jovian_league_unary sol_system sol }
+	flags = { empire_home_system jovian_league_system jovian_league_unary sol_system sol }
 	usage = origin
 	init_effect = {
 		set_star_flag = empire_cluster

@@ -1,0 +1,49 @@
+# Modified: O:JL shroud tunnels count a nodes, even without the starbase beacon building present
+shroud_tunnel = {
+	name = SHROUD_TUNNEL_GALACTIC
+	is_pathfind = yes
+	requires_exploration = no
+	uses_action = yes # opt-in to risky Shroud transit
+	always_active = yes
+	windup_time = 40
+	winddown_time = 20
+	ftl_multiplier = 0 # instant
+	extends_sensors = no
+	icon_frame = 25
+	remember_instances = no
+	galactic_map_tooltip_header = SHROUD_TUNNEL_GALACTIC
+	galactic_map_tooltip_desc = SHROUD_TUNNEL_GALACTIC_DESC
+	connection_type = scripted_connection
+
+	scripted_connection = {
+		node = { # system scope
+			OR = {
+				starbase = { has_starbase_building = shroud_beacon }
+				AND = {
+					has_star_flag = jovian_league_system
+					has_star_flag = shroud_tunnel_node
+					has_natural_wormhole = yes
+				}
+			}
+		}
+		nexus = { # system scope
+			has_star_flag = shroud_tunnel_nexus
+		}
+	}
+
+	ftl_ship_effect	= "gateway_ftl_ship_effect_entity"
+	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
+	animation_time = 3 # number of days to wait for the jump animation to be played
+
+	country_can_use = { # this = country; from = system owner | default = yes
+		OR = {
+			has_technology = tech_psionic_theory
+			custom_tooltip = {
+				text = shroud_beacon_active_tooltip
+				has_country_flag = shroudwalker_enclave_bought_shroud_beacon
+				any_system_within_border = { starbase = { has_starbase_building = shroud_beacon } }
+			}
+		}
+	}
+	on_action = "on_entering_shroud_tunnel" # To be fired upon entering FTL into this bypass | this = fleet; from = system being jumped to; fromfrom = system being jumped from
+}

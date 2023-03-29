@@ -345,6 +345,8 @@ country_event = {
 
 			if = {
 				limit = { has_origin = origin_jovian_league_shroudwalker_apprentice }
+				# spawn logic based on common/scripted_effects/enclave_effects.txt:ln~434 shroudwalker_enclave_starbase_create_shroud_tunnel
+				# omits the "if no nexus" fallback link
 				event_target:jovian_league_system = {
 					spawn_natural_wormhole = {
 						bypass_type = shroud_tunnel
@@ -352,25 +354,13 @@ country_event = {
 						orbit_angle = 270
 						orbit_distance = 500
 					}
+					# set_star_flag = spawned_shroud_tunnel # omitted so it is not possible to build the shroud beacon in the jovian league system
 					set_star_flag = shroud_tunnel_node
 				}
-			
-				if = {
-					limit = {
-						NAND = {
-							exists = event_target:shroud_tunnel_nexus
-							event_target:shroud_tunnel_nexus = { has_star_flag = shroud_tunnel_nexus }
-						}
-					}
-					random_system = {
-						limit = { has_star_flag = shroudwalker_enclave_system }
-						link_wormholes = event_target:jovian_league_system
-					}
 
-					# set flags that shroud_tunnels have been encountered
-					set_country_flag = encountered_first_shroud_tunnel
-					add_seen_bypass_type = shroud_tunnel
-				}
+				# set flags that shroud_tunnels have been encountered
+				set_country_flag = encountered_first_shroud_tunnel
+				add_seen_bypass_type = shroud_tunnel
 			}
 			else_if = {
 				limit = { exists = event_target:jovian_league_exit_system }
