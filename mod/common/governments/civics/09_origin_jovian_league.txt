@@ -166,7 +166,7 @@ origin_jovian_league_shroudwalker_apprentice = {
 		civics = { NOT = { value = civic_fanatic_purifiers } }
 	}
 	random_weight = { base = 2 }
-	description = "origin_tooltip_jovian_league_lost_colony_effects"
+	description = "origin_tooltip_jovian_league_shroudwalker_apprentice_effects"
 	advanced_start = no
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
@@ -177,6 +177,7 @@ origin_jovian_league_shroudwalker_apprentice = {
 		sol_jovian_league
 	}
 	flags = { is_jovian_league custom_start_screen }
+	traits = { trait = trait_latent_psionic }
 }
 
 origin_jovian_league_toxic_knights = {
@@ -185,10 +186,13 @@ origin_jovian_league_toxic_knights = {
 	max_once_global = yes
 	icon = "gfx/interface/icons/origins/unused/origins_eldest_sibling.dds"
 	picture = GFX_origin_toxic_knights
-	possible = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	possible = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		civics = { NOT = { value = civic_fanatic_purifiers } }
+	}
 	random_weight = { base = 2 }
-	description = "origin_tooltip_jovian_league_lost_colony_effects"
-	advanced_start = no
+	description = "origin_tooltip_jovian_league_toxic_knights_effects"
+	advanced_start = yes
 	non_colonizable_planet_class_neighbor = yes
 	initializers = {
 		unary_jovian_league_01
