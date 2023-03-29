@@ -1550,7 +1550,10 @@ generate_jovian_league_sibling1_start_pops = {
 	clear_variable = total_pop_count
 	if = {
 		limit = {
-			owner = { is_eager_explorer_empire = no }
+			owner = {
+				has_origin = origin_jovian_league
+				is_eager_explorer_empire = no
+			}
 		}
 		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	}
@@ -2856,7 +2859,7 @@ ojl_setup_civic_permanent_employment_zombie_pops = {
 				limit = {
 					NOT = { has_trait = trait_zombie }
 					has_job_category = worker
-					is_robotic_species = no
+					is_robot_pop = no
 				}
 				modify_species = {
 					species = this
