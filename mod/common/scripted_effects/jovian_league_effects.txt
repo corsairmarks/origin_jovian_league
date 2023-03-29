@@ -676,14 +676,6 @@ generate_jovian_league_capital_start_deposits_and_blockers = {
 	}
 }
 
-# TODO: toxic gods get less infrastructure:
-# remove_district = district_city
-# remove_district = district_farming
-# remove_district = district_generator
-# remove_building = building_commercial_zone
-# -7 Pops total
-# eager + toxic - needs to remove 2 extra, since they sib2
-
 # triggered by empire_init_capital_planet
 # this = planet (capital)
 generate_jovian_league_capital_start_buildings_and_districts = {
@@ -877,6 +869,21 @@ generate_jovian_league_capital_start_pops = {
 	}
 
 	if = {
+		limit = { owner = { has_origin = origin_jovian_league_toxic_knights } }
+		change_variable = {
+			which = total_pop_count
+			value = -2
+		}
+		if = {
+			limit = { owner = { is_eager_explorer_empire = yes } }
+			change_variable = {
+				which = total_pop_count
+				value = -1
+			}
+		}
+	}
+
+	if = {
 		limit = {
 			owner = {
 				OR = {
@@ -997,6 +1004,7 @@ generate_jovian_league_capital_start_pops = {
 	}
 
 	clear_variable = total_pop_count
+	ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -1249,11 +1257,14 @@ generate_jovian_league_sibling1_start_deposits_and_blockers = {
 generate_jovian_league_sibling1_start_buildings_and_districts = {
 	optimize_memory
 	if = {
-		limit = { owner = { NOT = { has_valid_civic = civic_agrarian_idyll } } }
-		ojl_add_authority_appropriate_housing_district = yes
-	}
-	else = {
-		ojl_add_planet_appropriate_farming_district = yes
+		limit = { owner = { NOT = { has_origin = origin_jovian_league_toxic_knights } } }
+		if = {
+			limit = { owner = { NOT = { has_valid_civic = civic_agrarian_idyll } } }
+			ojl_add_authority_appropriate_housing_district = yes
+		}
+		else = {
+			ojl_add_planet_appropriate_farming_district = yes
+		}
 	}
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
@@ -1281,7 +1292,20 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		}
 	}
 	else = {
-		add_building = building_capital
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_toxic_knights
+						is_eager_explorer_empire = yes
+					}
+				}
+			}
+			add_building = building_capital
+		}
+		else = {
+			add_building = building_colony_shelter
+		}
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
@@ -1291,28 +1315,31 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 			add_building = building_posthumous_employment_center
 		}
 		if = {
-			limit = { owner = { is_spiritualist = yes } }
+			limit = { owner = { NOT = { has_origin = origin_jovian_league_toxic_knights } } }
 			if = {
-				limit = { owner = { is_death_cult_empire = yes } }
-				add_building = building_sacrificial_temple_1
+				limit = { owner = { is_spiritualist = yes } }
+				if = {
+					limit = { owner = { is_death_cult_empire = yes } }
+					add_building = building_sacrificial_temple_1
+				}
+				else = {
+					add_building = building_temple
+				}
 			}
+			else_if = {
+				limit = { owner = { is_pleasure_seeker = yes } }
+				add_building = building_holo_theatres
+			}
+			else_if = {
+					limit = { owner = { has_valid_civic = civic_environmentalist } }
+					add_building = building_ranger_lodge
+					add_blocker = { type = d_big_nature_preserve_blocker }
+				}
 			else = {
-				add_building = building_temple
+				add_building = building_commercial_zone # need amentities more than unity
 			}
+			# no industry for a fulfillment center, gaia-seeder too expensive
 		}
-		else_if = {
-			limit = { owner = { is_pleasure_seeker = yes } }
-			add_building = building_holo_theatres
-		}
-		else_if = {
-				limit = { owner = { has_valid_civic = civic_environmentalist } }
-				add_building = building_ranger_lodge
-				add_blocker = { type = d_big_nature_preserve_blocker }
-			}
-		else = {
-			add_building = building_commercial_zone # need amentities more than unity
-		}
-		# no industry for a fulfillment center, gaia-seeder too expensive
 	}
 
 	set_variable = {
@@ -1381,6 +1408,21 @@ generate_jovian_league_sibling1_start_pops = {
 		change_variable = {
 			which = total_pop_count
 			value = -3
+		}
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league_toxic_knights } }
+		change_variable = {
+			which = total_pop_count
+			value = -3
+		}
+		if = {
+			limit = { owner = { is_eager_explorer_empire = yes } }
+			change_variable = {
+				which = total_pop_count
+				value = -1
+			}
 		}
 	}
 
@@ -1508,15 +1550,12 @@ generate_jovian_league_sibling1_start_pops = {
 	clear_variable = total_pop_count
 	if = {
 		limit = {
-			owner = {
-				has_origin = origin_jovian_league
-				is_eager_explorer_empire = no
-			}
+			owner = { is_eager_explorer_empire = no }
 		}
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 2 }
+		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	}
 	else = {
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 3 }
+		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 2 }
 	}
 
 	ojl_setup_origin_mechanists_robot_pops = yes
@@ -2098,7 +2137,20 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 		add_building = building_machine_assembly_plant
 	}
 	else = {
-		add_building = building_colony_shelter
+		if = {
+			limit = {
+				owner = {
+					NAND = {
+						has_origin = origin_jovian_league_toxic_knights
+						is_eager_explorer_empire = yes
+					}
+				}
+			}
+			add_building = building_capital
+		}
+		else = {
+			add_building = building_colony_shelter
+		}
 		if = {
 			limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 			add_building = building_robot_assembly_plant
@@ -2120,7 +2172,10 @@ generate_jovian_league_sibling3_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_machine_empire = no } }
 		ojl_add_species_appropriate_food_district = yes
-		ojl_add_species_appropriate_food_district = yes
+		if = {
+			limit = { owner = { NOT = { has_origin = origin_jovian_league_toxic_knights } } }
+			ojl_add_species_appropriate_food_district = yes
+		}
 		if = {
 			limit = { is_lithoid_empire = no }
 			set_colony_type = col_farming
@@ -2241,11 +2296,7 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 
 	clear_variable = total_pop_count
-	if = {
-		limit = { owner = { is_eager_explorer_empire = no } }
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
-	}
-
+	ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -2381,6 +2432,10 @@ generate_jovian_league_toxic_knights_habitat = {
 				set_colony_type = col_habitat_fortress
 				add_building = building_hab_major_capital
 				add_building = building_order_keep
+				if = {
+					limit = { owner = { has_valid_civic = civic_permanent_employment } }
+					add_building = building_posthumous_employment_center
+				}
 				add_district = district_orders_demesne
 				while = {
 					count = 4

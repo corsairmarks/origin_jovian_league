@@ -118,21 +118,21 @@ planet_event = {
 					generate_jovian_league_fear_of_the_dark_planet = yes
 				}
 			}
-			if = {
-				limit = {
-					space_owner = {
-						is_eager_explorer_empire = no
-						NOT = { has_origin = origin_jovian_league_toxic_knights }
-					}
+			random_system_planet = {
+				limit = { has_planet_flag = jovian_league_sibling2 }
+				if = {
+					limit = { space_owner = { is_biological_species_empire = yes } }
+					change_to_random_secondary_pc = yes
 				}
-				random_system_planet = {
-					limit = { has_planet_flag = jovian_league_sibling2 }
-					if = {
-						limit = { space_owner = { is_biological_species_empire = yes } }
-						change_to_random_secondary_pc = yes
-					}
-					else = {
-						change_to_random_normal_pc = yes
+				else = {
+					change_to_random_normal_pc = yes
+				}
+				if = {
+					limit = {
+						space_owner = {
+							is_eager_explorer_empire = no
+							NOT = { has_origin = origin_jovian_league_toxic_knights }
+						}
 					}
 					set_owner = space_owner
 					change_colony_foundation_date = -8100
