@@ -37,6 +37,17 @@ country_event = {
 				}
 			}
 		}
+		# default unificication tech
+		if = {
+			limit = {
+				has_origin = origin_jovian_league
+				NOR = {
+					has_technology = tech_planetary_unification
+					has_tech_option = tech_planetary_unification
+				}
+			}
+			add_research_option = tech_planetary_unification
+		}
 		# mechanists starting techs
 		if = {
 			limit = { has_origin = origin_jovian_league_mechanists }
