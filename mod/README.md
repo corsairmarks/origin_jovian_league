@@ -95,6 +95,7 @@ Some variants of a jovian league may start with a small negative income of one o
     * Consume the compatibility trigger from another mod
     * Remove old compatibility global flag
 * 6.0.0 Update for Stellaris version 3.7 "Canis Minor"
+    * Origin: Jovian League (Necrophage) starts with primitives on up to two planets in the starting system, equal to the amount of guaranteed neighbors set at game start
     * Tweak initial jovial league district, building, and Pop spawning
     * Remove obsolete static modifiers
     * All planets now benefit from Prosperous Unification modifiers

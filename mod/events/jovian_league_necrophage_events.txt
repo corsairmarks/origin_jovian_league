@@ -46,6 +46,12 @@ country_event = {
 			}
 		}
 	}
+	after = {
+		# convert starting worlds to primitives
+		country_event = {
+			id = origin_jovian_league_necrophage.4
+		}
+	}
 }
 
 # triggered by on_press_begin (non-AI only)
@@ -94,6 +100,53 @@ country_event = {
 					type = population_control_no
 					country = prev
 					cooldown = no
+				}
+			}
+		}
+	}
+	after = {
+		country_event = {
+			id = origin_jovian_league_necrophage.4
+		}
+	}
+}
+
+# explicitly triggered by origin_jovian_league_necrophage.33 and origin_jovian_league_necrophage.34
+# sets up necrophage primitives on 
+country_event = {
+	id = origin_jovian_league_necrophage.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		num_guaranteed_colonies > 0
+		exists = capital_scope
+	}
+	immediate = {
+		capital_scope.solar_system = {
+			if = {
+				limit = { num_guaranteed_colonies > 0 }
+				random_system_planet = {
+					limit = { has_planet_flag = jovian_league_t1_colony_ideal }
+					weights = {
+						base = 0
+						add = trigger:planet_size
+						pow = 2
+					}
+					generate_jovian_league_necrophage_primitives = yes
+					change_colony_foundation_date = -461
+				}
+			}
+			if = {
+				limit = { num_guaranteed_colonies > 1 }
+				random_system_planet = {
+					limit = { has_planet_flag = jovian_league_t2_colony_ideal }
+					weights = {
+						base = 0
+						add = trigger:planet_size
+						pow = 2
+					}
+					generate_jovian_league_necrophage_primitives = yes
+					change_colony_foundation_date = -1275
 				}
 			}
 		}

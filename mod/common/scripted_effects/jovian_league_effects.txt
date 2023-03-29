@@ -2267,6 +2267,29 @@ generate_jovian_league_system_final_pass = {
 	}
 }
 
+# duplicates logic from necroids.4; does not alter foundation date
+# this = planet
+generate_jovian_league_necrophage_primitives = {
+	if = {
+		limit = { space_owner = { is_hive_empire = no } }
+		generate_very_early_pre_ftls_on_planet = yes
+	}
+	else = {
+		set_planet_flag = pre_ftl_hive_mind
+		generate_very_early_pre_ftl_hive_on_planet = yes
+	}
+
+	set_name = random
+	while = {
+		count = 4
+		create_army = {
+			owner = last_created_country
+			type = primitive_additional_army
+			species = last_created_country
+		}
+	}
+}
+
 # this = system (galactic_object)
 save_jovian_ideal_design_pc = {
 	optimize_memory
