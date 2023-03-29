@@ -13,6 +13,14 @@ country_event = {
 	immediate = {
 		set_origin = origin_lost_colony
 	}
+	after = {
+		if = {
+			limit = { NOT = { has_country_flag = human_2 } }
+			country_event = {
+				id = origin.100
+			}
+		}
+	}
 }
 
 # triggered by on_press_begin (non-AI only)
@@ -27,6 +35,14 @@ country_event = {
 	}
 	immediate = {
 		set_origin = origin_lost_colony
+	}
+	after = {
+		if = {
+			limit = { NOT = { has_country_flag = human_2 } }
+			country_event = {
+				id = origin.100
+			}
+		}
 	}
 }
 

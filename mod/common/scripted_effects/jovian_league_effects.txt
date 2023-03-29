@@ -2280,6 +2280,7 @@ generate_jovian_league_necrophage_primitives = {
 	}
 
 	set_name = random
+	owner = { establish_communications_no_message = prev.space_owner }
 	while = {
 		count = 4
 		create_army = {
