@@ -130,6 +130,7 @@ generate_jovian_league_potential_terraform_candidate = {
 	reroll_random = yes
 }
 
+# TODO: move the origin stuff to an effect within capoital setup, the initializer won't have an owner yet!
 # duplicates effects from generate_home_system_resources but adds a flag to prevent deposits with gatherers (mining/research stations)
 # from appearing on specific planets, generates gatherer targets before "open" deposits that need one constructed, and avoids overwriting
 # deposits that it already added
@@ -334,7 +335,7 @@ generate_jovian_league_system_resources = {
 		random_system_planet = {
 			limit = { has_planet_flag = divider_flag }
 			remove_terraforming_candidate_modifiers = yes
-			#add_deposit = d_alloys_5 # TODO maybe?
+			add_deposit = d_alloys_5
 			change_pc = pc_broken
 			set_name = NAME_Divider
 		}
@@ -2289,6 +2290,16 @@ generate_jovian_league_necrophage_primitives = {
 			species = last_created_country
 		}
 	}
+}
+
+# based on logic from common/scripted_effect/01_start_of_game_effects.txt:ln~3777 fear_of_the_dark_binary_planets
+# this = planet (space-faring)
+generate_jovian_league_fear_of_the_dark_planet = {
+	space_owner = { save_event_target_as = fotd_country } # needed for built-in effects
+	save_global_event_target_as = fotd_seperatist_planet@space_owner
+	set_planet_flag = fotd_seperatist_planet@space_owner
+	create_fear_of_the_dark_country = yes
+	setup_fear_of_the_dark_pre_ftl = yes
 }
 
 # this = system (galactic_object)

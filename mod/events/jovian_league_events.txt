@@ -8,10 +8,10 @@ country_event = {
 	trigger = { is_jovian_league = yes }
 	immediate = {
 		if = {
-			limit = { is_eager_explorer_empire = no }
-			# set flags that wormholes have been encountered
-			set_country_flag = encountered_first_wormhole
-			add_seen_bypass_type = wormhole
+			limit = {
+				is_eager_explorer_empire = no
+				NOT = { has_origin = origin_jovian_league_shroudwalker_apprentice }
+			}
 			# wormhole techs
 			if = {
 				limit = {
@@ -58,8 +58,6 @@ country_event = {
 	}
 }
 
-# TODO: 3 new event files with basic origin-swapping events, + any special setup
-
 # triggered by empire_init_capital_planet
 # from = founder species
 # fromfrom = secondary species (if exists) // Corsair's Note: this appears to be broken; the default game uses last_created_species to get the secondary
@@ -99,6 +97,12 @@ planet_event = {
 					generate_jovian_league_sibling1_start_buildings_and_districts = yes
 					generate_jovian_league_sibling1_start_pops = yes
 					generate_jovian_league_sibling_final_pass = yes
+				}
+			}
+			else = {
+				random_system_planet = {
+					limit = { has_planet_flag = haven_flag }
+					generate_jovian_league_fear_of_the_dark_planet = yes
 				}
 			}
 			if = {
@@ -339,6 +343,10 @@ country_event = {
 						limit = { has_star_flag = shroudwalker_enclave_system }
 						link_wormholes = event_target:jovian_league_system
 					}
+
+					# set flags that shroud_tunnels have been encountered
+					set_country_flag = encountered_first_shroud_tunnel
+					add_seen_bypass_type = shroud_tunnel
 				}
 			}
 			else_if = {
@@ -364,6 +372,10 @@ country_event = {
 						link_wormholes = prev
 					}
 				}
+
+				# set flags that wormholes have been encountered
+				set_country_flag = encountered_first_wormhole
+				add_seen_bypass_type = wormhole
 
 				country_event = {
 					id = origin_jovian_league.9
