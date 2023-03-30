@@ -64,7 +64,7 @@
  origin_tooltip_jovian_league_lost_colony_effects: "$origin_tooltip_jovian_league_base_effects$\n$origin_tooltip_lost_colony_effects$"
  origin_jovian_league_shroudwalker_apprentice: "$origin_jovian_league$ ($origin_shroudwalker_apprentice$)"
  origin_jovian_league_shroudwalker_apprentice_desc: "$origin_shroudwalker_apprentice_desc$"
- origin_tooltip_jovian_league_shroudwalker_apprentice_effects: "$origin_tooltip_jovian_league_base_moons_bullet$\n- Your home star system is §Hdisconnected§! from the hyperlane network but instead has a §Hshroud tunnel§! leading to a §H$gov_shroudwalker_enclave$§!\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_tooltip_shroudwalker_apprentice_effects$"
+ origin_tooltip_jovian_league_shroudwalker_apprentice_effects: "$origin_tooltip_jovian_league_base_moons_bullet$\n- Your home star system is §Hdisconnected§! from the hyperlane network but instead has a §Hshroud tunnel§! leading to a §H$gov_shroudwalker_enclave$\n- Gain research option for £society_research£§H$tech_psionic_theory$§! technology with §G30%§! progress§!\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_tooltip_shroudwalker_apprentice_effects$"
  origin_jovian_league_toxic_knights: "$origin_jovian_league$ ($origin_toxic_knights$)"
  origin_jovian_league_toxic_knights_desc: "$origin_toxic_knights_desc$"
  origin_tooltip_jovian_league_toxic_knights_effects: "- Instead of one large home world, begin with three small, colonized moons and a special Keep habitat orbiting a single gas giant\n$origin_tooltip_jovian_league_base_wormhole_bullet$\n$origin_tooltip_jovian_league_base_wormhole_research_bullet$\n$origin_tooltip_jovian_league_base_guaranteed_habitable_bullet$\n$origin_toxic_knights_effects$"

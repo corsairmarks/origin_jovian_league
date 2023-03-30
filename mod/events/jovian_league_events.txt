@@ -21,58 +21,81 @@ country_event = {
 					}
 				}
 				add_research_option = tech_wormhole_stabilization
+			}
+			if = {
+				limit = { is_ai = yes }
+				# the AI needs more help to get out in a timely fashion
+				add_tech_progress = {
+					tech = tech_wormhole_stabilization
+					progress = 0.7
+				}
+			}
+			else = {
+				add_tech_progress = {
+					tech = tech_wormhole_stabilization
+					progress = 0.3
+				}
+			}
+		}
+		switch = {
+			trigger = has_origin
+			origin_jovian_league = { # default unificication tech
+				if = {
+					limit = {
+						NOR = {
+							has_technology = tech_planetary_unification
+							has_tech_option = tech_planetary_unification
+						}
+					}
+					add_research_option = tech_planetary_unification
+				}
+			}
+			origin_jovian_league_mechanists = { # mechanists starting techs
+				give_technology = { message = no tech = tech_powered_exoskeletons }
+				give_technology = { message = no tech = tech_robotic_workers }
+				add_research_option = tech_robomodding
+			}
+			origin_jovian_league_shroudwalker_apprentice = { # psionic theory unlockes shroud tunnels
+				if = {
+					limit = {
+						NOR = {
+							has_technology = tech_psionic_theory
+							has_tech_option = tech_psionic_theory
+						}
+					}
+					add_research_option = tech_psionic_theory
+				}
 				if = {
 					limit = { is_ai = yes }
 					# the AI needs more help to get out in a timely fashion
 					add_tech_progress = {
-						tech = tech_wormhole_stabilization
-						progress = 0.9
+						tech = tech_psionic_theory
+						progress = 0.7
 					}
 				}
 				else = {
 					add_tech_progress = {
-						tech = tech_wormhole_stabilization
+						tech = tech_psionic_theory
 						progress = 0.3
 					}
 				}
 			}
-		}
-		# default unificication tech
-		if = {
-			limit = {
-				has_origin = origin_jovian_league
-				NOR = {
-					has_technology = tech_planetary_unification
-					has_tech_option = tech_planetary_unification
-				}
-			}
-			add_research_option = tech_planetary_unification
-		}
-		# mechanists starting techs
-		if = {
-			limit = { has_origin = origin_jovian_league_mechanists }
-			give_technology = { message = no tech = tech_powered_exoskeletons }
-			give_technology = { message = no tech = tech_robotic_workers }
-			add_research_option = tech_robomodding
-		}
-		# toxic knights habitat tech
-		if = {
-			limit = { has_origin = origin_jovian_league_toxic_knights }
-			add_research_option = tech_habitat_1
-
-			if = {
-				limit = {
-					OR = {
-						is_lithoid_empire = no
-						is_catalytic_empire = yes
+			origin_jovian_league_toxic_knights = { # knights of the toxic god habitat technologies
+				add_research_option = tech_habitat_1
+				if = {
+					limit = {
+						OR = {
+							is_lithoid_empire = no
+							is_catalytic_empire = yes
+						}
 					}
+					give_technology = { message = no tech = tech_eco_simulation }
+					give_technology = { message = no tech = tech_hydroponics }
 				}
-				give_technology = { message = no tech = tech_eco_simulation }
-				give_technology = { message = no tech = tech_hydroponics }
-			}
-			else = {
-				give_technology = { message = no tech = tech_powered_exoskeletons }
-				give_technology = { message = no tech = tech_space_mining_1 }
+				else = {
+					give_technology = { message = no tech = tech_powered_exoskeletons }
+					give_technology = { message = no tech = tech_space_mining_1 }
+				}
 			}
 		}
 	}
