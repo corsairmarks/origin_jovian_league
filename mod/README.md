@@ -1,24 +1,34 @@
 # Overview
 
-This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
+A brand-new origin where you begin in a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
-Also includes a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978).
+There are also variations on the original Origin: Jovian League that mirror some of the built-in origins:
 
-New for version 4.0.0, support has been added for a Lost Colony variation. Suggestion by [dsecret88](https://steamcommunity.com/id/Dragyn88).
+* Mechanists (requires the Utopia expansion)
+* Syncretic Evolution (requires the Utopia expansion)
+* Necrophage (requires the Necroids Species Pack)
+* Lost Colony
+* Knights of the Toxic God (requires the Toxoids Species Pack)
+* Teachers of the Shroud (requires the Overlord expansion)
+* Fear of the Dark (requires the First Contact Story Pack)
 
-## Notes
+Also supported are any of the new "Eager Explorer" civics (requires the First Contact Story Pack) which begin _without_ a wormhole or hyperlane connection to the rest of the galaxy. Enjoy an early spaceflight start and chart your expansion without the use of hyperlanes!
 
-Because there isn't a way to remove a technology from an empire, in lieu of starting the game without Hyperspace Travel (Hyperdrive I) technology, I thought it would be a good proxy to start gated behind a wormhole.  Researching the technology early-game will slow initial technological progress, but skipping it will strongly limit expansion options (notably restricting access to space mining and strategic resources).  Beware - it doesn't protect you from jump drives!
+## Special Thanks
 
-Special thanks to [doctornull](https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
-
-This origin was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit.
+* [doctornull](url=https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues
+* [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978) for 
+suggesting Sol system variant that starts your empire around the original jovian planet - Jupiter itself!
+* [dsecret88](https://steamcommunity.com/id/Dragyn88) for suggesting the Lost Colony variant
+* [zephramwolf](https://steamcommunity.com/profiles/76561198028125519) for suggesting the Knights of the Toxic God variant
+* [Undisclosed](https://steamcommunity.com/id/theluin) for suggesting the Teachers of the Shroud variant
+* Originally was inspired by comments from [this](https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/) post on Reddit
 
 # Changes
 
-A brand-new origin "jovian league" with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
+A brand-new Origin: Jovian League with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
 
-Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a jovian league for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Mind Necrophages).  These flavors are only available to pick if the **host** has the appropriate DLC to unlock the respective built-in origin (Utopia for Mechanists and Syncretic Evolution, Necroids for Necrophage).  After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits - most notably Mechanists get higher chances to draw robotics technologies, and Necrophages have their complex conversion process, purge type, buildings, and tradition swaps.
+Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a jovian league for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Minds).  These flavors are only available to pick if the **host** has the appropriate DLC to unlock the respective built-in origin.  Also supported are additional origins that are conceptually about space travel and   After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits from that origin, such as tradition swaps, tech weights, or mechanics like necrophage.
 
 All flavors of the jovian league origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game.  Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
 
@@ -29,13 +39,13 @@ All flavors of the jovian league origin will respect the special features of you
 
 ## Compatibility
 
-If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for Necrophages as it connects to all of the code for necrophage conversion.
+If you want to use the additional variants of the jovian league origin, the game host must own the corresponding DLC.  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for necrophages as it connects to all of the code for Necrophage conversion.
 
-The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with `effect planet_class = pc_arid` or whatever class you want. Deposits and features can be rerolled for a planet with `effect reroll_deposits = yes` (these are both built-in console commands).
+The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes or equivalent classes from [Planetary Diversity](https://steamcommunity.com/sharedfiles/filedetails/?id=819148835).
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod does not overwrite _any_ base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.7 "Canis Minor."  This mod is not compatible with achievements.
+Finally - because this mod overrides only a single base game code object, it should play nicely with many other mods.  Built for Stellaris version 3.7 "Canis Minor."  This mod is not compatible with achievements.
 
 ### When to Install
 
@@ -55,9 +65,17 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
 
 ## Known Issues
 
-The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
+The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for the variants without needing to duplicate or override all of the relevant code.
 
 Some variants of a jovian league may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.
+
+### Error Logs
+
+Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in their system.  In order for it to be usable without the Shroud Beacon starbase building, it was necessary to update the conditions for when a shroud tunnel bypass counts as a node. The game logs one error message to indicate the overwrite:
+
+```
+[06:41:31][game_singleobjectdatabase.h:165]: Object with key: shroud_tunnel already exists, using the one at  file: common/bypass/10_jovian_league_bypass_overrides.txt line: 2
+```
 
 ## Changelog
 
@@ -99,10 +117,10 @@ Some variants of a jovian league may start with a small negative income of one o
     * Origin: Jovian League (Necrophage) starts with primitives on up to two planets in the starting system, equal to the amount of guaranteed neighbors set at game start
     * Tweak initial jovial league district, building, and Pop spawning
     * Remove obsolete static modifiers
-    * All planets now benefit from Prosperous Unification modifiers
+    * All initially-colonized jovian league planets now benefit from Prosperous Unification modifiers
     * Support the new "Eager Explorer" civics for early jump drives - your starting system will not have a wormhole, and you will have one less colonized jovian moon
-    * Add a jovian league variant of Knights of the Toxic God - the Keep will orbit your initial jovian planet, and all of your moons will be toxic-touched (other special features subject to change) - suggested by [zephramwolf](https://steamcommunity.com/profiles/76561198028125519)
-    * Add a jovian league variant of Teachers of the Shroud - instead of a wormhole, begin with a Shroud Tunnel to the Shroudwalkers - suggested by [Undisclosed](https://steamcommunity.com/id/theluin)
+    * Add a jovian league variant of Knights of the Toxic God - the Keep orbits your initial jovian planet - suggested by [zephramwolf](https://steamcommunity.com/profiles/76561198028125519)
+    * Add a jovian league variant of Teachers of the Shroud - instead of a wormhole, begin with a Shroud Tunnel to the Shroudwalkers and progress on the Psionic Theory technology - suggested by [Undisclosed](https://steamcommunity.com/id/theluin)
     * Add a jovian league variant of Fear of the Dark - one of the initial jovian moons belongs to the dissenters
 
 ## Source Code

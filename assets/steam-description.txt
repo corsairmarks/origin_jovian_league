@@ -1,23 +1,35 @@
 [h1]Overview[/h1]
-This is a new origin where you begin in one of several variants of a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel.  Your home system begins disconnected from the hyperlane network but instead has a wormhole.  You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization.  Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
+A brand-new origin where you begin in a solar system that has many small, habitable moons colonized by your empire before being able to access faster-than-light travel. Your home system begins disconnected from the hyperlane network but instead has a wormhole. You won't be contained for long, however, because you start with 30% progress on Wormhole Stabilization. Instead of guaranteed habitable systems, your home system will contain extra uncolonized, habitable moons and/or planets based on the number of guaranteed neighbors chosen at game start.
 
-Also includes a variant of the Sol system that starts your empire around the original jovian planet - Jupiter itself!  Suggestion by [url=https://steamcommunity.com/profiles/76561198071084874]Andora[/url] and [url=https://steamcommunity.com/profiles/76561199132491978]transfemgodtamer[/url].
+There are also variations on the original Origin: Jovian League that mirror some of the built-in origins:
+[list]
+[*]Mechanists (requires the Utopia expansion)
+[*]Syncretic Evolution (requires the Utopia expansion)
+[*]Necrophage (requires the Necroids Species Pack)
+[*]Lost Colony
+[*]Knights of the Toxic God (requires the Toxoids Species Pack)
+[*]Teachers of the Shroud (requires the Overlord expansion)
+[*]Fear of the Dark (requires the First Contact Story Pack)
+[/list]
+Also supported are any of the new "Eager Explorer" civics (requires the First Contact Story Pack) which begin [i]without[/i] a wormhole or hyperlane connection to the rest of the galaxy. Enjoy an early spaceflight start and chart your expansion without the use of hyperlanes!
 
-New for version 4.0.0, support has been added for a Lost Colony variation. Suggestion by [url=https://steamcommunity.com/id/Dragyn88]dsecret88[/url].
-
-[h2]Notes[/h2]
-Because there isn't a way to remove a technology from an empire, in lieu of starting the game without Hyperspace Travel (Hyperdrive I) technology, I thought it would be a good proxy to start gated behind a wormhole.  Researching the technology early-game will slow initial technological progress, but skipping it will strongly limit expansion options (notably restricting access to space mining and strategic resources).  Beware - it doesn't protect you from jump drives!
-
-Special thanks to [url=https://steamcommunity.com/id/doctornull]doctornull[/url] for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues.
-
-This origin was inspired by comments from [url=https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/]this[/url] post on Reddit.
+[h2]Special Thanks[/h2]
+[list]
+[*][url=https://steamcommunity.com/id/doctornull]doctornull[/url] for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues
+[*][url=https://steamcommunity.com/profiles/76561198071084874]Andora[/url] and [url=https://steamcommunity.com/profiles/76561199132491978]transfemgodtamer[/url] for 
+suggesting Sol system variant that starts your empire around the original jovian planet - Jupiter itself!
+[*][url=https://steamcommunity.com/id/Dragyn88]dsecret88[/url] for suggesting the Lost Colony variant
+[*][url=https://steamcommunity.com/profiles/76561198028125519]zephramwolf[/url] for suggesting the Knights of the Toxic God variant
+[*][url=https://steamcommunity.com/id/theluin]Undisclosed[/url] for suggesting the Teachers of the Shroud variant
+[*]Originally was inspired by comments from [url=https://old.reddit.com/r/Stellaris/comments/nbtz5d/4_habitable_moons/]this[/url] post on Reddit
+[/list]
 
 [h1]Changes[/h1]
-A brand-new origin "jovian league" with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
+A brand-new Origin: Jovian League with a few custom starting system initializers to choose from, plus events and effects to get things set up and some start-up screens to get you in the mood.
 
-Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a jovian league for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Mind Necrophages).  These flavors are only available to pick if the [b]host[/b] has the appropriate DLC to unlock the respective built-in origin (Utopia for Mechanists and Syncretic Evolution, Necroids for Necrophage).  After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits - most notably Mechanists get higher chances to draw robotics technologies, and Necrophages have their complex conversion process, purge type, buildings, and tradition swaps.
+Because I like origins with secondary species, and I had to do the work anyway to support Driven Assimilators and Rogue Servitors, this mod also includes variations for a jovian league for Mechanists, Syncretic Evolution, and Necrophage origins (including Hive Minds). These flavors are only available to pick if the [b]host[/b] has the appropriate DLC to unlock the respective built-in origin. Also supported are additional origins that are conceptually about space travel and After the game setup scripts run, your empire is converted to having the relevant built-in origin in order to keep the built-in benefits from that origin, such as tradition swaps, tech weights, or mechanics like necrophage.
 
-All flavors of the jovian league origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game.  Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
+All flavors of the jovian league origin will respect the special features of your empire - generally, ethics, origin, and civics - in the same way as the base game. Expect to have special buildings such as Temples as a Spiritualist or Chambers of Elevation as non-genocidal Necrophages.
 
 [h2]Localisation[/h2]
 [list]
@@ -25,30 +37,36 @@ All flavors of the jovian league origin will respect the special features of you
 [*]German (Deutsch) by [url=https://steamcommunity.com/id/Lucanoria]Lucanoria[/url]
 [/list]
 [h2]Compatibility[/h2]
-If you want to use the additional Mechanists, Syncretic Evolution, or Necrophage variants of the jovian league origin, the game host must own the corresponding DLC (Utopia or Necroids).  In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for necrophages as it connects to all of the code for Necrophage conversion.
+If you want to use the additional variants of the jovian league origin, the game host must own the corresponding DLC. In order to support as much of these origins as possible, the variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button. This is strictly necessary for necrophages as it connects to all of the code for Necrophage conversion.
 
-The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes. Mods that alter your planet class and preference after game starts are compatible with this origin, although likely only the homeworld (out of the four initial colonies) will be altered. If you want the classes of the bonus colonies to be different, you can change them via the console with [b]effect planet_class = pc_arid[/b] or whatever class you want. Deposits and features can be rerolled for a planet with [b]effect reroll_deposits = yes[/b] (these are both built-in console commands).
+The randomization for ideal and "secondary" planet classes for the starting system initializers supports selecting one of the built-in nine habitable planet classes or equivalent classes from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=819148835]Planetary Diversity[/url].
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod does not overwrite [i]any[/i] base game files or code, it should play nicely with many other mods.  Built for Stellaris version 3.7 "Canis Minor."  This mod is not compatible with achievements.
+Finally - because this mod overrides only a single base game code object, it should play nicely with many other mods. Built for Stellaris version 3.7 "Canis Minor." This mod is not compatible with achievements.
 
 [h3]When to Install[/h3]
-This mod should be added before starting a new game.  The main effect of new origins and starting systems are only available during empire creation, and the custom code to set up the new systems only executed during empire initialization.  This mod does define some new deposits and related events, and thus is not recommended to be removed during a game.  If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
+This mod should be added before starting a new game. The main effect of new origins and starting systems are only available during empire creation, and the custom code to set up the new systems only executed during empire initialization. This mod does define some new deposits and related events, and thus is not recommended to be removed during a game. If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
 
 [h3]Not Included in "Subtle Polish"[/h3]
-This mod is intentionally not included in my modpack [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089]Subtle Polish: A Collection of Fixes and Enhancements[/url] because it is a new origin.  It is otherwise fully compatible.
+This mod is intentionally not included in my modpack [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089]Subtle Polish: A Collection of Fixes and Enhancements[/url] because it is a new origin. It is otherwise fully compatible.
 
 [h3]Optional Mod Dependencies[/h3]
 [url=https://steamcommunity.com/workshop/filedetails/?id=2496357128]Planetary Modifier Enhancements[/url] is used to apply the "Part of an Extensive Moon System" to the initial jovian moon system that hosts your homeworld.
 
 [h3]Recommended Companion Mods[/h3]
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2527918521]Yet Another Planetary Sky Fix[/url] to add visible, ringed gas giants to the planetary sky graphics for your starting colony worlds.  Highly recommended to use another UI-expanding mod such as [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1587178040]Bigger Planet View[/url] or [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1866576239]Planetary Diversity - Planet View[/url] to see the full-height planet graphics, which makes the variant skies easier to see.
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2527918521]Yet Another Planetary Sky Fix[/url] to add visible, ringed gas giants to the planetary sky graphics for your starting colony worlds. Highly recommended to use another UI-expanding mod such as [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1587178040]Bigger Planet View[/url] or [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1866576239]Planetary Diversity - Planet View[/url] to see the full-height planet graphics, which makes the variant skies easier to see.
 
 [h2]Known Issues[/h2]
-The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for Mechanists, Syncretic Evolution, and Necrophages without needing to duplicate or override all of the relevant code.
+The variant jovian league origins will convert themselves into their corresponding vanilla origins after the player presses the BEGIN button (or at game start for AI players). This is necessary to support built-in features for the variants without needing to duplicate or override all of the relevant code.
 
 Some variants of a jovian league may start with a small negative income of one or more resources. Generally, these can be resolved by prioritizing a job that produces the resource with negative income.
+
+[h3]Error Logs[/h3]
+Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in their system. In order for it to be usable without the Shroud Beacon starbase building, it was necessary to update the conditions for when a shroud tunnel bypass counts as a node. The game logs one error message to indicate the overwrite:
+[code]
+[06:41:31][game_singleobjectdatabase.h:165]: Object with key: shroud_tunnel already exists, using the one at file: common/bypass/10_jovian_league_bypass_overrides.txt line: 2
+[code]
 
 [h2]Changelog[/h2]
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2682659676]Change Notes[/url]
