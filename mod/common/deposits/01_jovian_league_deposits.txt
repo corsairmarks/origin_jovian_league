@@ -107,7 +107,6 @@ d_mothballed_sanctuary_factories = {
 d_toxic_gods_blessing = {
 	icon = d_bubbling_swamp
 	potential = { always = no }
-	can_be_cleared = { always = no }
 	triggered_planet_modifier = {
 		potential = { has_deposit = d_toxic_god_blight_upon_the_land }
 		planet_max_districts_add = 1
