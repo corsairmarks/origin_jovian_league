@@ -2476,7 +2476,7 @@ generate_jovian_league_fear_of_the_dark_planet = {
 	if = {
 		limit = { habitable_planet = no }
 		# avoids an error log if the target planet is not habitable
-		change_pc = pk_nuked
+		change_pc = pc_nuked
 	}
 	create_fear_of_the_dark_country = yes
 	setup_fear_of_the_dark_pre_ftl = yes
