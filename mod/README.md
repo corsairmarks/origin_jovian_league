@@ -49,7 +49,7 @@ Finally - because this mod overrides only a single base game code object, it sho
 
 ### When to Install
 
-This mod should be added before starting a new game.  The main effect of new origins and starting systems are only available during empire creation, and the custom code to set up the new systems only executed during empire initialization.  This mod does define some new deposits and related events, and thus is not recommended to be removed during a game.  If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
+This mod should be added before starting a new game.  It is not recommended remove this mod during a game.  If you do choose to remove it, it is highly recommended to take a backup of your savegame before attempting to remove the mod.
 
 ### Not Included in "Subtle Polish"
 
