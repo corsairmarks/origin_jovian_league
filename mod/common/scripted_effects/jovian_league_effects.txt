@@ -1004,7 +1004,6 @@ generate_jovian_league_capital_start_pops = {
 	}
 
 	clear_variable = total_pop_count
-	ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -1548,19 +1547,6 @@ generate_jovian_league_sibling1_start_pops = {
 	}
 
 	clear_variable = total_pop_count
-	if = {
-		limit = {
-			owner = {
-				has_origin = origin_jovian_league
-				is_eager_explorer_empire = no
-			}
-		}
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
-	}
-	else = {
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 2 }
-	}
-
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -1819,6 +1805,10 @@ generate_jovian_league_sibling2_start_buildings_and_districts = {
 		limit = { owner = { has_origin = origin_jovian_league } }
 		ojl_add_planet_appropriate_commercial_or_generator_district = yes
 	}
+	else_if = {
+		limit = { owner = { has_origin = origin_jovian_league_fear_of_the_dark } }
+		ojl_add_planet_appropriate_mining_district = yes
+	}
 }
 
 # triggered by empire_init_capital_planet
@@ -1828,6 +1818,14 @@ generate_jovian_league_sibling2_start_pops = {
 	set_variable = {
 		which = total_pop_count
 		value = 2
+	}
+
+	if = {
+		limit = { owner = { has_origin = origin_jovian_league_fear_of_the_dark } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
+		}
 	}
 
 	if = {
@@ -1893,12 +1891,6 @@ generate_jovian_league_sibling2_start_pops = {
 	}
 
 	clear_variable = total_pop_count
-
-	if = {
-		limit = { owner = { has_origin = origin_jovian_league } }
-		ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
-	}
-
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -2204,6 +2196,14 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 
 	if = {
+		limit = { owner = { has_origin = origin_jovian_league_fear_of_the_dark } }
+		change_variable = {
+			which = total_pop_count
+			value = 1
+		}
+	}
+
+	if = {
 		limit = { owner = { is_eager_explorer_empire = yes } }
 		change_variable = {
 			which = total_pop_count
@@ -2299,7 +2299,6 @@ generate_jovian_league_sibling3_start_pops = {
 	}
 
 	clear_variable = total_pop_count
-	ojl_setup_civic_permanent_employment_zombie_pops = { COUNT = 1 }
 	ojl_setup_origin_mechanists_robot_pops = yes
 }
 
@@ -2307,8 +2306,12 @@ generate_jovian_league_sibling3_start_pops = {
 generate_jovian_league_system_final_pass = {
 	optimize_memory
 	adjust_jovian_league_system_resources_for_civics_and_origins = yes
+	ojl_setup_civic_permanent_employment_zombie_pops = yes
 	every_system_planet = {
-		limit = { is_colony = yes }
+		limit = {
+			is_colony = yes
+			is_owned_by = space_owner
+		}
 		if = {
 			# evict any secondary species pops that got non-worker jobs before necrophage rules kicked in
 			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
@@ -2847,30 +2850,42 @@ ojl_add_authority_appropriate_housing_district = {
 	}
 }
 
-# this = planet
-# COUNT = number of Pops to which to apply trait_zombie
+# this = galactic_object (jovian league system)
 ojl_setup_civic_permanent_employment_zombie_pops = {
 	optimize_memory
 	if = {
 		limit = { owner = { has_civic = civic_permanent_employment } }
 		while = {
-			count = $COUNT$
-			random_owned_pop = {
+			count = 4
+			random_system_planet = {
 				limit = {
-					NOT = { has_trait = trait_zombie }
-					has_job_category = worker
-					is_robot_pop = no
+					is_colony = yes
+					is_owned_by = space_owner
+					has_building = building_posthumous_employment_center
+					NOT = { has_planet_flag = toxic_knights_habitat }
+					any_owned_pop = {
+						NOT = { has_trait = trait_zombie }
+						has_job_category = worker
+						is_robot_pop = no
+					}
 				}
-				modify_species = {
-					species = this
-					add_trait = trait_zombie
-					add_traits_at_start_of_list = yes
-				}
-				if = {
-					limit = { has_trait = trait_syncretic_proles }
+				random_owned_pop = {
+					limit = {
+						NOT = { has_trait = trait_zombie }
+						has_job_category = worker
+						is_robot_pop = no
+					}
 					modify_species = {
 						species = this
-						remove_trait = trait_syncretic_proles
+						add_trait = trait_zombie
+						add_traits_at_start_of_list = yes
+					}
+					if = {
+						limit = { has_trait = trait_syncretic_proles }
+						modify_species = {
+							species = this
+							remove_trait = trait_syncretic_proles
+						}
 					}
 				}
 			}
