@@ -58,7 +58,7 @@ unary_jovian_league_01 = {
 		orbit_distance = 25
 		orbit_angle = { min = 90 max = 270 }
 		change_orbit = @base_moon_distance
-		flags = { divider_flag }
+		flags = { divider_flag ignore_startup_effect }
 		moon = {
 			count = 1
 			class = random_non_colonizable
@@ -314,7 +314,7 @@ unary_jovian_league_02 = {
 		orbit_distance = 25
 		orbit_angle = { min = 90 max = 270 }
 		change_orbit = @base_moon_distance
-		flags = { divider_flag }
+		flags = { divider_flag ignore_startup_effect }
 		moon = {
 			count = 1
 			class = random_non_colonizable
@@ -550,7 +550,7 @@ trinary_jovian_league_01 = {
 			orbit_angle = { min = 90 max = 270 }
 			satellite_naming_policy = lower_case_latin_letters
 			change_orbit = @base_moon_distance
-			flags = { divider_flag }
+			flags = { divider_flag ignore_startup_effect }
 			moon = {
 				count = 1
 				class = random_non_colonizable
@@ -813,7 +813,7 @@ trinary_jovian_league_02 = {
 			orbit_angle = { min = 90 max = 270 }
 			satellite_naming_policy = lower_case_latin_letters
 			change_orbit = @jovian_moon_distance
-			flags = { divider_flag }
+			flags = { divider_flag ignore_startup_effect }
 			moon = {
 				count = 1
 				class = random_non_colonizable
@@ -1103,7 +1103,7 @@ sol_jovian_league = {
 		orbit_angle = 125
 		size = 17
 		has_ring = no
-		flags = { divider_flag }
+		flags = { divider_flag ignore_startup_effect }
 		init_effect = {
 			generate_jovian_league_terraform_candidate = yes
 		}
@@ -1117,12 +1117,12 @@ sol_jovian_league = {
 		has_ring = no
 		modifiers = none
 		flags = { planet_earth ignore_startup_effect }
-
 		init_effect = {
 			save_global_event_target_as = sol_system_earth
 			prevent_anomaly = yes
 			clear_deposits = yes
 			add_deposit = d_society_3
+			generate_jovian_league_terraform_candidate = yes
 		}
 		# T1 colony
 		moon = {
