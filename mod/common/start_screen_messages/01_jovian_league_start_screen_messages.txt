@@ -126,8 +126,6 @@ part = {
 	}
 }
 
-# TODO: intro for 3 new flavors - shroud, toxic, fotd
-
 ### Part II ###
 
 # Regular (non-MegaCorp)
@@ -362,27 +360,128 @@ part = {
 	}
 }
 
-# TODO: outtro for 3 new flavors - toxic, shroud, fotd
+# Knights of the Toxic God
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_TOXIC_KNIGHTS"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_toxic_knights
+		is_megacorp = no
+	}
+}
 
-# TODO: eager explorer civics need flavor
+# Knights of the Toxic God
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_TOXIC_KNIGHTS_MEGACORP"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_toxic_knights
+		is_megacorp = yes
+	}
+}
+
+# Teachers of the Shroud
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_SHROUDWALKER"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_shroudwalker_apprentice
+		is_megacorp = no
+	}
+}
+
+# Teachers of the Shroud
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_SHROUDWALKER_MEGACORP"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_shroudwalker_apprentice
+		is_megacorp = yes
+	}
+}
+
+# Fear of the Dark
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_FEAR_OF_THE_DARK"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_fear_of_the_dark
+		is_megacorp = no
+	}
+}
+
+# Fear of the Dark
+part = {
+	location = 1
+	localization = "START_SCREEN_PART_TWO_JOVIAN_LEAGUE_FEAR_OF_THE_DARK_MEGACORP"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_fear_of_the_dark
+		is_megacorp = yes
+	}
+}
 
 ### Part III ###
 
 # Wormhole
 part = {
 	location = 2
-	localization = "START_SCREEN_PART_THREE_JOVIAN_LEAGUE"
+	localization = "START_SCREEN_PART_THREE_JOVIAN_LEAGUE_WORMHOLE"
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
+		NOT = { has_origin = origin_jovian_league_shroudwalker_apprentice }
+		is_eager_explorer_empire = no
+	}
+}
+
+# Shroud Tunnel
+part = {
+	location = 2
+	localization = "START_SCREEN_PART_THREE_JOVIAN_LEAGUE_SHROUD_TUNNEL"
+	trigger = {
+		has_country_flag = custom_start_screen
+		has_origin = origin_jovian_league_shroudwalker_apprentice
+	}
+}
+
+# Eager Explorers (et al) - no hyperlanes or bypass
+part = {
+	location = 2
+	localization = "START_SCREEN_PART_THREE_JOVIAN_LEAGUE_NO_BYPASS"
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		NOT = { has_origin = origin_jovian_league_shroudwalker_apprentice }
+		is_eager_explorer_empire = yes
 	}
 }
 
 ### Part IV ###
 
-# Mechanists origin notes
+# Divider
 part = {
 	location = 3
+	localization = "START_SCREEN_PART_FOUR_DIVIDER"
+
+	trigger = {
+		has_country_flag = custom_start_screen
+		is_jovian_league = yes
+		OR = {
+			NOT = { has_origin = origin_jovian_league }
+			is_eager_explorer_empire = yes
+		}
+	}
+}
+
+# Mechanists origin notes
+part = {
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_MECHANISTS"
 
 	trigger = {
@@ -393,7 +492,7 @@ part = {
 
 # Syncretic Evolution origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_SYNCRETIC"
 
 	trigger = {
@@ -404,7 +503,7 @@ part = {
 
 # Necrophage origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_NECROPHAGE"
 
 	trigger = {
@@ -415,7 +514,7 @@ part = {
 
 # Lost Colony origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_LOST_COLONY"
 
 	trigger = {
@@ -426,7 +525,7 @@ part = {
 
 # Knights of the Toxic God origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_TOXIC_KNIGHTS"
 
 	trigger = {
@@ -437,7 +536,7 @@ part = {
 
 # Teacher of the Shroud origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_SHROUDWALKER"
 
 	trigger = {
@@ -448,7 +547,7 @@ part = {
 
 # Fear of the Dark origin notes
 part = {
-	location = 3
+	location = 4
 	localization = "START_SCREEN_PART_FOUR_JOVIAN_LEAGUE_FEAR_OF_THE_DARK"
 	trigger = {
 		has_country_flag = custom_start_screen
@@ -458,9 +557,9 @@ part = {
 
 ### Part V ###
 
-# Eager Explorers origin notes
+# Eager Explorers civic additional notes
 part = {
-	location = 4
+	location = 5
 	localization = "START_SCREEN_PART_FIVE_JOVIAN_LEAGUE_EAGER_EXPLORERS"
 	trigger = {
 		has_country_flag = custom_start_screen
