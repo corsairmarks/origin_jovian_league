@@ -2899,7 +2899,7 @@ ojl_setup_origin_mechanists_robot_pops = {
 	if = {
 		limit = { owner = { has_origin = origin_jovian_league_mechanists } }
 		every_owned_pop = {
-			limit = { is_robotic_species = yes }
+			limit = { is_robot_pop = yes }
 			if = {
 				limit = { has_job = miner }
 				modify_species = {
