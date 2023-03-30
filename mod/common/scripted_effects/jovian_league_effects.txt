@@ -79,7 +79,6 @@ generate_jovian_league_terraform_candidate = {
 	optimize_memory
 	set_planet_flag = ignore_startup_effect
 	prevent_anomaly = yes
-	clear_deposits = yes
 	if = {
 		limit = { colonizable_planet = no }
 		if = {
@@ -2474,6 +2473,11 @@ generate_jovian_league_fear_of_the_dark_planet = {
 	space_owner = { save_event_target_as = fotd_country } # needed for built-in effects
 	save_global_event_target_as = fotd_seperatist_planet@space_owner
 	set_planet_flag = fotd_seperatist_planet@space_owner
+	if = {
+		limit = { habitable_planet = no }
+		# avoids an error log if the target planet is not habitable
+		change_pc = pk_nuked
+	}
 	create_fear_of_the_dark_country = yes
 	setup_fear_of_the_dark_pre_ftl = yes
 }
