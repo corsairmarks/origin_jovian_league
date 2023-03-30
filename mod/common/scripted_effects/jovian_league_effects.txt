@@ -1360,6 +1360,14 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 		}
 	}
 	if = {
+		limit = { owner = { has_valid_civic = civic_permanent_employment } }
+		change_variable = {
+			which = num_rural_districts
+			value = -1
+		}
+		add_district = district_industrial
+	}
+	if = {
 		limit = { owner = { is_catalytic_empire = yes } }
 		while = {
 			count = num_rural_districts
@@ -1387,6 +1395,10 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 	if = {
 		limit = { owner = { is_catalytic_empire = yes } }
 		set_colony_type = col_farming
+	}
+	else_if = {
+		limit = { owner = { has_valid_civic = civic_permanent_employment } }
+		set_colony_type = col_factory
 	}
 	else = {
 		set_colony_type = col_mining
