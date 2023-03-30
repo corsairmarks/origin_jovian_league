@@ -12,13 +12,6 @@ country_event = {
 	}
 	immediate = {
 		set_origin = origin_toxic_knights
-		random_owned_planet = {
-			limit = { has_planet_flag = toxic_knights_habitat }
-			every_owned_pop = {
-				limit = { is_unemployed = yes }
-				clear_pop_category = yes
-			}
-		}
 	}
 	after = {
 		country_event = {
