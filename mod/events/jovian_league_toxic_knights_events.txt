@@ -12,6 +12,14 @@ country_event = {
 	}
 	immediate = {
 		set_origin = origin_toxic_knights
+		every_owned_planet = {
+			limit = { any_owned_pop = { is_unemployed = yes } }
+			every_owned_pop = {
+				limit = { is_unemployed = yes }
+				clear_pop_category = yes
+			}
+			check_planet_employment = yes
+		}
 	}
 	after = {
 		country_event = {
@@ -32,6 +40,14 @@ country_event = {
 	}
 	immediate = {
 		set_origin = origin_toxic_knights
+		every_owned_planet = {
+			limit = { any_owned_pop = { is_unemployed = yes } }
+			every_owned_pop = {
+				limit = { is_unemployed = yes }
+				clear_pop_category = yes
+			}
+			check_planet_employment = yes
+		}
 	}
 	after = {
 		country_event = {
