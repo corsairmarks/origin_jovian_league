@@ -2376,6 +2376,10 @@ generate_jovian_league_toxic_knights_habitat = {
 		remove_planet_flag = starting_mining_target
 	}
 	if = {
+		limit = { has_planet_flag = starting_research_target }
+		remove_planet_flag = starting_research_target
+	}
+	if = {
 		limit = { has_orbital_station = yes }
 		orbital_station = { dismantle = yes }
 	}
