@@ -10,6 +10,9 @@ part = {
 			has_origin = origin_jovian_league
 			has_origin = origin_jovian_league_mechanists
 			has_origin = origin_jovian_league_syncretic
+			has_origin = origin_jovian_league_toxic_knights
+			has_origin = origin_jovian_league_shroudwalker_apprentice
+			has_origin = origin_jovian_league_fear_of_the_dark
 		}
 		is_hive_empire = no
 		is_machine_empire = no
