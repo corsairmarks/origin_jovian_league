@@ -475,6 +475,7 @@ part = {
 	trigger = {
 		has_country_flag = custom_start_screen
 		is_jovian_league = yes
+		NOT = { has_origin = origin_jovian_league_lost_colony }
 		OR = {
 			NOT = { has_origin = origin_jovian_league }
 			is_eager_explorer_empire = yes
