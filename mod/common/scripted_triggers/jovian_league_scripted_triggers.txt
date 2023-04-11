@@ -14,6 +14,21 @@ is_jovian_league = {
 }
 
 # this = country
+is_jovian_league_with_wormhole = {
+	optimize_memory
+	OR = {
+		has_origin = origin_jovian_league
+		has_origin = origin_jovian_league_mechanists
+		has_origin = origin_jovian_league_syncretic
+		has_origin = origin_jovian_league_necrophage
+		has_origin = origin_jovian_league_lost_colony
+		has_origin = origin_jovian_league_toxic_knights
+		has_origin = origin_jovian_league_fear_of_the_dark
+	}
+	is_eager_explorer_empire = no
+}
+
+# this = country
 is_biological_species_empire = {
 	optimize_memory
 	OR = {

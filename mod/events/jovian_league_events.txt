@@ -8,10 +8,7 @@ country_event = {
 	trigger = { is_jovian_league = yes }
 	immediate = {
 		if = {
-			limit = {
-				is_eager_explorer_empire = no
-				NOT = { has_origin = origin_jovian_league_shroudwalker_apprentice }
-			}
+			limit = { is_jovian_league_with_wormhole = yes }
 			# wormhole techs
 			if = {
 				limit = {
@@ -55,7 +52,7 @@ country_event = {
 				give_technology = { message = no tech = tech_robotic_workers }
 				add_research_option = tech_robomodding
 			}
-			origin_jovian_league_shroudwalker_apprentice = { # psionic theory unlockes shroud tunnels
+			origin_jovian_league_shroudwalker_apprentice = { # psionic theory unlocks shroud tunnels
 				if = {
 					limit = {
 						NOR = {
