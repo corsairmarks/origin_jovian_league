@@ -107,7 +107,7 @@
  d_mothballed_sanctuary_factories: "£blocker£ Stillgelegte Fabriken"
  d_mothballed_sanctuary_factories_desc: "Unsere wenigen Bio-Trophäen verbrauchen sehr wenig Schmuck, daher wurden die Fabriken, die in das $building_organic_sanctuary$ dieses Planeten integriert sind, zur Reduzierung des £Energie£ $Energie$ Verbrauchs stillgelegt. Im Bedarfsfall können sie von einer £job_artisan_drohne£ $job_artisan_drohne$ wieder in Betrieb genommen werden."
  d_toxic_gods_blessing: "Sludgelands"
- d_toxic_gods_blessing_desc: "The touch of the Diety uniquely blessed these lands to repel the other effects of its passage. However, this \"safety\" comes at the price of a viscous sludge that inevitably seeps into any structures causing them to need continuous repair."
+ d_toxic_gods_blessing_desc: "The touch of the Deity uniquely blessed these lands to repel the other effects of its passage. However, this \"safety\" comes at the price of a viscous sludge that inevitably seeps into any structures causing them to need continuous repair."
 
  # localisation to make the game happy with the conditional content
  # matches localisation from Planetary Diversity so that it won't matter which mod loads first
