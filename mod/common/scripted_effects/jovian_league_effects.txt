@@ -1,6 +1,6 @@
 # triggered by empire_init_capital_planet
 # this = country (owner of the previous planet)
-setup_secondary_species = {
+setup_jovian_league_secondary_species = {
 	optimize_memory
 	if = {
 		limit = {
@@ -1329,10 +1329,10 @@ generate_jovian_league_sibling1_start_buildings_and_districts = {
 				add_building = building_holo_theatres
 			}
 			else_if = {
-					limit = { owner = { has_valid_civic = civic_environmentalist } }
-					add_building = building_ranger_lodge
-					add_blocker = { type = d_big_nature_preserve_blocker }
-				}
+				limit = { owner = { has_valid_civic = civic_environmentalist } }
+				add_building = building_ranger_lodge
+				add_blocker = { type = d_big_nature_preserve_blocker }
+			}
 			else = {
 				add_building = building_commercial_zone # need amentities more than unity
 			}
@@ -2894,6 +2894,18 @@ ojl_setup_civic_permanent_employment_zombie_pops = {
 						NOT = { has_trait = trait_zombie }
 						has_job_category = worker
 						is_robot_pop = no
+					}
+					weights = {
+						base = 1
+						modifier = {
+							factor = 10
+							OR = {
+								has_job = clerk
+								has_job = technician
+								has_job = miner
+								has_job = farmer
+							}
+						}
 					}
 					modify_species = {
 						species = this
