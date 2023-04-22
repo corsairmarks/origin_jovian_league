@@ -122,6 +122,7 @@ Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in th
     * Add a jovian league variant of Knights of the Toxic God - the Keep orbits your initial jovian planet - suggested by [zephramwolf](https://steamcommunity.com/profiles/76561198028125519)
     * Add a jovian league variant of Teachers of the Shroud - instead of a wormhole, begin with a Shroud Tunnel to the Shroudwalkers and progress on the Psionic Theory technology - suggested by [Undisclosed](https://steamcommunity.com/id/theluin)
     * Add a jovian league variant of Fear of the Dark - one of the initial jovian moons belongs to the dissenters
+* 6.1.0 Implement flags to prevent hyperlanes being connected to Origin: Jovian League starting systems by Gigastructural Engineering 3.27
 
 ## Source Code
 
