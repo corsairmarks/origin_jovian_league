@@ -188,7 +188,12 @@ origin_jovian_league_toxic_knights = {
 	picture = GFX_origin_toxic_knights
 	possible = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		civics = { NOT = { value = civic_fanatic_purifiers } }
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_dystopian_society
+			}
+		}
 	}
 	random_weight = { base = 2 }
 	description = "origin_tooltip_jovian_league_toxic_knights_effects"
