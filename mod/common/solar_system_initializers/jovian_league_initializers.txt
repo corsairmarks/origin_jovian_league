@@ -1095,6 +1095,14 @@ sol_jovian_league = {
 		orbit_angle = 15
 		size = 10
 		has_ring = no
+		init_effect = {
+			set_planet_entity = {
+				entity = molten_planet_mercury_entity
+				atmosphere_color = hsv { 0.8 0.1 0.2 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
 	}
 	planet = {
 		name = NAME_Venus
@@ -1106,6 +1114,12 @@ sol_jovian_league = {
 		flags = { divider_flag ignore_startup_effect }
 		init_effect = {
 			generate_jovian_league_terraform_candidate = yes
+			set_planet_entity = {
+				entity = toxic_planet_venus_entity
+				atmosphere_color = hsv { 0.854 0.072 0.7 }
+				atmosphere_intensity = 0.2
+				atmosphere_width = 1.0
+			}
 		}
 	}
 	planet = {
@@ -1123,6 +1137,7 @@ sol_jovian_league = {
 			clear_deposits = yes
 			add_deposit = d_society_3
 			generate_jovian_league_terraform_candidate = yes
+			# note: the new Earth entities do not have a toxic variant
 		}
 		# T1 colony
 		moon = {
@@ -1151,7 +1166,7 @@ sol_jovian_league = {
 		size = 13
 		has_ring = no
 		entity = barren_planet_mars_entity
-		flags = { jovian_league_t1_colony_ideal starting_gatherer_prohibited haven_flag }
+		flags = { planet_mars jovian_league_t1_colony_ideal starting_gatherer_prohibited haven_flag }
 		deposit_blockers = none
 		modifiers = none
 		init_effect = {
@@ -1315,7 +1330,14 @@ sol_jovian_league = {
 		orbit_angle = 125
 		size = 20
 		has_ring = no
-		entity = gas_giant_03_entity
+		init_effect = {
+			set_planet_entity = {
+				entity = gas_giant_uranus_entity
+				atmosphere_color = hsv { 0.548 0.519 0.9 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
 	}
 	planet = {
 		name = NAME_Neptune
@@ -1324,8 +1346,15 @@ sol_jovian_league = {
 		orbit_angle = -195
 		size = 20
 		has_ring = no
-		entity = gas_giant_02_entity
 		change_orbit = 4
+		init_effect = {
+			set_planet_entity = {
+				entity = gas_giant_neptune_entity
+				atmosphere_color = hsv { 0.626 0.782 0.9 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
 		# T2 colony
 		moon = {
 			name = NAME_Triton

@@ -2319,13 +2319,17 @@ generate_jovian_league_system_final_pass = {
 	adjust_jovian_league_system_resources_for_civics_and_origins = yes
 	ojl_setup_civic_permanent_employment_zombie_pops = yes
 	every_system_planet = {
-		limit = {
-			is_colony = yes
-			is_owned_by = space_owner
+		if = {
+			limit = { limit = { has_planet_flag = planet_mars } }
+			set_mars_entity = yes
 		}
 		if = {
 			# evict any secondary species pops that got non-worker jobs before necrophage rules kicked in
-			limit = { owner = { has_origin = origin_jovian_league_necrophage } }
+			limit = {
+				is_colony = yes
+				is_owned_by = space_owner
+				owner = { has_origin = origin_jovian_league_necrophage }
+			}
 			every_owned_pop = {
 				limit = {
 					NOR = {
