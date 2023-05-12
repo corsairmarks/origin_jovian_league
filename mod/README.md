@@ -45,7 +45,7 @@ The randomization for ideal and "secondary" planet classes for the starting syst
 
 Because the jovian league origin starts the owner with four colonized moons, it has completely custom empire initialization script - that includes setting up deposits, features, and blockers; adding buildings and districts (including those tied the origins or civics), and spawning Pops of the main species (and secondary species if there is one). The empire initialization process from the base game is entirely bypassed - so mods that overwrote that code will not affect jovian leagues for better or worse. The bulk of the code for the jovian league origins runs when empires are initialized before the game starts.
 
-Finally - because this mod overrides only a single base game code object, it should play nicely with many other mods.  Built for Stellaris version 3.7 "Canis Minor."  This mod is not compatible with achievements.
+Finally - because this mod overrides only a single base game code object, it should play nicely with many other mods.  Built for Stellaris version 3.8 "Gemini."  This mod is not compatible with achievements.
 
 ### When to Install
 
@@ -123,6 +123,9 @@ Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in th
     * Add a jovian league variant of Teachers of the Shroud - instead of a wormhole, begin with a Shroud Tunnel to the Shroudwalkers and progress on the Psionic Theory technology - suggested by [Undisclosed](https://steamcommunity.com/id/theluin)
     * Add a jovian league variant of Fear of the Dark - one of the initial jovian moons belongs to the dissenters
 * 6.1.0 Implement flags to prevent hyperlanes being connected to Origin: Jovian League starting systems by Gigastructural Engineering 3.27
+* 7.0.0 Update for Stellaris version 3.8 "Gemini"
+    * Integrate underlying game changes
+    * Update Sol system to use the fancy new entities
 
 ## Source Code
 
