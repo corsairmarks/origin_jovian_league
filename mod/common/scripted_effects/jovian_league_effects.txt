@@ -2320,7 +2320,7 @@ generate_jovian_league_system_final_pass = {
 	ojl_setup_civic_permanent_employment_zombie_pops = yes
 	every_system_planet = {
 		if = {
-			limit = { limit = { has_planet_flag = planet_mars } }
+			limit = { has_planet_flag = planet_mars }
 			set_mars_entity = yes
 		}
 		if = {
