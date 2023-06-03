@@ -2365,6 +2365,7 @@ generate_jovian_league_necrophage_primitives = {
 			owner = last_created_country
 			type = primitive_additional_army
 			species = last_created_country
+			land_army = yes
 		}
 	}
 }
