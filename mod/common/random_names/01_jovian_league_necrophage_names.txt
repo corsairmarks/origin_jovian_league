@@ -13,10 +13,7 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 			is_pirate = no
 			is_primitive = no
-			NOR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			}
+			is_fallen_empire = no
 		}
 	}
 	format = "{<necrophagers_start> {[This.GetSpeciesAdj] {<hive_mind>}}}"
@@ -35,8 +32,7 @@ empire_name_format = {
 			has_origin = origin_jovian_league_necrophage
 			is_pirate = no
 			is_primitive = no
-			NOT = { is_country_type = fallen_empire }
-			NOT = { is_country_type = awakened_fallen_empire }
+			is_fallen_empire = no
 		}
 	}
 	format = "{<necrophagers_start> {[This.GetSpeciesAdj] {<devouring_swarm>}}}"
