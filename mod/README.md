@@ -17,8 +17,7 @@ Also supported are any of the new "Eager Explorer" civics (requires the First Co
 ## Special Thanks
 
 * [doctornull](url=https://steamcommunity.com/id/doctornull) for finding and helping me stomp out some bugs relating to starting hyperlanes and jovian leagues
-* [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978) for 
-suggesting Sol system variant that starts your empire around the original jovian planet - Jupiter itself!
+* [Andora](https://steamcommunity.com/profiles/76561198071084874) and [transfemgodtamer](https://steamcommunity.com/profiles/76561199132491978) for suggesting the Sol system variant that starts your empire around the original jovian planet - Jupiter itself!
 * [dsecret88](https://steamcommunity.com/id/Dragyn88) for suggesting the Lost Colony variant
 * [zephramwolf](https://steamcommunity.com/profiles/76561198028125519) for suggesting the Knights of the Toxic God variant
 * [Undisclosed](https://steamcommunity.com/id/theluin) for suggesting the Teachers of the Shroud variant
