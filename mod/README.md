@@ -113,7 +113,7 @@ Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in th
     * Remove old compatibility global flag
 * 6.0.0 Update for Stellaris version 3.7 "Canis Minor"
     * The basic Origin: Jovian League also grants the technology option for Planetary Unification
-    * Origin: Jovian League (Necrophage) starts with primitives on up to two planets in the starting system, equal to the amount of guaranteed neighbors set at game start
+    * Origin: Jovian League (Necrophage) starts with pre-FTLs on up to two planets in the starting system, equal to the amount of guaranteed neighbors set at game start
     * Tweak initial jovial league district, building, and Pop spawning
     * Remove obsolete static modifiers
     * All initially-colonized jovian league planets now benefit from Prosperous Unification modifiers
@@ -125,7 +125,7 @@ Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in th
 * 7.0.0 Update for Stellaris version 3.8 "Gemini"
     * Integrate underlying game changes
     * Update Sol system to use the fancy new entities
-* 7.0.1 Update for Stellaris version 3.8.3 "Gemini" - ensure primitive armies spawn on the surface of their planets
+* 7.0.1 Update for Stellaris version 3.8.3 "Gemini" - ensure pre-FTL armies spawn on the surface of their planets
 * 7.0.2 Make code more flexible, where possible, with fallen empire country types
 
 ## Source Code

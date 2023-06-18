@@ -47,7 +47,7 @@ country_event = {
 		}
 	}
 	after = {
-		# convert starting worlds to primitives
+		# convert starting worlds to pre-FTLs
 		country_event = {
 			id = origin_jovian_league_necrophage.4
 		}
@@ -112,7 +112,7 @@ country_event = {
 }
 
 # explicitly triggered by origin_jovian_league_necrophage.33 and origin_jovian_league_necrophage.34
-# sets up necrophage primitives on 
+# sets up necrophage pre-FTLs on one per coinfig setting (not all) guaranteed habitable worlds
 country_event = {
 	id = origin_jovian_league_necrophage.4
 	hide_window = yes
