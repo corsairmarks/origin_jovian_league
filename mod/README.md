@@ -127,6 +127,7 @@ Origin: Jovian League (Teachers of the Shroud) begins with a shroud tunnel in th
     * Update Sol system to use the fancy new entities
 * 7.0.1 Update for Stellaris version 3.8.3 "Gemini" - ensure pre-FTL armies spawn on the surface of their planets
 * 7.0.2 Make code more flexible, where possible, with fallen empire country types
+* 7.0.3 Properly mention the Necrophage variation generated pre-FTLs
 
 ## Source Code
 
